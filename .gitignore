@@ -1,0 +1,8 @@
+venv/
+uploads
+script
+~$*
+__pycache__/
+\_*.sh
+py
+.idea/
