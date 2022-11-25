@@ -1,5 +1,5 @@
-# backend
-Backend para proyectos de la universidad
+# Backend para proyectos de la universidad
+## Daniel Duran - José Olivar - Luis Romero
 
 Para iniciar el backend es necesario recrear ciertos pasos previamente en su IDE.
 Primero clonar la repo, luego en la carpeta que se descarga, se abre con el IDE, y tiene escribir los siguientes comandos en la terminal
