@@ -37,6 +37,10 @@ Para poblar las tablas de la base de datos es necesario ocupar el siguiente coma
 
 py manage.py shell < script/main.py
 
+En caso de que se equivoque al poblar la data escribir el siguiente comando.
+
+py manage.py shell < script/reset_db.py
+
 Luego de esto escribir el siguiente comando para inicializar el servidor.
 
 py manage.py runserver
