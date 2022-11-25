@@ -16,7 +16,8 @@ Luego que se instalen las depencencias, es necesario tener MySQL Workbench para 
 
 En settings.py se debe encontrar esta parte
 
-DATABASES = {
+```python
+   DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.mysql',
             'NAME': 'proyecto_web',
@@ -26,6 +27,7 @@ DATABASES = {
             'PORT': '3306'
         }
     }
+```
 
 Aquí debe incluir la contraseña de su base de datos en la key 'PASSWORD': 'Aquí poner su contraseña', cuando ya se tenga la contraseña, en MySQL Workbench debe crear un schema con este nombre "proyecto_web", al tener creado el esquema, debe ir a su IDE y escribir el siguiente comando
 
