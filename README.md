@@ -4,7 +4,7 @@
 Para iniciar el backend es necesario recrear ciertos pasos previamente en su IDE.
 Primero clonar la repo, luego en la carpeta que se descarga, se abre con el IDE, y tiene escribir los siguientes comandos en la terminal
 
-py -m venv venv
+```py -m venv venv```
 
 Si usa VSC apretar f1 y escribir "interpreter, escoger la opción Python 3.10.x ('venv':venv), luego cerrar la consola y volver a abrir
 
