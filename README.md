@@ -33,9 +33,14 @@ py manage.py migrate
 
 Este comando creara la base de datos con sus tablas a traves del ORM de Django.
 
+Para poblar las tablas de la base de datos es necesario ocupar el siguiente comando.
+
+py manage.py shell < script/main.py
+
 Luego de esto escribir el siguiente comando para inicializar el servidor.
 
 py manage.py runserver
+
 
 
 
