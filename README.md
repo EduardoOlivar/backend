@@ -12,7 +12,7 @@ Siguiendo este paso escribir el siguiente comando para instalar las depencencias
 
 ```pip install -r requirements.txt```
 
-Luego que se instalen las depencencias, es necesario tener MySQL Workbench para poder crear el esquema de la base de datos.
+Luego que se instalen las depencencias, es necesario tener MySQL Workbench  y MySQL Server para poder crear el esquema de la base de datos.
 
 En settings.py que esta dentro de la carpeta backend se debe encontrar esta parte
 
