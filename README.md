@@ -37,7 +37,7 @@ Para poblar las tablas de la base de datos es necesario ocupar el siguiente coma
 
 py manage.py shell < script/main.py
 
-En caso de que se equivoque al poblar la data escribir el siguiente comando.
+En caso de que se equivoque al poblar la data escribir el siguiente comando, solo borra las tablas de ensayos, preguntas, respuestas, la tabla de usuarios sigue con la data con la que se registraron.
 
 py manage.py shell < script/reset_db.py
 
