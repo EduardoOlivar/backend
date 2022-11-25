@@ -69,6 +69,13 @@ class Users(AbstractBaseUser,GenericAttributes):
     def __str__(self):
         return self.email
 
+    def has_perm(self, perm, obj=None):
+        return self.is_admin
+
+    @property
+    def is_staff(self):
+        return self.is_admin
+
 
 class Essay(GenericAttributes):
     name = models.TextField(**common_args)
@@ -85,8 +92,8 @@ class Question(GenericAttributes):
 
 class Answer(GenericAttributes):
     label = models.CharField(**common_args, max_length=255)
-    right = models.BooleanField(**common_args)
-    question = models.ForeignKey(Question, **common_args, on_delete=models.CASCADE, related_name='answers')
+    right = models.IntegerField(**common_args)
+    question = models.ForeignKey(Question, **common_args, on_delete=models.CASCADE, related_name='answer')
     users = models.ManyToManyField(Users, blank=True, through='AnswerEssayUser')
     essay = models.ManyToManyField(Essay, blank=True, through='AnswerEssayUser')
 

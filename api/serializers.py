@@ -12,6 +12,19 @@ class UserSerializer(serializers.ModelSerializer):
         exclude = [*generic_fields,'is_admin']
 
 
+class UserLoginSerializer(serializers.ModelSerializer):
+    email = serializers.EmailField(max_length=255)
+    class Meta:
+        model = Users
+        fields = ['email', 'password']
+
+
+class UserProfileSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Users
+        fields = ['email', 'username']
+
+
 class AnswerSerializer(serializers.ModelSerializer):
 
     class Meta:

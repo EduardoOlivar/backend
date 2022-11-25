@@ -1,0 +1,1 @@
+exec(open('scripts/script.py').read())

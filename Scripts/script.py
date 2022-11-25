@@ -1,142 +1,252 @@
+from api.models import *
+#algebra, numeros, probabilidad, geometria
 dataAlgebra = [
-    {
-        'name': 'Ensayo algebra',
-        'type': 'algrebra',
-        'question': [
-            {
-                'question': 'El cambio tiene un patrocinador ejecutivo.',
-                'subject': 'tipo pregunta',
-                'link_resolution':'Link del momento de la respeusta de la pregunta',
-                'answer': [
-                    {
-                        'label': 'Respuesta correcta',
-                        'right ': True
-                    },
-                    {
-                        'label': 'respuecta incorrecta',
-                        'right': False
-                    },
-                    {
-                        'label': 'excepcional',
-                        'right': False
-                    },
-                ],
-            },
-        ],
-    },
-]
-
-dataAlgebra = [
-    {           'name': 'Ensayo algebra',
-                'type': 'algrebra',
-                'question': [
-                    {
-                        'question': 'El cambio tiene un patrocinador ejecutivo.',
-                        'subject': 'tipo pregunta',
-                        'link_resolution':'Link del momento de la respeusta de la pregunta',
-                        'answer': [
-                            {
-                                'label': 'Respuesta correcta',
-                                'right ': True
-                            },
-                            {
-                                'label': 'respuecta incorrecta',
-                                'right': False
-                            },
-                            {
-                                'label': 'excepcional',
-                                'right': False
-                            },
-                        ],
-                    },
-                    {
-                        'question': 'El cambio tiene un patrocinador ejecutivo.',
-                        'subject': 'tipo pregunta',
-                        'link_resolution':'Link del momento de la respeusta de la pregunta',
-                        'answer': [
-                            {
-                                'label': 'Respuesta correcta',
-                                'right ': True
-                            },
-                            {
-                                'label': 'respuecta incorrecta',
-                                'right': False
-                            },
-                            {
-                                'label': 'excepcional',
-                                'right': False
-                            },
-                        ],
-                    },
-                ],
-    },
-]
-
 {
-    "preguntas": [
-        {
-            "titulo": "¿Cuál de las siguientes cantidades corresponde al 5 % del precio de un artículo?\"mundo\"",
-            "opciones": [
-                {"textoRespuesta": "\\text{El precio del artículo dividido por 100, y luego multiplicado por 5.} ",
-                 "isCorrect": true},
-                {"textoRespuesta": "\\text{El precio del artículo multiplicado por cinco décimos.}",
-                 "isCorrect": false},
-                {"textoRespuesta": "\\text{Un quinto del precio del artículo.}", "isCorrect": false},
-                {"textoRespuesta": "\\text{El precio del artículo dividido por 5, y luego multiplicado por 100.}",
-                 "isCorrect": false}
+            'name': 'Ensayo numeros',
+            'type': 'numeros',
+            'questions': [
+                {
+                    'question': '¿\\text{Cuál es el valor de: }(1 - \\frac{1}{2})(1 - \\frac{1}{3})(1 - \\frac{1}{4})(1 - \\frac{1}{5})?',
+                    'subject': 'numeros',
+                    'link_resolution':'https://youtu.be/OxgnJ-IgxA0?t=123',
+                    'answer': [
+                        {
+                            'label': '\\frac{1}{5}',
+                            'right': 1
+                        },
+                        {
+                            'label': '\\frac{119}{120}',
+                            'right': 0
+                        },
+                        {
+                            'label': '\\text{0}',
+                            'right': 0
+                        },
+                        {
+                            'label': '\\frac{599}{120}',
+                            'right': 0
+                        },
+
+                    ],
+                },
+                {
+                    'question': '¿\\text{Cuál es el valor de: }1 - (\\frac{1}{2})^{-3}?',
+                    'subject': 'numeros',
+                    'link_resolution':'https://youtu.be/OxgnJ-IgxA0?t=383',
+                    'answer': [
+                        {
+                            'label': 'text{-7}',
+                            'right': 1
+                        },
+                        {
+                            'label': '\\frac{1}{2}',
+                            'right': 0
+                        },
+                        {
+                            'label': '\\frac{9}{8}',
+                            'right': 0
+                        },
+                        {
+                            'label': '\\frac{1}{8}',
+                            'right': 0
+                        },
+                    ],
+                },
+                {
+                    'question': '\\text{Un número aumentado en su 30% es igual a 910.}',
+                    'subject': 'numeros',
+                    'link_resolution':'https://www.youtube.com/embed/OxgnJ-IgxA0?start=1682',
+                    'answer': [
+                        {
+                            'label': 'text{700}',
+                            'right': 1
+                        },
+                        {
+                            'label': 'text{637}',
+                            'right': 0
+                        },
+                        {
+                            'label': 'text{273}',
+                            'right': 0
+                        },
+                        {
+                            'label': 'text{1.183}',
+                            'right': 0
+                        },
+                    ],
+                },
+                {
+                    'question': '\\text{¿Cuál es el resultado de: }\\sqrt{2} - \\sqrt{8} + \\sqrt{18}?',
+                    'subject': 'numeros',
+                    'link_resolution':'https://www.youtube.com/embed/OxgnJ-IgxA0?start=1895',
+                    'answer': [
+                        {
+                            'label': '2\\sqrt{2}',
+                            'right': 1
+                        },
+                        {
+                            'label': '\\sqrt{2}',
+                            'right': 0
+                        },
+                        {
+                            'label': '\\sqrt{12}',
+                            'right': 0
+                        },
+                        {
+                            'label': '6\\sqrt{2}',
+                            'right': 0
+                        },
+                    ],
+                },
+                {
+                    'question': '\\text{Si }\\log_m\\lparen\\frac {8} {125}\\rparen\\ = -3 \\text{, ¿cuál es el valor de m?}',
+                    'subject': 'numeros',
+                    'link_resolution':'https://youtu.be/OxgnJ-IgxA0?t=2031',
+                    'answer': [
+                        {
+                            'label': '\\frac {5} {2}',
+                            'right': 1
+                        },
+                        {
+                            'label': '\\frac {2} {5}',
+                            'right': 0
+                        },
+                        {
+                            'label': '{\\lparen\\frac {8} {125}\\rparen}^{-3}',
+                            'right': 0
+                        },
+                        {
+                            'label': '-\\frac {2} {5}',
+                            'right': 0
+                        },
+                    ],
+                },
+                {
+                    'question': 'text{¿Cuál de las siguientes cantidades corresponde al 5} \\%\\newline \\text{del precio de un artículo? }',
+                    'subject': 'numeros',
+                    'link_resolution':'https://youtu.be/OxgnJ-IgxA0?t=1540',
+                    'answer': [
+                        {
+                            'label': '\\text{El precio del artículo divido por 100, y luego multiplicado por 5}',
+                            'right': 1
+                        },
+                        {
+                            'label': '\\text{Un quinto del precio del artículo.}',
+                            'right': 0
+                        },
+                        {
+                            'label': '\\text{El precio del artículo multiplicado por cinco décimos}',
+                            'right': 0
+                        },
+                        {
+                            'label': '\\text{El precio del artículo divido por 5, y luego multiplicado por 100}',
+                            'right': 0
+                        },
+                    ],
+                },
+                {
+                    'question': '\\text{¿Cuál es el valor de 2,32 + 17,4?}',
+                    'subject': 'numeros',
+                    'link_resolution':'https://youtu.be/nKR73i6zASg?t=38',
+                    'answer': [
+                        {
+                            'label': '\\text{(232 + 1740):100}',
+                            'right': 1
+                        },
+                        {
+                            'label': '\\text{(232 + 174):10}',
+                            'right': 0
+                        },
+                        {
+                            'label': '\\text{(2320 + 174):100}',
+                            'right': 0
+                        },
+                        {
+                            'label': '\\text{(232 + 1740):1000}',
+                            'right': 0
+                        },
+                    ],
+                },
+                {
+                    'question': '\\text{¿Cuál de las siguientes expresiones representa el 22\\% }\\newline \\text{del 15\\% de P?}',
+                    'subject': 'numeros',
+                    'link_resolution':'https://youtu.be/nKR73i6zASg?t=577',
+                    'answer': [
+                        {
+                            'label': '\\frac{33}{1000}P',
+                            'right': 1
+                        },
+                        {
+                            'label': '\\text{3,3P}',
+                            'right': 0
+                        },
+                        {
+                            'label': '\\text{0,37P}',
+                            'right': 0
+                        },
+                        {
+                            'label': '\\frac{33}{100}P',
+                            'right': 0
+                        },
+                    ],
+                },
+                {
+                    'question': '\\text{¿Cuál de las siguientes opciones presenta una resolución}\\newline \\text{correcta de } \\frac{27^\\frac{1}{3}}{8}*\\frac{16^\\frac{1}{2}}{9}?',
+                    'subject': 'numeros',
+                    'link_resolution':'https://youtu.be/nKR73i6zASg?t=755',
+                    'answer': [
+                        {
+                            'label': '\\frac{27^\\frac{1}{3}}{8}*\\frac{16^\\frac{1}{2}}{9} =\\frac{(27^3)^\\frac{1}{3}}{8}*\\frac{(4^2)\\frac{1}{2}}{9} = \\frac{3}{8}*\\frac{4}{9} = \\frac{12}{72} = \\frac{1}{6}',
+                            'right': 1
+                        },
+                        {
+                            'label': '\\frac{27^\\frac{1}{3}}{8}*\\frac{16^\\frac{1}{2}}{9} = (\\frac{27}{8})^\\frac{1}{3}*(\\frac{16}{9})^\\frac{1}{2} = \\frac{3}{2}*\\frac{4}{3} = 2',
+                            'right': 0
+                        },
+                        {
+                            'label': '\\frac{27^\\frac{1}{3}}{8}*\\frac{16^\\frac{1}{2}}{9} = (\\frac{27*16}{8*9})^{\\frac{1}{3}*\\frac{1}{2}} = 6^\\frac{1}{6}',
+                            'right': 0
+                        },
+                        {
+                            'label': '\\frac{27^\\frac{1}{3}}{8}*\\frac{16^\\frac{1}{2}}{9} = \\frac{27^\\frac{1}{3}*16^\\frac{1}{2}}{8*9} = \\frac{9}{8}*\\frac{8}{9} = 1',
+                            'right': 0
+                        },
+                    ],
+                },
+                {
+                    'question': '\\text{¿Cuál es el valor de } \\sqrt{8}(\\sqrt{18}-\\sqrt{8})?',
+                    'subject': 'numeros',
+                    'link_resolution':'https://youtu.be/nKR73i6zASg?t=1154',
+                    'answer': [
+                        {
+                            'label': '\\text{4}',
+                            'right': 1
+                        },
+                        {
+                            'label': '\\text{8}',
+                            'right': 0
+                        },
+                        {
+                            'label': '\\sqrt{80}',
+                            'right': 0
+                        },
+                        {
+                            'label': '\\text{80}',
+                            'right': 0
+                        },
+                    ],
+                },
             ],
-            "numeroPregunta": "1",
-            "videoRespuesta": "https://www.youtube.com/embed/OxgnJ-IgxA0?start=1547"
+    },
+]
 
-        },
-        {
-            "titulo": "Un número aumentado en su 30% es igual a 910.",
-            "opciones": [
-                {"textoRespuesta": "273", "isCorrect": false},
-                {"textoRespuesta": "637", "isCorrect": true},
-                {"textoRespuesta": "700", "isCorrect": false},
-                {"textoRespuesta": "1.183", "isCorrect": false}
-            ],
-            "numeroPregunta": "2",
-            "videoRespuesta": "https://www.youtube.com/embed/OxgnJ-IgxA0?start=1682"
 
-        },
-        {
-            "titulo": "¿Cuál es el resultado de: <InlineMath math={'\\sqrt{2} + \\sqrt{8} + \\sqrt{18} '}/> ?",
-            "opciones": [
-                {"textoRespuesta": "\\sqrt{2}", "isCorrect": false},
-                {"textoRespuesta": "2\\sqrt{2}", "isCorrect": true},
-                {"textoRespuesta": "\\sqrt{12}", "isCorrect": false},
-                {"textoRespuesta": "6\\sqrt{2}", "isCorrect": false}
-            ],
-            "numeroPregunta": "3",
-            "videoRespuesta": "https://www.youtube.com/embed/OxgnJ-IgxA0?start=1895"
+for essay_data in dataAlgebra:
+    question = essay_data.pop('questions')
+    essay_object = Essay.objects.create(**essay_data)
+    for question_data in question:
+        answers = question_data.pop('answer')
+        question_object = Question.objects.create(**question_data, essay=essay_object)
+        for answer_data in answers:
+            answer_object = Answer.objects.create(**answer_data, question =question_object)
 
-        },
-        {
-            "titulo": "\\text{Si }\\log_m\\lparen\\frac {8} {125}\\rparen\\ = -3\\text{, ¿cuál es el valor de m?}",
-            "opciones": [
-                {"textoRespuesta": "-\\frac {2} {5}", "isCorrect": false},
-                {"textoRespuesta": "{\\lparen\\frac {8} {125}\\rparen}^{-3}", "isCorrect": false},
-                {"textoRespuesta": "\\frac {2} {5}", "isCorrect": false},
-                {"textoRespuesta": "\\frac {5} {2}", "isCorrect": true}
-            ],
-            "numeroPregunta": "4",
-            "videoRespuesta": "https://www.youtube.com/embed/OxgnJ-IgxA0?start=2031"
-
-        },
-        {
-            "titulo": "\\text{Las distancias de un planeta a dos satélites naturales son }\\newline\\text{380.000 km y 420.000 km.}",
-            "opciones": [
-                {"textoRespuesta": "3\\ \\cdotp\\ 10\\ \\cdotp\\ (42-38)", "isCorrect": false},
-                {"textoRespuesta": "\\frac {1} {3}\\  \\cdotp\\ 10^{-1}\\ \\cdotp (42-38)", "isCorrect": true},
-                {"textoRespuesta": "3\\ \\cdotp\\ 10^{12}\\ \\cdotp (42-38)", "isCorrect": false},
-                {"textoRespuesta": "10^{4}\\ \\cdotp (42-38)", "isCorrect": false}
-            ],
-            "numeroPregunta": "5",
-            "videoRespuesta": "https://www.youtube.com/embed/OxgnJ-IgxA0?start=2394"
-
-        }
-
-    ]
-}

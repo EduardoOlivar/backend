@@ -12,10 +12,11 @@ urlpatterns = [
     re_path(r'^user(s)?/(?P<pk>[0-9]+)/$', views.UsersRetrieveUpdateDestroy.as_view()),
     re_path('api/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
     re_path('api/register/', views.RegistrationView.as_view(), name='register'),
-    re_path('api/login/', views.LoginView.as_view(), name='register'),
-    re_path('api/logout/', views.LogoutView.as_view(), name='register'),
-    re_path('api/change_password/', views.ChangePasswordView.as_view(), name='register'),
+    re_path('api/login/', views.LoginView.as_view(), name='login'),
+    re_path('api/logout/', views.LogoutView.as_view(), name='logout'),
+    re_path('api/change_password/', views.ChangePasswordView.as_view(), name='change_password'),
     re_path('api/token-refresh/', jwt_views.TokenRefreshView.as_view(), name='token_refresh'),
+    re_path('api/profile/', views.UserProfileView.as_view(), name='profile'),
 ]
 
 
