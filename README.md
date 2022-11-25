@@ -31,7 +31,7 @@ En settings.py que esta dentro de la carpeta backend se debe encontrar esta part
 
 Aquí debe incluir la contraseña de su base de datos en la key 
 
-###'PASSWORD': 'Aquí poner su contraseña' 
+```'PASSWORD': 'Aquí poner su contraseña'``` 
 
 Cuando ya se tenga la contraseña, en MySQL Workbench debe crear un schema con este nombre "proyecto_web", al tener creado el esquema, debe ir a su IDE y escribir el siguiente comando
 
