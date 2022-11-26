@@ -8,7 +8,8 @@ Primero clonar la repo, luego en la carpeta que se descarga, se abre con el IDE,
 
 Si usa VSC apretar f1 y escribir "interpreter, escoger la opción Python 3.10.x ('venv':venv), luego cerrar la consola y volver a abrir
 
-Si ocupa PyCharm debe escribir el siguiente comando en command Promp
+Si ocupa PyCharm debe escribir el siguiente comando en command Promp (CMD)
+
 ``` py venv\Scripts\activate.bat```
 
 Siguiendo este paso escribir el siguiente comando para instalar las depencencias desde el archivo requirements.txt
