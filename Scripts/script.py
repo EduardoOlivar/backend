@@ -262,6 +262,7 @@ for essay in Essay.objects.filter():
             answers_list.append(answer)
         random_answer = random.choice(answers_list)
         print(f'Respuesta>>>: ', random_answer.right)
-        random_answer.essay.add(essay)
         if random_answer.right == 1:
-            random_answer.essay.puntaje = 15
+            random_answer.essay.score = 1
+            print(random_answer.essay.score)
+        random_answer.essay.add(essay)

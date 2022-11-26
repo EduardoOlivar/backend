@@ -80,8 +80,14 @@ class AnswerListCreate(generics.ListCreateAPIView):
 class QuestionsAlternativeAll(generics.ListAPIView):
     serializer_class = QuestionsAlternativeAllSerializer
     filter_backends = [DjangoFilterBackend]
-    filterset_fields = ['id','essay']
+    filterset_fields = ['id','essay','subject']
     queryset = Question.objects.all()
+
+
+class AnswerEssayUserView(generics.ListAPIView):
+    serializer_class = AnswerEssayUserSerializer
+    queryset = AnswerEssayUser.objects.filter(is_deleted=False).order_by('pk')
+    permission_classes = (IsAuthenticated,)
 
 
 class RegistrationView(APIView):

@@ -17,6 +17,7 @@ class UserSerializer(serializers.ModelSerializer):
 
 class UserLoginSerializer(serializers.ModelSerializer):
     email = serializers.EmailField(max_length=255)
+
     class Meta:
         model = Users
         fields = ['email', 'password']
@@ -32,14 +33,14 @@ class AnswerSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Answer
-        exclude = [*generic_fields, 'essay', 'question', 'users']
+        exclude = [*generic_fields,'question']
 
 
 class QuestionSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Question
-        exclude = [*generic_fields, 'essay']
+        exclude = [*generic_fields, 'essay','users']
 
 
 class EssaySerializer(serializers.ModelSerializer):
@@ -49,12 +50,21 @@ class EssaySerializer(serializers.ModelSerializer):
         exclude = [*generic_fields,'users']
 
 
+class AnswerEssayUserSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = AnswerEssayUser
+        fields = ['essay','score','answer']
+
+
 class QuestionsAlternativeAllSerializer(QuestionSerializer):
     answer = AnswerSerializer(many=True, read_only= True)
 
 
 class EssayQuestionsAlternativeAllSerializer(EssaySerializer):
     question = QuestionsAlternativeAllSerializer(many=True, read_only=True)
+
+
 
 
 #serializador para el registro del usuario, compara las contraseñas para el match

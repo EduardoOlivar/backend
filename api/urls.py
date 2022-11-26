@@ -30,4 +30,5 @@ urlpatterns += [
     re_path(r'^answers/all/$', views.AnswerListCreate.as_view()),
     re_path(r'^answers/(?P<pk>[0-9]+)/$', views.AnswerRetrieveUpdateDestroy.as_view()),
     re_path(r'^questions_alternative/', views.QuestionsAlternativeAll.as_view()),#endpoint para consultar por un ensayo en especifico con todas sus  preguntas y alternativas
+    re_path(r'^score_user/all/$', views.AnswerEssayUserView.as_view()), #endpoint para obtener el puntaje del usuario
 ]

@@ -87,7 +87,7 @@ class Question(GenericAttributes):
     question = models.TextField(**common_args)
     subject = models.TextField(**common_args)
     link_resolution = models.URLField(**common_args)
-    essay = models.ForeignKey(Essay, **common_args, on_delete=models.CASCADE, related_name='questions')
+    essay = models.ForeignKey(Essay, **common_args,on_delete=models.CASCADE, related_name='question')
 
 
 class Answer(GenericAttributes):
@@ -102,3 +102,4 @@ class AnswerEssayUser(GenericAttributes):
     answer = models.ForeignKey(Answer,**common_args, on_delete=models.CASCADE)
     essay = models.ForeignKey(Essay,**common_args,on_delete=models.CASCADE)
     users = models.ForeignKey(Users,**common_args,on_delete=models.CASCADE)
+    score = models.IntegerField(**common_args)
