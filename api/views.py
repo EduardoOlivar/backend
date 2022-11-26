@@ -12,6 +12,7 @@ from api.models import *
 from rest_framework.permissions import IsAuthenticated
 from django.contrib.auth import authenticate, login, logout
 from api.renderers import UserRenderer
+from django_filters.rest_framework import DjangoFilterBackend
 
 # Create your views here.
 
@@ -50,10 +51,12 @@ class EssayRetrieveUpdateDestroy(generics.RetrieveUpdateDestroyAPIView):
     permission_classes = [IsAuthenticated, ]
 
 
-class QuestionListCreate(generics.ListCreateAPIView):
-    queryset = Question.objects.filter().order_by('pk')
+class QuestionList(generics.ListAPIView):
+    queryset = Question.objects.all()
     serializer_class = QuestionSerializer
     permission_classes = [IsAuthenticated, ]
+    filter_backends = [DjangoFilterBackend]
+    filterset_fields = ['essay', 'question','subject','link_resolution']
 
 
 class QuestionRetrieveUpdateDestroy(generics.RetrieveUpdateDestroyAPIView):
@@ -74,10 +77,11 @@ class AnswerListCreate(generics.ListCreateAPIView):
     permission_classes = [IsAuthenticated, ]
 
 
-class EssayQuestionsAlternativeAll(generics.RetrieveUpdateAPIView):
-    queryset = Essay.objects.filter(is_deleted=False).order_by('pk')
-    serializer_class = EssayQuestionsAlternativeAllSerializer
-    permission_classes = [IsAuthenticated, ]
+class QuestionsAlternativeAll(generics.ListAPIView):
+    serializer_class = QuestionsAlternativeAllSerializer
+    filter_backends = [DjangoFilterBackend]
+    filterset_fields = ['id','essay']
+    queryset = Question.objects.all()
 
 
 class RegistrationView(APIView):
@@ -100,7 +104,7 @@ class LoginView(APIView):
         user = authenticate(email=email, password=password)
         if user is not None:
             token = get_tokens_for_user(user)
-            return Response({'token': token, 'msg': 'Inicio de sesión exitoso'}, status=status.HTTP_200_OK)
+            return Response({'token': token, 'msg': 'Inicio de sesión exitoso','status': 'ok'}, status=status.HTTP_200_OK)
         else:
             return Response({'errors': {'error_de_campo': ['Email o contraseña invalidos']}},
                             status=status.HTTP_404_NOT_FOUND)

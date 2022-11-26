@@ -31,7 +31,7 @@ class UserProfileSerializer(serializers.ModelSerializer):
 class AnswerSerializer(serializers.ModelSerializer):
 
     class Meta:
-        model = Question
+        model = Answer
         exclude = [*generic_fields, 'essay', 'question', 'users']
 
 
@@ -50,7 +50,7 @@ class EssaySerializer(serializers.ModelSerializer):
 
 
 class QuestionsAlternativeAllSerializer(QuestionSerializer):
-    answers = AnswerSerializer(many=True, read_only= True)
+    answer = AnswerSerializer(many=True, read_only= True)
 
 
 class EssayQuestionsAlternativeAllSerializer(EssaySerializer):
