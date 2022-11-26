@@ -8,6 +8,9 @@ Primero clonar la repo, luego en la carpeta que se descarga, se abre con el IDE,
 
 Si usa VSC apretar f1 y escribir "interpreter, escoger la opción Python 3.10.x ('venv':venv), luego cerrar la consola y volver a abrir
 
+Si ocupa PyCharm debe escribir el siguiente comando en command Promp
+``` py venv\Scripts\activate.bat```
+
 Siguiendo este paso escribir el siguiente comando para instalar las depencencias desde el archivo requirements.txt
 
 ```pip install -r requirements.txt```
@@ -41,11 +44,11 @@ Este comando creara la base de datos con sus tablas a traves del ORM de Django.
 
 Para poblar las tablas de la base de datos es necesario ocupar el siguiente comando.
 
-```py manage.py shell < script/main.py```
+```py manage.py shell < scripts/main.py```
 
 En caso de que se equivoque al poblar la data escribir el siguiente comando, solo borra las tablas de ensayos, preguntas, respuestas, la tabla de usuarios sigue con la data con la que se registraron.
 
-```py manage.py shell < script/reset_db.py```
+```py manage.py shell < scripts/reset_db.py```
 
 Luego de esto escribir el siguiente comando para inicializar el servidor.
 
