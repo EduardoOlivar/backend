@@ -1,4 +1,5 @@
 from api.models import *
+import random
 #algebra, numeros, probabilidad, geometria
 dataAlgebra = [
 {
@@ -240,13 +241,27 @@ dataAlgebra = [
     },
 ]
 
+#
+# for essay_data in dataAlgebra:
+#     question = essay_data.pop('questions')
+#     essay_object = Essay.objects.create(**essay_data)
+#     for question_data in question:
+#         answers = question_data.pop('answer')
+#         question_object = Question.objects.create(**question_data, essay=essay_object)
+#         for answer_data in answers:
+#             answer_object = Answer.objects.create(**answer_data, question =question_object)
 
-for essay_data in dataAlgebra:
-    question = essay_data.pop('questions')
-    essay_object = Essay.objects.create(**essay_data)
-    for question_data in question:
-        answers = question_data.pop('answer')
-        question_object = Question.objects.create(**question_data, essay=essay_object)
-        for answer_data in answers:
-            answer_object = Answer.objects.create(**answer_data, question =question_object)
 
+for essay in Essay.objects.filter():
+    print(essay.name)
+    for question_data in Question.objects.filter():
+        print(f'Pregunta>>>: ',question_data.question)
+        answers_list = []
+        for answer in Answer.objects.filter(question=question_data):
+            # print(answer)
+            answers_list.append(answer)
+        random_answer = random.choice(answers_list)
+        print(f'Respuesta>>>: ', random_answer.right)
+        random_answer.essay.add(essay)
+        if random_answer.right == 1:
+            random_answer.essay.puntaje = 15

@@ -1,6 +1,9 @@
 from api.models import *
 from rest_framework import serializers
 from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
+from django.utils.http import urlsafe_base64_decode, urlsafe_base64_encode
+from django.contrib.auth.tokens import PasswordResetTokenGenerator
+from django.utils.encoding import smart_str, force_bytes, DjangoUnicodeDecodeError
 
 
 generic_fields = ['created', 'updated', 'is_deleted']
@@ -54,6 +57,7 @@ class EssayQuestionsAlternativeAllSerializer(EssaySerializer):
     question = QuestionsAlternativeAllSerializer(many=True, read_only=True)
 
 
+#serializador para el registro del usuario, compara las contraseñas para el match
 class RegistrationSerializer(serializers.ModelSerializer):
     password2 = serializers.CharField(style={"input_type": "password"}, write_only=True)
 
@@ -75,11 +79,75 @@ class RegistrationSerializer(serializers.ModelSerializer):
         return user
 
 
+#cambia la contraseña solo si se sabe la contraseña actual
 class PasswordChangeSerializer(serializers.Serializer):
-    current_password = serializers.CharField(style={"input_type": "password"}, required=True)
-    new_password = serializers.CharField(style={"input_type": "password"}, required=True)
+    password = serializers.CharField(max_length=255, style={'input_type': 'password'}, write_only=True)
+    password2 = serializers.CharField(max_length=255, style={'input_type': 'password'}, write_only=True)
 
-    def validate_current_password(self, value):
-        if not self.context['request'].user.check_password(value):
-            raise serializers.ValidationError({'Contraseña actual': 'No coincide'})
-        return value
+    class Meta:
+        fields = ['password', 'password2']
+
+    def validate(self, attrs):
+        password = attrs.get('password')
+        password2 = attrs.get('password2')
+        user = self.context.get('user')
+        if password != password2:
+            raise serializers.ValidationError("Las contraseñas no coinciden")
+        user.set_password(password)
+        user.save()
+        return attrs
+
+
+class SendPasswordResetEmailSerializer(serializers.Serializer):
+    email = serializers.EmailField(max_length=255)
+    class Meta:
+        fields = ['email']
+
+    def validate(self, attrs):
+        email = attrs.get('email')
+        if Users.objects.filter(email=email).exists():
+            user = Users.objects.get(email = email)
+            uid = urlsafe_base64_encode(force_bytes(user.id))
+            print('Encoded UID', uid)
+            token = PasswordResetTokenGenerator().make_token(user)
+            print('Password Reset Token', token)
+            link = 'http://localhost:3000/api/user/reset/'+uid+'/'+token
+            print('Link para reiniciar contraseña', link)
+            # # Envia email
+            body = 'Presiona el siguiente link para reiniciar tu contraseña'+link
+            data = {
+            'subject':'Reinicia tu contraseña',
+            'body':body,
+            'to_email':user.email
+            }
+            # Util.send_email(data)
+            return attrs
+        else:
+            raise serializers.ValidationError('No eres un usuario registrado')
+
+
+class UserPasswordResetSerializer(serializers.Serializer):
+    password = serializers.CharField(max_length=255, style={'input_type':'password'}, write_only=True)
+    password2 = serializers.CharField(max_length=255, style={'input_type':'password'}, write_only=True)
+
+    class Meta:
+        fields = ['password', 'password2']
+
+    def validate(self, attrs):
+        try:
+            password = attrs.get('password')
+            password2 = attrs.get('password2')
+            uid = self.context.get('uid')
+            token = self.context.get('token')
+            if password != password2:
+                raise serializers.ValidationError("Las contraseñas no coinciden")
+            id = smart_str(urlsafe_base64_decode(uid))
+            user = Users.objects.get(id=id)
+            if not PasswordResetTokenGenerator().check_token(user, token):
+                raise serializers.ValidationError('El token no es valido o expiro')
+            user.set_password(password)
+            user.save()
+            return attrs
+        except DjangoUnicodeDecodeError as identifier:
+            PasswordResetTokenGenerator().check_token(user, token)
+            raise serializers.ValidationError('El token no es valido o expiro')

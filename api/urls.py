@@ -17,6 +17,8 @@ urlpatterns = [
     re_path('api/change_password/', views.ChangePasswordView.as_view(), name='change_password'),
     re_path('api/token-refresh/', jwt_views.TokenRefreshView.as_view(), name='token_refresh'),
     re_path('api/profile/', views.UserProfileView.as_view(), name='profile'),
+    re_path('api/send_reset_password_email/', views.SendPasswordResetEmailView.as_view(), name='send_reset_password_email'),
+    path('api/reset_password/<uid>/<token>/', views.UserPasswordResetView.as_view(), name='reset_password'),
 ]
 
 

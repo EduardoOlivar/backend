@@ -53,6 +53,7 @@ class EssayRetrieveUpdateDestroy(generics.RetrieveUpdateDestroyAPIView):
 class QuestionListCreate(generics.ListCreateAPIView):
     queryset = Question.objects.filter().order_by('pk')
     serializer_class = QuestionSerializer
+    permission_classes = [IsAuthenticated, ]
 
 
 class QuestionRetrieveUpdateDestroy(generics.RetrieveUpdateDestroyAPIView):
@@ -60,10 +61,12 @@ class QuestionRetrieveUpdateDestroy(generics.RetrieveUpdateDestroyAPIView):
     serializer_class = QuestionSerializer
     permission_classes = [IsAuthenticated, ]
 
+
 class AnswerRetrieveUpdateDestroy(generics.RetrieveUpdateDestroyAPIView):
     queryset = Answer.objects.filter().order_by('pk')
     serializer_class = AnswerSerializer
     permission_classes = [IsAuthenticated, ]
+
 
 class AnswerListCreate(generics.ListCreateAPIView):
     queryset = Answer.objects.filter().order_by('pk')
@@ -111,20 +114,38 @@ class LogoutView(APIView):
 
 
 class ChangePasswordView(APIView):
-    permission_classes = [IsAuthenticated, ]
+    renderer_classes = [UserRenderer]
+    permission_classes = [IsAuthenticated]
 
-    def post(self, request):
-        serializer = PasswordChangeSerializer(context={'request': request}, data=request.data)
-        serializer.is_valid(raise_exception=True) #Another way to write is as in Line 17
-        request.user.set_password(serializer.validated_data['new_password'])
-        request.user.save()
-        return Response(status=status.HTTP_204_NO_CONTENT)
+    def post(self, request, format=None):
+        serializer = PasswordChangeSerializer(data=request.data, context={'user': request.user})
+        serializer.is_valid(raise_exception=True)
+        return Response({'msg': 'Contraseña cambiada exitosamente'}, status=status.HTTP_200_OK)
 
 
 class UserProfileView(APIView):
-  renderer_classes = [UserRenderer,]
-  permission_classes = [IsAuthenticated, ]
+    renderer_classes = [UserRenderer,]
+    permission_classes = [IsAuthenticated]
 
-  def get(self, request, format=None):
-    serializer = UserProfileSerializer(request.user)
-    return Response(serializer.data, status=status.HTTP_200_OK)
+    def get(self, request, format=None):
+       serializer = UserProfileSerializer(request.user)
+       return Response(serializer.data, status=status.HTTP_200_OK)
+
+
+class SendPasswordResetEmailView(APIView):
+    renderer_classes = [UserRenderer]
+
+    def post(self, request, format=None):
+        serializer = SendPasswordResetEmailSerializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        return Response({'msg':'Link para reiniciar contraseña enviado'}, status=status.HTTP_200_OK)
+
+
+class UserPasswordResetView(APIView):
+    renderer_classes = [UserRenderer]
+
+    def post(self, request, uid, token, format=None):
+        serializer = UserPasswordResetSerializer(data=request.data, context={'uid':uid,'token':token})
+        serializer.is_valid(raise_exception=True)
+        return Response({'msg':'Cambio de contraseña exitoso'}, status=status.HTTP_200_OK)
+
