@@ -1,4 +1,4 @@
-# Backend para proyectos de la universidad
+# Backend Pre-PAES
 ## Daniel Duran - José Olivar - Luis Romero
 
 Para iniciar el backend es necesario recrear ciertos pasos previamente en su IDE.
