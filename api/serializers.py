@@ -33,14 +33,14 @@ class AnswerSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Answer
-        exclude = [*generic_fields,'question']
+        exclude = [*generic_fields,'question', 'users','essay']
 
 
 class QuestionSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Question
-        exclude = [*generic_fields, 'essay','users']
+        exclude = [*generic_fields, 'essay']
 
 
 class EssaySerializer(serializers.ModelSerializer):

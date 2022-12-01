@@ -56,7 +56,7 @@ class QuestionList(generics.ListAPIView):
     serializer_class = QuestionSerializer
     permission_classes = [IsAuthenticated, ]
     filter_backends = [DjangoFilterBackend]
-    filterset_fields = ['essay', 'question','subject','link_resolution']
+    filterset_fields = ['id','essay', 'question','subject','link_resolution']
 
 
 class QuestionRetrieveUpdateDestroy(generics.RetrieveUpdateDestroyAPIView):
