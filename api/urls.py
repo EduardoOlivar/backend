@@ -23,11 +23,14 @@ urlpatterns = [
 
 
 urlpatterns += [
-    re_path(r'^essays/all/$', views.EssayListCreate.as_view()), #endpoint para consultar todos los tipos de ensayos
+    re_path(r'^essays/list/all/$', views.EssayList.as_view()), #endpoint para consultar todos los tipos de ensayos
+    re_path(r'^essays/create/$', views.EssayCreate.as_view()),
     re_path(r'^essays/(?P<pk>[0-9]+)/$', views.EssayRetrieveUpdateDestroy.as_view()), #endpoint para consultar por un ensayo en especifico, solo muestra los atributos de ensayo, se puede aplicar crud
-    re_path(r'^questions/all/$', views.QuestionList.as_view()),
+    re_path(r'^questions/list/all/$', views.QuestionList.as_view()),
+    re_path(r'^questions/create/all/$', views.QuestionCreate.as_view()),
     re_path(r'^questions/(?P<pk>[0-9]+)/$', views.QuestionRetrieveUpdateDestroy.as_view()),
-    re_path(r'^answers/all/$', views.AnswerListCreate.as_view()),
+    re_path(r'^answers/list/all/$', views.AnswerList.as_view()),
+    re_path(r'^answers/create/$', views.AnswerCreate.as_view()),
     re_path(r'^answers/(?P<pk>[0-9]+)/$', views.AnswerRetrieveUpdateDestroy.as_view()),
     re_path(r'^questions_alternative/', views.QuestionsAlternativeAll.as_view()),#endpoint para consultar por un ensayo en especifico con todas sus  preguntas y alternativas
     re_path(r'^score_user/all/$', views.AnswerEssayUserView.as_view()), #endpoint para obtener el puntaje del usuario

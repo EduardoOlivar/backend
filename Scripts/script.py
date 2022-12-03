@@ -9,7 +9,7 @@ dataAlgebra = [
                 {
                     'question': '¿\\text{Cuál es el valor de: }(1 - \\frac{1}{2})(1 - \\frac{1}{3})(1 - \\frac{1}{4})(1 - \\frac{1}{5})?',
                     'subject': 'numeros',
-                    'link_resolution':'https://youtu.be/OxgnJ-IgxA0?t=123',
+                    'link_resolution':'https://youtube.com/embed/OxgnJ-IgxA0?start=124',
                     'answer': [
                         {
                             'label': '\\frac{1}{5}',
@@ -33,7 +33,7 @@ dataAlgebra = [
                 {
                     'question': '¿\\text{Cuál es el valor de: }1 - (\\frac{1}{2})^{-3}?',
                     'subject': 'numeros',
-                    'link_resolution':'https://youtu.be/OxgnJ-IgxA0?t=383',
+                    'link_resolution':'https://youtube.com/embed/OxgnJ-IgxA0?start=383',
                     'answer': [
                         {
                             'label': 'text{-7}',
@@ -102,7 +102,7 @@ dataAlgebra = [
                 {
                     'question': '\\text{Si }\\log_m\\lparen\\frac {8} {125}\\rparen\\ = -3 \\text{, ¿cuál es el valor de m?}',
                     'subject': 'numeros',
-                    'link_resolution':'https://youtu.be/OxgnJ-IgxA0?t=2031',
+                    'link_resolution':'https://www.youtube.com/embed/OxgnJ-IgxA0?start=2031',
                     'answer': [
                         {
                             'label': '\\frac {5} {2}',
@@ -125,7 +125,7 @@ dataAlgebra = [
                 {
                     'question': 'text{¿Cuál de las siguientes cantidades corresponde al 5} \\%\\newline \\text{del precio de un artículo? }',
                     'subject': 'numeros',
-                    'link_resolution':'https://youtu.be/OxgnJ-IgxA0?t=1540',
+                    'link_resolution':'https://www.youtube.com/embed/OxgnJ-IgxA0?start=1540',
                     'answer': [
                         {
                             'label': '\\text{El precio del artículo divido por 100, y luego multiplicado por 5}',
@@ -148,7 +148,7 @@ dataAlgebra = [
                 {
                     'question': '\\text{¿Cuál es el valor de 2,32 + 17,4?}',
                     'subject': 'numeros',
-                    'link_resolution':'https://youtu.be/nKR73i6zASg?t=38',
+                    'link_resolution':'https://www.youtube.com/embed/nKR73i6zASg?start=38',
                     'answer': [
                         {
                             'label': '\\text{(232 + 1740):100}',
@@ -171,7 +171,7 @@ dataAlgebra = [
                 {
                     'question': '\\text{¿Cuál de las siguientes expresiones representa el 22\\% }\\newline \\text{del 15\\% de P?}',
                     'subject': 'numeros',
-                    'link_resolution':'https://youtu.be/nKR73i6zASg?t=577',
+                    'link_resolution':'https://www.youtube.com/embed/nKR73i6zASg?start=577',
                     'answer': [
                         {
                             'label': '\\frac{33}{1000}P',
@@ -194,7 +194,7 @@ dataAlgebra = [
                 {
                     'question': '\\text{¿Cuál de las siguientes opciones presenta una resolución}\\newline \\text{correcta de } \\frac{27^\\frac{1}{3}}{8}*\\frac{16^\\frac{1}{2}}{9}?',
                     'subject': 'numeros',
-                    'link_resolution':'https://youtu.be/nKR73i6zASg?t=755',
+                    'link_resolution':'https://www.youtube.com/embed/nKR73i6zASg?start=755',
                     'answer': [
                         {
                             'label': '\\frac{27^\\frac{1}{3}}{8}*\\frac{16^\\frac{1}{2}}{9} =\\frac{(27^3)^\\frac{1}{3}}{8}*\\frac{(4^2)\\frac{1}{2}}{9} = \\frac{3}{8}*\\frac{4}{9} = \\frac{12}{72} = \\frac{1}{6}',
@@ -217,7 +217,7 @@ dataAlgebra = [
                 {
                     'question': '\\text{¿Cuál es el valor de } \\sqrt{8}(\\sqrt{18}-\\sqrt{8})?',
                     'subject': 'numeros',
-                    'link_resolution':'https://youtu.be/nKR73i6zASg?t=1154',
+                    'link_resolution':'https://www.youtube.com/embed/nKR73i6zASg?start=1154',
                     'answer': [
                         {
                             'label': '\\text{4}',
@@ -241,15 +241,15 @@ dataAlgebra = [
     },
 ]
 
-
-for essay_data in dataAlgebra:
-    question = essay_data.pop('questions')
-    essay_object = Essay.objects.create(**essay_data)
-    for question_data in question:
-        answers = question_data.pop('answer')
-        question_object = Question.objects.create(**question_data, essay=essay_object)
-        for answer_data in answers:
-            answer_object = Answer.objects.create(**answer_data, question =question_object)
+#
+# for essay_data in dataAlgebra:
+#     question = essay_data.pop('questions')
+#     essay_object = Essay.objects.create(**essay_data)
+#     for question_data in question:
+#         answers = question_data.pop('answer')
+#         question_object = Question.objects.create(**question_data, essay=essay_object)
+#         for answer_data in answers:
+#             answer_object = Answer.objects.create(**answer_data, question =question_object)
 
 
 # for essay in Essay.objects.filter():
@@ -262,7 +262,4 @@ for essay_data in dataAlgebra:
 #             answers_list.append(answer)
 #         random_answer = random.choice(answers_list)
 #         print(f'Respuesta>>>: ', random_answer.right)
-#         if random_answer.right == 1:
-#             random_answer.essay.score = 1
-#             print(random_answer.essay.score)
 #         random_answer.essay.add(essay)

@@ -36,11 +36,25 @@ class AnswerSerializer(serializers.ModelSerializer):
         exclude = [*generic_fields,'question', 'users','essay']
 
 
+class AnswerCreateSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = Answer
+        exclude = [*generic_fields,'users']
+
+
 class QuestionSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Question
         exclude = [*generic_fields, 'essay']
+
+
+class QuestionCreateSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = Question
+        exclude = [*generic_fields]
 
 
 class EssaySerializer(serializers.ModelSerializer):

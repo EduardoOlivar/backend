@@ -39,15 +39,27 @@ class UsersListCreate(generics.ListCreateAPIView):
     permission_classes = (IsAuthenticated,)
 
 
-class EssayListCreate(generics.ListCreateAPIView):
+class EssayList(generics.ListCreateAPIView):
     queryset = Essay.objects.filter().order_by('pk')
     serializer_class = EssaySerializer
     permission_classes = [IsAuthenticated, ]
 
 
-class EssayRetrieveUpdateDestroy(generics.RetrieveUpdateDestroyAPIView):
+class EssayCreate(generics.CreateAPIView):
     queryset = Essay.objects.filter().order_by('pk')
     serializer_class = EssaySerializer
+    permission_classes = [IsAuthenticated, ]
+
+
+class EssayRetrieveUpdateDestroy(generics.RetrieveUpdateAPIView):
+    queryset = Essay.objects.filter().order_by('pk')
+    serializer_class = EssaySerializer
+    permission_classes = [IsAuthenticated, ]
+
+
+class QuestionCreate(generics.CreateAPIView):
+    queryset = Question.objects.filter().order_by('pk')
+    serializer_class = QuestionCreateSerializer
     permission_classes = [IsAuthenticated, ]
 
 
@@ -71,9 +83,15 @@ class AnswerRetrieveUpdateDestroy(generics.RetrieveUpdateDestroyAPIView):
     permission_classes = [IsAuthenticated, ]
 
 
-class AnswerListCreate(generics.ListCreateAPIView):
+class AnswerList(generics.ListAPIView):
     queryset = Answer.objects.filter().order_by('pk')
     serializer_class = AnswerSerializer
+    permission_classes = [IsAuthenticated, ]
+
+
+class AnswerCreate(generics.CreateAPIView):
+    queryset = Answer.objects.filter().order_by('pk')
+    serializer_class = AnswerCreateSerializer
     permission_classes = [IsAuthenticated, ]
 
 
