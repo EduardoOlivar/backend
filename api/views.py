@@ -29,44 +29,44 @@ class UsersRetrieveUpdateDestroy(generics.RetrieveUpdateDestroyAPIView):
     queryset = Users.objects.filter().order_by('pk')
     serializer_class = UserSerializer
     authentication_class = [TokenObtainPairView]
-    permission_class = (AllowAny,)
+
 
 
 class UsersListCreate(generics.ListCreateAPIView):
     queryset = Users.objects.all()
     serializer_class = UserSerializer
     authentication_class = [TokenObtainPairView]
-    permission_classes = (AllowAny,)
+
 
 
 class EssayList(generics.ListAPIView):
     queryset = Essay.objects.filter().order_by('pk')
     serializer_class = EssaySerializer
-    permission_classes = [AllowAny, ]
+
 
 
 class EssayCreate(generics.CreateAPIView):
     queryset = Essay.objects.filter().order_by('pk')
     serializer_class = EssaySerializer
-    permission_classes = [AllowAny, ]
+
 
 
 class EssayRetrieveUpdateDestroy(generics.RetrieveUpdateDestroyAPIView):
     queryset = Essay.objects.filter().order_by('pk')
     serializer_class = EssaySerializer
-    permission_classes = [AllowAny, ]
+
 
 
 class QuestionCreate(generics.CreateAPIView):
     queryset = Question.objects.filter().order_by('pk')
     serializer_class = QuestionCreateSerializer
-    permission_classes = [AllowAny, ]
+
 
 
 class QuestionList(generics.ListAPIView):
     queryset = Question.objects.all()
     serializer_class = QuestionSerializer
-    permission_classes = [AllowAny, ]
+
     filter_backends = [DjangoFilterBackend]
     filterset_fields = ['id','essay', 'question','subject','link_resolution']
 
@@ -74,25 +74,25 @@ class QuestionList(generics.ListAPIView):
 class QuestionRetrieveUpdateDestroy(generics.RetrieveUpdateDestroyAPIView):
     queryset = Question.objects.filter().order_by('pk')
     serializer_class = QuestionSerializer
-    permission_classes = [AllowAny,]
+
 
 
 class AnswerRetrieveUpdateDestroy(generics.RetrieveUpdateDestroyAPIView):
     queryset = Answer.objects.filter().order_by('pk')
     serializer_class = AnswerSerializer
-    permission_classes = [AllowAny,]
+
 
 
 class AnswerList(generics.ListAPIView):
     queryset = Answer.objects.filter().order_by('pk')
     serializer_class = AnswerSerializer
-    permission_classes = [AllowAny, ]
+
 
 
 class AnswerCreate(generics.CreateAPIView):
     queryset = Answer.objects.filter().order_by('pk')
     serializer_class = AnswerCreateSerializer
-    permission_classes = [AllowAny,]
+
 
 
 class QuestionsAlternativeAll(generics.ListAPIView):
@@ -105,7 +105,6 @@ class QuestionsAlternativeAll(generics.ListAPIView):
 class AnswerEssayUserView(generics.ListAPIView):
     serializer_class = AnswerEssayUserSerializer
     queryset = AnswerEssayUser.objects.filter(is_deleted=False).order_by('pk')
-    permission_classes = (AllowAny,)
 
 
 class RegistrationView(APIView):
