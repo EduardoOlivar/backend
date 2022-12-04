@@ -502,7 +502,7 @@ dataGeometria = [
         'type': 'geometria',
         'questions': [
             {
-                'question': '\\text{Sean A(1,1), B(5,3) y C los vértices de un triángulo.}\\newline \\text{Se pueden determinar las coordenadas del vértice C}\\newline \\text{del triángulo si se sabe que:} \\newline \\text{(1) Angulo BAC = 90°}\\newline \\text{(2) El triangulo es isosceles y el vertice C está en el cuarto}\\newline \\text{cuadrante.}',
+                'question': '\\text{Sean A(1,1), B(5,3) y C los vertices de un triangulo.}\\newline \\text{Se pueden determinar las coordenadas del vertice C}\\newline \\text{del triangulo si se sabe que:} \\newline \\text{(1) Angulo BAC = 90°}\\newline \\text{(2) El triangulo es isosceles y el vertice C esta en el cuarto}\\newline \\text{cuadrante.}',
                 'subject': 'geometria',
                 'link_resolution':'https://www.youtube.com/embed/OxgnJ-IgxA0?start=12325',
                 'answer': [
@@ -598,7 +598,7 @@ dataGeometria = [
                 ],
             },
             {
-                'question': '\\text{Un estudiante constesta una prueba en que cada pregunta}\\newline \\text{tiene 5 opciones solo una de ellas es la correcta.}\\newline \\text{Si responde las 3 últimas preguntas al azar y de manera}\\newline \\text{independiente, ¿cuál es la probabilidad de tener estas 3 }\\newline \\text{respuestas correctas?}',
+                'question': '\\text{Un estudiante constesta una prueba en que cada pregunta}\\newline \\text{tiene 5 opciones solo una de ellas es la correcta.}\\newline \\text{Si responde las 3 ultimas preguntas al azar y de manera}\\newline \\text{independiente, ¿cual es la probabilidad de tener estas 3 }\\newline \\text{respuestas correctas?}',
                 'subject': 'geometria',
                 'link_resolution':'https://www.youtube.com/embed/m4qRM2mtjHA?start=2631',
                 'answer': [
