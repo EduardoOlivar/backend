@@ -14,20 +14,12 @@ urlpatterns = [
     re_path('api/register/', views.RegistrationView.as_view(), name='register'),#endpoint para registrar usuario
     re_path('api/login/', views.LoginView.as_view(), name='login'),#endpoint para iniciar sesion
     re_path('api/logout/', views.LogoutView.as_view(), name='logout'),#endpoint desconexion
-    re_path('api/change_password/', views.ChangePasswordView.as_view(), name='change_password'),#endpoint para cambiar la contraseña
     re_path('api/token-refresh/', jwt_views.TokenRefreshView.as_view(), name='token_refresh'),#endpoint para refresh token
-    re_path('api/profile/', views.UserProfileView.as_view(), name='profile'),#endpoint para consultar el perfil del usuario
-    re_path('api/send_reset_password_email/', views.SendPasswordResetEmailView.as_view(), name='send_reset_password_email'),#endpoint para pedir un cambio de contraseña via mail
-    path('api/reset_password/<uid>/<token>/', views.UserPasswordResetView.as_view(), name='reset_password'),#endpoint para ccambiar la contraseña si se tiene uid y el token asignado
-]
-
-
-urlpatterns += [
     re_path(r'^essays/list/all/$', views.EssayList.as_view()), #endpoint para consultar todos los tipos de ensayos
     re_path(r'^essays/create/$', views.EssayCreate.as_view()),
     re_path(r'^essays/(?P<pk>[0-9]+)/$', views.EssayRetrieveUpdateDestroy.as_view()), #endpoint para consultar por un ensayo en especifico, solo muestra los atributos de ensayo, se puede aplicar crud
     re_path(r'^questions/list/all/$', views.QuestionList.as_view()),
-    re_path(r'^questions/create/all/$', views.QuestionCreate.as_view()),
+    re_path(r'^questions/create/$', views.QuestionCreate.as_view()),
     re_path(r'^questions/(?P<pk>[0-9]+)/$', views.QuestionRetrieveUpdateDestroy.as_view()),
     re_path(r'^answers/list/all/$', views.AnswerList.as_view()),
     re_path(r'^answers/create/$', views.AnswerCreate.as_view()),
@@ -35,3 +27,12 @@ urlpatterns += [
     re_path(r'^questions_alternative/', views.QuestionsAlternativeAll.as_view()),#endpoint para consultar por un ensayo en especifico con todas sus  preguntas y alternativas
     re_path(r'^score_user/all/$', views.AnswerEssayUserView.as_view()), #endpoint para obtener el puntaje del usuario
 ]
+
+urlpatterns += [
+    re_path('api/send_reset_password_email/', views.SendPasswordResetEmailView.as_view(), name='send_reset_password_email'),#endpoint para pedir un cambio de contraseña via mail
+    path('api/reset_password/<uid>/<token>/', views.UserPasswordResetView.as_view(), name='reset_password'),#endpoint para ccambiar la contraseña si se tiene uid y el token asignado
+    re_path('api/change_password/', views.ChangePasswordView.as_view(), name='change_password'),#endpoint para cambiar la contraseña
+    re_path('api/profile/', views.UserProfileView.as_view(), name='profile'),#endpoint para consultar el perfil del usuario
+
+]
+

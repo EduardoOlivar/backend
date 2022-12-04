@@ -9,7 +9,7 @@ from rest_framework_simplejwt.views import TokenObtainPairView
 from django.contrib.auth import authenticate
 from rest_framework_simplejwt.tokens import RefreshToken
 from api.models import *
-from rest_framework.permissions import IsAuthenticated
+from rest_framework.permissions import IsAuthenticated, IsAdminUser
 from django.contrib.auth import authenticate, login, logout
 from api.renderers import UserRenderer
 from django_filters.rest_framework import DjangoFilterBackend
@@ -39,7 +39,7 @@ class UsersListCreate(generics.ListCreateAPIView):
     permission_classes = (IsAuthenticated,)
 
 
-class EssayList(generics.ListCreateAPIView):
+class EssayList(generics.ListAPIView):
     queryset = Essay.objects.filter().order_by('pk')
     serializer_class = EssaySerializer
     permission_classes = [IsAuthenticated, ]
@@ -51,7 +51,7 @@ class EssayCreate(generics.CreateAPIView):
     permission_classes = [IsAuthenticated, ]
 
 
-class EssayRetrieveUpdateDestroy(generics.RetrieveUpdateAPIView):
+class EssayRetrieveUpdateDestroy(generics.RetrieveUpdateDestroyAPIView):
     queryset = Essay.objects.filter().order_by('pk')
     serializer_class = EssaySerializer
     permission_classes = [IsAuthenticated, ]
@@ -74,13 +74,13 @@ class QuestionList(generics.ListAPIView):
 class QuestionRetrieveUpdateDestroy(generics.RetrieveUpdateDestroyAPIView):
     queryset = Question.objects.filter().order_by('pk')
     serializer_class = QuestionSerializer
-    permission_classes = [IsAuthenticated, ]
+    permission_classes = [IsAuthenticated,]
 
 
 class AnswerRetrieveUpdateDestroy(generics.RetrieveUpdateDestroyAPIView):
     queryset = Answer.objects.filter().order_by('pk')
     serializer_class = AnswerSerializer
-    permission_classes = [IsAuthenticated, ]
+    permission_classes = [IsAuthenticated,]
 
 
 class AnswerList(generics.ListAPIView):
@@ -92,7 +92,7 @@ class AnswerList(generics.ListAPIView):
 class AnswerCreate(generics.CreateAPIView):
     queryset = Answer.objects.filter().order_by('pk')
     serializer_class = AnswerCreateSerializer
-    permission_classes = [IsAuthenticated, ]
+    permission_classes = [IsAuthenticated,]
 
 
 class QuestionsAlternativeAll(generics.ListAPIView):
