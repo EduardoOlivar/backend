@@ -6,9 +6,9 @@ Primero clonar la repo, luego en la carpeta que se descarga, se abre con el IDE,
 
 ```py -m venv venv```
 
-Si usa VSC apretar f1 y escribir "interpreter, escoger la opción Python 3.10.x ('venv':venv), luego cerrar la consola y volver a abrir
+Si usa VSC apretar f1 y escribir "interpreter, escoger la opción Python 3.10.x ('venv':venv), luego cerrar la consola y volver a abrir la terminal en command prompt (CMD)
 
-Si ocupa PyCharm debe ver que su interprete sea seleccionado en su version de Python3.
+Si ocupa PyCharm debe ver que su interprete sea seleccionado en su version de Python3 y tambien utilizar command prompt (cmd).
 
 Siguiendo este paso escribir el siguiente comando para instalar las depencencias desde el archivo requirements.txt
 
