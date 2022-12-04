@@ -496,6 +496,134 @@ dataProbabilidades = [
         ]
     },
 ]
+dataGeometria = [
+     {
+        'name': 'Ensayo geometria',
+        'type': 'geometria',
+        'questions': [
+            {
+                'question': '\\text{Sean A(1,1), B(5,3) y C los vértices de un triángulo.}\\newline \\text{Se pueden determinar las coordenadas del vértice C}\\newline \\text{del triángulo si se sabe que:} \\newline \\text{(1) Angulo BAC = 90°}\\newline \\text{(2) El triangulo es isosceles y el vertice C está en el cuarto}\\newline \\text{cuadrante.}',
+                'subject': 'geometria',
+                'link_resolution':'https://www.youtube.com/embed/OxgnJ-IgxA0?start=12325',
+                'answer': [
+                    {
+                        'label': '\\text{Ambas juntas, (1) y (2)}',
+                        'right': 1
+                    },
+                    {
+                        'label': '\\text{(2) por si sola}',
+                        'right': 0
+                    },
+                    {
+                        'label': '\\text{(1) por si sola}',
+                        'right': 0
+                    },
+                    {
+                        'label': '\\text{Se requier informacion adicional}',
+                        'right': 0
+                    },
+
+                ],
+            },
+            {
+                'question': '\\text{Considere los vectores} \\overrightarrow{u} = (-2,5), \\overrightarrow{v} = (3, -2) \\text{ y } \\newline \\overrightarrow{c} = (-1,-4).\\newline \\text{¿Cual es el vector } \\overrightarrow{u} + 2\\overrightarrow{v} - \\overrightarrow{c} \\text{?}',
+                'subject': 'geometria',
+                'link_resolution':'https://www.youtube.com/embed/OxgnJ-IgxA0?start=9560',
+                'answer': [
+                    {
+                        'label': '\\text{(5,5)}',
+                        'right': 1
+                    },
+                    {
+                        'label': '\\text{(3,5)}',
+                        'right': 0
+                    },
+                    {
+                        'label': '\\text{(4,9)}',
+                        'right': 0
+                    },
+                    {
+                        'label': '\\text{(2,1)}',
+                        'right': 0
+                    },
+
+                ],
+            },
+            {
+                'question': '\\text{Si el punto (a,b) es la imagen que se obtiene al trasladar}\\newline \\text{el punto R segun el vector (m,n), ¿cuales son las}\\newline \\text{coordenadas de R?}',
+                'subject': 'geometria',
+                'link_resolution':'https://www.youtube.com/embed/OxgnJ-IgxA0?start=9691',
+                'answer': [
+                    {
+                        'label': '\\text{(a - m, b - n)}',
+                        'right': 1
+                    },
+                    {
+                        'label': '\\text{(am, bn)}',
+                        'right': 0
+                    },
+                    {
+                        'label': '\\text{(m - a, n - b)}',
+                        'right': 0
+                    },
+                    {
+                        'label': '\\text{(a + m, b + n)}',
+                        'right': 0
+                    },
+
+                ],
+            },
+            {
+                'question': '\\text{Con un cordel de largo d se forma un cuadrado. ¿Cuanto }\\newline \\text{mide el area del un cuadrado?}',
+                'subject': 'geometria',
+                'link_resolution':'https://www.youtube.com/embed/m4qRM2mtjHA?start=480',
+                'answer': [
+                    {
+                        'label': '\\frac{d^2}{16}',
+                        'right': 1
+                    },
+                    {
+                        'label': '\\frac{d^2}{2}',
+                        'right': 0
+                    },
+                    {
+                        'label': '\\frac{d^2}{4}',
+                        'right': 0
+                    },
+                    {
+                        'label': '\\frac{d^2}{8}',
+                        'right': 0
+                    },
+
+                ],
+            },
+            {
+                'question': '\\text{Un estudiante constesta una prueba en que cada pregunta}\\newline \\text{tiene 5 opciones solo una de ellas es la correcta.}\\newline \\text{Si responde las 3 últimas preguntas al azar y de manera}\\newline \\text{independiente, ¿cuál es la probabilidad de tener estas 3 }\\newline \\text{respuestas correctas?}',
+                'subject': 'geometria',
+                'link_resolution':'https://www.youtube.com/embed/m4qRM2mtjHA?start=2631',
+                'answer': [
+                    {
+                        'label': '\\sqrt{96}',
+                        'right': 1
+                    },
+                    {
+                        'label': '\\sqrt{104}',
+                        'right': 0
+                    },
+                    {
+                        'label': '\\sqrt{46}',
+                        'right': 0
+                    },
+                    {
+                        'label': '\\sqrt{21}',
+                        'right': 0
+                    },
+
+                ],
+            },
+        ]
+    },
+]
 
 
 def poblarBd(data):
@@ -512,6 +640,7 @@ def poblarBd(data):
 poblarBd(dataAlgebra)
 poblarBd(dataNumeros)
 poblarBd(dataProbabilidades)
+poblarBd(dataGeometria)
 
 # for essay in Essay.objects.filter():
 #     print(essay.name)
