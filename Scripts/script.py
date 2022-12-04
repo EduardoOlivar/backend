@@ -7,7 +7,7 @@ dataNumeros = [
             'type': 'numeros',
             'questions': [
                 {
-                    'question': '¿\\text{Cuál es el valor de: }(1 - \\frac{1}{2})(1 - \\frac{1}{3})(1 - \\frac{1}{4})(1 - \\frac{1}{5})?',
+                    'question': '¿\\text{Cual es el valor de: }(1 - \\frac{1}{2})(1 - \\frac{1}{3})(1 - \\frac{1}{4})(1 - \\frac{1}{5})?',
                     'subject': 'numeros',
                     'link_resolution':'https://youtube.com/embed/OxgnJ-IgxA0?start=124',
                     'answer': [
@@ -31,7 +31,7 @@ dataNumeros = [
                     ],
                 },
                 {
-                    'question': '¿\\text{Cuál es el valor de: }1 - (\\frac{1}{2})^{-3}?',
+                    'question': '¿\\text{Cual es el valor de: }1 - (\\frac{1}{2})^{-3}?',
                     'subject': 'numeros',
                     'link_resolution':'https://youtube.com/embed/OxgnJ-IgxA0?start=383',
                     'answer': [
@@ -77,7 +77,7 @@ dataNumeros = [
                     ],
                 },
                 {
-                    'question': '\\text{¿Cuál es el resultado de: }\sqrt{2} - \sqrt{8} + \sqrt{18}?',
+                    'question': '\\text{¿Cual es el resultado de: }\sqrt{2} - \sqrt{8} + \sqrt{18}?',
                     'subject': 'numeros',
                     'link_resolution':'https://www.youtube.com/embed/OxgnJ-IgxA0?start=1895',
                     'answer': [
@@ -100,7 +100,7 @@ dataNumeros = [
                     ],
                 },
                 {
-                    'question': '\\text{Si }\log_m\lparen\\frac {8} {125}\\rparen\ = -3 \\text{, ¿cuál es el valor de m?}',
+                    'question': '\\text{Si }\log_m\lparen\\frac {8} {125}\\rparen\ = -3 \\text{, ¿cual es el valor de m?}',
                     'subject': 'numeros',
                     'link_resolution':'https://www.youtube.com/embed/OxgnJ-IgxA0?start=2031',
                     'answer': [
@@ -123,30 +123,30 @@ dataNumeros = [
                     ],
                 },
                 {
-                    'question': 'text{¿Cuál de las siguientes cantidades corresponde al 5} \\%\\newline \\text{del precio de un artículo? }',
+                    'question': 'text{¿Cual de las siguientes cantidades corresponde al 5} \\%\\newline \\text{del precio de un articulo? }',
                     'subject': 'numeros',
                     'link_resolution':'https://www.youtube.com/embed/OxgnJ-IgxA0?start=1540',
                     'answer': [
                         {
-                            'label': '\\text{El precio del artículo divido por 100, y luego multiplicado por 5}',
+                            'label': '\\text{El precio del articulo divido por 100, y luego multiplicado por 5}',
                             'right': 1
                         },
                         {
-                            'label': '\\text{Un quinto del precio del artículo.}',
+                            'label': '\\text{Un quinto del precio del articulo.}',
                             'right': 0
                         },
                         {
-                            'label': '\\text{El precio del artículo multiplicado por cinco décimos}',
+                            'label': '\\text{El precio del articulo multiplicado por cinco decimos}',
                             'right': 0
                         },
                         {
-                            'label': '\\text{El precio del artículo divido por 5, y luego multiplicado por 100}',
+                            'label': '\\text{El precio del articulo divido por 5, y luego multiplicado por 100}',
                             'right': 0
                         },
                     ],
                 },
                 {
-                    'question': '\\text{¿Cuál es el valor de 2,32 + 17,4?}',
+                    'question': '\\text{¿Cual es el valor de 2,32 + 17,4?}',
                     'subject': 'numeros',
                     'link_resolution':'https://www.youtube.com/embed/nKR73i6zASg?start=38',
                     'answer': [
@@ -169,7 +169,7 @@ dataNumeros = [
                     ],
                 },
                 {
-                    'question': '\\text{¿Cuál de las siguientes expresiones representa el 22\\% }\\newline \\text{del 15\\% de P?}',
+                    'question': '\\text{¿Cual de las siguientes expresiones representa el 22\\% }\\newline \\text{del 15\\% de P?}',
                     'subject': 'numeros',
                     'link_resolution':'https://www.youtube.com/embed/nKR73i6zASg?start=577',
                     'answer': [
@@ -192,7 +192,7 @@ dataNumeros = [
                     ],
                 },
                 {
-                    'question': '\\text{¿Cuál de las siguientes opciones presenta una resolución}\\newline \\text{correcta de } \\frac{27^\\frac{1}{3}}{8}*\\frac{16^\\frac{1}{2}}{9}?',
+                    'question': '\\text{¿Cual de las siguientes opciones presenta una resolucion}\\newline \\text{correcta de } \\frac{27^\\frac{1}{3}}{8}*\\frac{16^\\frac{1}{2}}{9}?',
                     'subject': 'numeros',
                     'link_resolution':'https://www.youtube.com/embed/nKR73i6zASg?start=755',
                     'answer': [
@@ -215,7 +215,7 @@ dataNumeros = [
                     ],
                 },
                 {
-                    'question': '\\text{¿Cuál es el valor de } \sqrt{8}(\sqrt{18}-\sqrt{8})?',
+                    'question': '\\text{¿Cual es el valor de } \sqrt{8}(\sqrt{18}-\sqrt{8})?',
                     'subject': 'numeros',
                     'link_resolution':'https://www.youtube.com/embed/nKR73i6zASg?start=1154',
                     'answer': [
@@ -246,7 +246,7 @@ dataAlgebra = [
         'type': 'algebra',
         'questions': [
             {
-                'question': '\\text{¿Cuál es el valor de x en la ecuación 0,3 + 10x = 0,5?}',
+                'question': '\\text{¿Cual es el valor de x en la ecuacion 0,3 + 10x = 0,5?}',
                 'subject': 'algebra',
                 'link_resolution':'https://www.youtube.com/embed/OxgnJ-IgxA0?start=4092',
                 'answer': [
@@ -270,7 +270,7 @@ dataAlgebra = [
                 ],
             },
             {
-                'question': '\\text{Un bidón tiene ocupada con gasolina la mitad de su} \\newline \\text{capacidad máxima.}\\newline \\text{Al agregar 8L de gasolina se llega a las }\\frac{5}{6} \\text{ partes de su}\\newline \\text{capacidad.}\\newline \\text{¿Cuál es la capacidad máxima del bidón?}',
+                'question': '\\text{Un bidon tiene ocupada con gasolina la mitad de su} \\newline \\text{capacidad maxima.}\\newline \\text{Al agregar 8L de gasolina se llega a las }\\frac{5}{6} \\text{ partes de su}\\newline \\text{capacidad.}\\newline \\text{¿Cual es la capacidad maxima del bidon?}',
                 'subject': 'algebra',
                 'link_resolution':'https://www.youtube.com/embed/OxgnJ-IgxA0?start=4290',
                 'answer': [
@@ -294,7 +294,7 @@ dataAlgebra = [
                 ],
             },
             {
-                'question': '\\text{Si} \log_2{(-2x + 3p)} = 3 \\text{y} \log_3{x +2p} = 1 \\newline \\text{¿Cuál es el valor de x-2p?}',
+                'question': '\\text{Si} \log_2{(-2x + 3p)} = 3 \\text{y} \log_3{x +2p} = 1 \\newline \\text{¿Cual es el valor de x-2p?}',
                 'subject': 'algebra',
                 'link_resolution':'https://www.youtube.com/embed/OxgnJ-IgxA0?start=5349',
                 'answer': [
