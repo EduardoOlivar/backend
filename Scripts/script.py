@@ -54,7 +54,7 @@ dataNumeros = [
                     ],
                 },
                 {
-                    'question': '\\text{Un número aumentado en su 30% es igual a 910.}',
+                    'question': '\\text{Un numero aumentado en su 30}\\%\\text{ es igual a 910.}',
                     'subject': 'numeros',
                     'link_resolution':'https://www.youtube.com/embed/OxgnJ-IgxA0?start=1682',
                     'answer': [
@@ -100,7 +100,7 @@ dataNumeros = [
                     ],
                 },
                 {
-                    'question': '\\text{Si }\log_m\lparen\\frac {8} {125}\rparen\ = -3 \\text{, ¿cuál es el valor de m?}',
+                    'question': '\\text{Si }\log_m\lparen\\frac {8} {125}\\rparen\ = -3 \\text{, ¿cuál es el valor de m?}',
                     'subject': 'numeros',
                     'link_resolution':'https://www.youtube.com/embed/OxgnJ-IgxA0?start=2031',
                     'answer': [
@@ -113,7 +113,7 @@ dataNumeros = [
                             'right': 0
                         },
                         {
-                            'label': '{\lparen\\frac {8} {125}\rparen}^{-3}',
+                            'label': '{\lparen\\frac {8} {125}\\rparen}^{-3}',
                             'right': 0
                         },
                         {
@@ -123,7 +123,7 @@ dataNumeros = [
                     ],
                 },
                 {
-                    'question': 'text{¿Cuál de las siguientes cantidades corresponde al 5} \%\\newline \\text{del precio de un artículo? }',
+                    'question': 'text{¿Cuál de las siguientes cantidades corresponde al 5} \\%\\newline \\text{del precio de un artículo? }',
                     'subject': 'numeros',
                     'link_resolution':'https://www.youtube.com/embed/OxgnJ-IgxA0?start=1540',
                     'answer': [
@@ -169,7 +169,7 @@ dataNumeros = [
                     ],
                 },
                 {
-                    'question': '\\text{¿Cuál de las siguientes expresiones representa el 22\% }\\newline \\text{del 15\% de P?}',
+                    'question': '\\text{¿Cuál de las siguientes expresiones representa el 22\\% }\\newline \\text{del 15\\% de P?}',
                     'subject': 'numeros',
                     'link_resolution':'https://www.youtube.com/embed/nKR73i6zASg?start=577',
                     'answer': [
