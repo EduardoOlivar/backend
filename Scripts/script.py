@@ -7,7 +7,7 @@ dataNumeros = [
             'type': 'numeros',
             'questions': [
                 {
-                    'question': '¿\\text{Cual es el valor de: }(1 - \\frac{1}{2})(1 - \\frac{1}{3})(1 - \\frac{1}{4})(1 - \\frac{1}{5})?',
+                    'question': '\\¿\\text{Cual es el valor de: }(1 - \\frac{1}{2})(1 - \\frac{1}{3})(1 - \\frac{1}{4})(1 - \\frac{1}{5})?',
                     'subject': 'numeros',
                     'link_resolution':'https://youtube.com/embed/OxgnJ-IgxA0?start=124',
                     'answer': [
@@ -31,7 +31,7 @@ dataNumeros = [
                     ],
                 },
                 {
-                    'question': '¿\\text{Cual es el valor de: }1 - (\\frac{1}{2})^{-3}?',
+                    'question': '\\¿\\text{Cual es el valor de: }1 - (\\frac{1}{2})^{-3}?',
                     'subject': 'numeros',
                     'link_resolution':'https://youtube.com/embed/OxgnJ-IgxA0?start=383',
                     'answer': [
@@ -77,7 +77,7 @@ dataNumeros = [
                     ],
                 },
                 {
-                    'question': '\\text{¿Cual es el resultado de: }\sqrt{2} - \sqrt{8} + \sqrt{18}?',
+                    'question': '\\text{\\¿Cual es el resultado de: }\sqrt{2} - \sqrt{8} + \sqrt{18}?',
                     'subject': 'numeros',
                     'link_resolution':'https://www.youtube.com/embed/OxgnJ-IgxA0?start=1895',
                     'answer': [
@@ -100,7 +100,7 @@ dataNumeros = [
                     ],
                 },
                 {
-                    'question': '\\text{Si }\log_m\lparen\\frac {8} {125}\\rparen\ = -3 \\text{, ¿cual es el valor de m?}',
+                    'question': '\\text{Si }\log_m\lparen\\frac {8} {125}\\rparen\ = -3 \\text{, \\¿cual es el valor de m?}',
                     'subject': 'numeros',
                     'link_resolution':'https://www.youtube.com/embed/OxgnJ-IgxA0?start=2031',
                     'answer': [
@@ -123,7 +123,7 @@ dataNumeros = [
                     ],
                 },
                 {
-                    'question': 'text{¿Cual de las siguientes cantidades corresponde al 5} \\%\\newline \\text{del precio de un articulo? }',
+                    'question': 'text{\\¿Cual de las siguientes cantidades corresponde al 5} \\%\\newline \\text{del precio de un articulo? }',
                     'subject': 'numeros',
                     'link_resolution':'https://www.youtube.com/embed/OxgnJ-IgxA0?start=1540',
                     'answer': [
@@ -146,7 +146,7 @@ dataNumeros = [
                     ],
                 },
                 {
-                    'question': '\\text{¿Cual es el valor de 2,32 + 17,4?}',
+                    'question': '\\text{\\¿Cual es el valor de 2,32 + 17,4?}',
                     'subject': 'numeros',
                     'link_resolution':'https://www.youtube.com/embed/nKR73i6zASg?start=38',
                     'answer': [
@@ -169,7 +169,7 @@ dataNumeros = [
                     ],
                 },
                 {
-                    'question': '\\text{¿Cual de las siguientes expresiones representa el 22\\% }\\newline \\text{del 15\\% de P?}',
+                    'question': '\\text{\\¿Cual de las siguientes expresiones representa el 22\\% }\\newline \\text{del 15\\% de P?}',
                     'subject': 'numeros',
                     'link_resolution':'https://www.youtube.com/embed/nKR73i6zASg?start=577',
                     'answer': [
@@ -192,7 +192,7 @@ dataNumeros = [
                     ],
                 },
                 {
-                    'question': '\\text{¿Cual de las siguientes opciones presenta una resolucion}\\newline \\text{correcta de } \\frac{27^\\frac{1}{3}}{8}*\\frac{16^\\frac{1}{2}}{9}?',
+                    'question': '\\text{\\¿Cual de las siguientes opciones presenta una resolucion}\\newline \\text{correcta de } \\frac{27^\\frac{1}{3}}{8}*\\frac{16^\\frac{1}{2}}{9}?',
                     'subject': 'numeros',
                     'link_resolution':'https://www.youtube.com/embed/nKR73i6zASg?start=755',
                     'answer': [
@@ -215,7 +215,7 @@ dataNumeros = [
                     ],
                 },
                 {
-                    'question': '\\text{¿Cual es el valor de } \sqrt{8}(\sqrt{18}-\sqrt{8})?',
+                    'question': '\\text{\\¿Cual es el valor de } \sqrt{8}(\sqrt{18}-\sqrt{8})?',
                     'subject': 'numeros',
                     'link_resolution':'https://www.youtube.com/embed/nKR73i6zASg?start=1154',
                     'answer': [
@@ -246,7 +246,7 @@ dataAlgebra = [
         'type': 'algebra',
         'questions': [
             {
-                'question': '\\text{¿Cual es el valor de x en la ecuacion 0,3 + 10x = 0,5?}',
+                'question': '\\text{\\¿Cual es el valor de x en la ecuacion 0,3 + 10x = 0,5?}',
                 'subject': 'algebra',
                 'link_resolution':'https://www.youtube.com/embed/OxgnJ-IgxA0?start=4092',
                 'answer': [
@@ -270,7 +270,7 @@ dataAlgebra = [
                 ],
             },
             {
-                'question': '\\text{Un bidon tiene ocupada con gasolina la mitad de su} \\newline \\text{capacidad maxima.}\\newline \\text{Al agregar 8L de gasolina se llega a las }\\frac{5}{6} \\text{ partes de su}\\newline \\text{capacidad.}\\newline \\text{¿Cual es la capacidad maxima del bidon?}',
+                'question': '\\text{Un bidon tiene ocupada con gasolina la mitad de su} \\newline \\text{capacidad maxima.}\\newline \\text{Al agregar 8L de gasolina se llega a las }\\frac{5}{6} \\text{ partes de su}\\newline \\text{capacidad.}\\newline \\text{\\¿Cual es la capacidad maxima del bidon?}',
                 'subject': 'algebra',
                 'link_resolution':'https://www.youtube.com/embed/OxgnJ-IgxA0?start=4290',
                 'answer': [
@@ -294,7 +294,7 @@ dataAlgebra = [
                 ],
             },
             {
-                'question': '\\text{Si} \log_2{(-2x + 3p)} = 3 \\text{y} \log_3{x +2p} = 1 \\newline \\text{¿Cual es el valor de x-2p?}',
+                'question': '\\text{Si} \log_2{(-2x + 3p)} = 3 \\text{y} \log_3{x +2p} = 1 \\newline \\text{\\¿Cual es el valor de x-2p?}',
                 'subject': 'algebra',
                 'link_resolution':'https://www.youtube.com/embed/OxgnJ-IgxA0?start=5349',
                 'answer': [
@@ -368,6 +368,134 @@ dataAlgebra = [
         ],
     },
 ]
+dataProbabilidades = [
+     {
+        'name': 'Ensayo probabilidades',
+        'type': 'probabilidades',
+        'questions': [
+            {
+                'question': '\\text{El dinero total que tienen ahorrado tres amigas es }\\newline \$210.000 \\text{. Se sabe que Claudia aporto el doble que Maria y} \\newline \\text{que Yasna aporto el doble que Claudia.}\\newline \\text{\\¿Cual es el primedio de dinero aportado por Claudia y}\\newline \\text{Yasna?}',
+                'subject': 'probabilidades',
+                'link_resolution':'https://www.youtube.com/embed/OxgnJ-IgxA0?start=13136',
+                'answer': [
+                    {
+                        'label': '\$90.000',
+                        'right': 1
+                    },
+                    {
+                        'label': '\$70.000',
+                        'right': 0
+                    },
+                    {
+                        'label': '\$45.000',
+                        'right': 0
+                    },
+                    {
+                        'label': '\$35.000',
+                        'right': 0
+                    },
+
+                ],
+            },
+            {
+                'question': '\\text{En la siguiente tabla se muestra la distribucion de las}\\newline \\text{edades, en años, de un grupo de niños.} \\newline \\begin{array}{c:c} \\text{Edad} & \\text{Frecuencia} \\newline \\hline 2 & 5 \\newline \\hdashline 3 & 6 \\newline \\hdashline 4 & 9 \\newline \\hdashline 5 & 3 \\newline \\hline \\end{array} \\newline \\text{\\¿Cual es la mediana de edad de este grupo de niños?}',
+                'subject': 'probabilidades',
+                'link_resolution':'https://www.youtube.com/embed/OxgnJ-IgxA0?start=13314',
+                'answer': [
+                    {
+                        'label': '\\text{4 años}',
+                        'right': 1
+                    },
+                    {
+                        'label': '\\text{3,5 años}',
+                        'right': 0
+                    },
+                    {
+                        'label': '\\text{7,5 años}',
+                        'right': 0
+                    },
+                    {
+                        'label': '\\text{9 años}',
+                        'right': 0
+                    },
+
+                ],
+            },
+            {
+                'question': '\\text{Al lanzar un dado cargado, numerado del 1 al 6, la}\\newline \\text{probabilidad de que salga un numero par es el doble de la}\\newline \\text{probabilidad de que salga un numero impar.}\\newline \\text{Si se lanza este dado, \\¿cual es la probabilidad de que salga}\\newline \\text{un numero impar?}',
+                'subject': 'probabilidades',
+                'link_resolution':'https://www.youtube.com/embed/OxgnJ-IgxA0?start=14765',
+                'answer': [
+                    {
+                        'label': '\\frac{1}{3}',
+                        'right': 1
+                    },
+                    {
+                        'label': '\\frac{1}{9}',
+                        'right': 0
+                    },
+                    {
+                        'label': '\\frac{2}{3}',
+                        'right': 0
+                    },
+                    {
+                        'label': '\\frac{2}{9}',
+                        'right': 0
+                    },
+
+                ],
+            },
+            {
+                'question': '\\text{En un mazo de cartas de naipes ingles (52 cartas), 13 de}\\newline \\text{ ellas son de trebol. Si se extraen del mazo dos cartas al }\\newline \\text{azar, una despues de la otra y sin reposicion, \\¿cual es la }\\newline \\text{probabilidad de que ambas sean de trebol?}',
+                'subject': 'probabilidades',
+                'link_resolution':'https://www.youtube.com/embed/OxgnJ-IgxA0?start=14941',
+                'answer': [
+                    {
+                        'label': '\\frac{13}{52} *\\frac{12}{51}',
+                        'right': 1
+                    },
+                    {
+                        'label': '\\frac{13}{52} *\\frac{12}{52}',
+                        'right': 0
+                    },
+                    {
+                        'label': '\\frac{13}{52} +\\frac{12}{52}',
+                        'right': 0
+                    },
+                    {
+                        'label': '\\frac{13}{52} +\\frac{12}{51}',
+                        'right': 0
+                    },
+
+                ],
+            },
+            {
+                'question': '\\text{Un estudiante constesta una prueba en que cada pregunta}\\newline \\text{tiene 5 opciones solo una de ellas es la correcta.}\\newline \\text{Si responde las 3 ultimas preguntas al azar y de manera}\\newline \\text{independiente, \\¿cual es la probabilidad de tener estas 3 }\\newline \\text{respuestas correctas?}',
+                'subject': 'probabilidades',
+                'link_resolution':'https://www.youtube.com/embed/OxgnJ-IgxA0?start=15047',
+                'answer': [
+                    {
+                        'label': '(\\frac{1}{5})^3',
+                        'right': 1
+                    },
+                    {
+                        'label': '\\frac{3}{15}',
+                        'right': 0
+                    },
+                    {
+                        'label': '\\frac{3}{5}',
+                        'right': 0
+                    },
+                    {
+                        'label': '3*(\\frac{1}{5})^3',
+                        'right': 0
+                    },
+
+                ],
+            },
+        ]
+    },
+]
 
 
 def poblarBd(data):
@@ -383,6 +511,7 @@ def poblarBd(data):
 
 poblarBd(dataAlgebra)
 poblarBd(dataNumeros)
+poblarBd(dataProbabilidades)
 
 # for essay in Essay.objects.filter():
 #     print(essay.name)
