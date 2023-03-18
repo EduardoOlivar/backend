@@ -5,7 +5,6 @@ from api.serializers import *
 from api.pagination import SmallMediumPagination
 from rest_framework import status
 from rest_framework.response import Response
-from rest_framework_simplejwt.views import TokenObtainPairView
 from django.contrib.auth import authenticate
 from rest_framework_simplejwt.tokens import RefreshToken
 from api.models import *
@@ -16,6 +15,7 @@ from django_filters.rest_framework import DjangoFilterBackend
 
 # Create your views here.
 
+#funcion para obtener jwt para el usuario cuando hace login
 def get_tokens_for_user(user):
     refresh = RefreshToken.for_user(user)
 
@@ -24,88 +24,16 @@ def get_tokens_for_user(user):
         'access': str(refresh.access_token),
     }
 
+#views para el manejo de los user
 
 class UsersRetrieveUpdateDestroy(generics.RetrieveUpdateDestroyAPIView):
     queryset = Users.objects.filter().order_by('pk')
     serializer_class = UserSerializer
-    authentication_class = [TokenObtainPairView]
-
 
 
 class UsersListCreate(generics.ListCreateAPIView):
     queryset = Users.objects.all()
     serializer_class = UserSerializer
-    authentication_class = [TokenObtainPairView]
-
-
-
-class EssayList(generics.ListAPIView):
-    queryset = Essay.objects.filter().order_by('pk')
-    serializer_class = EssaySerializer
-
-
-
-class EssayCreate(generics.CreateAPIView):
-    queryset = Essay.objects.filter().order_by('pk')
-    serializer_class = EssaySerializer
-
-
-
-class EssayRetrieveUpdateDestroy(generics.RetrieveUpdateDestroyAPIView):
-    queryset = Essay.objects.filter().order_by('pk')
-    serializer_class = EssaySerializer
-
-
-
-class QuestionCreate(generics.CreateAPIView):
-    queryset = Question.objects.filter().order_by('pk')
-    serializer_class = QuestionCreateSerializer
-
-
-
-class QuestionList(generics.ListAPIView):
-    queryset = Question.objects.all()
-    serializer_class = QuestionSerializer
-
-    filter_backends = [DjangoFilterBackend]
-    filterset_fields = ['id','essay', 'question','subject','link_resolution']
-
-
-class QuestionRetrieveUpdateDestroy(generics.RetrieveUpdateDestroyAPIView):
-    queryset = Question.objects.filter().order_by('pk')
-    serializer_class = QuestionSerializer
-
-
-
-class AnswerRetrieveUpdateDestroy(generics.RetrieveUpdateDestroyAPIView):
-    queryset = Answer.objects.filter().order_by('pk')
-    serializer_class = AnswerSerializer
-
-
-
-class AnswerList(generics.ListAPIView):
-    queryset = Answer.objects.filter().order_by('pk')
-    serializer_class = AnswerSerializer
-
-
-
-class AnswerCreate(generics.CreateAPIView):
-    queryset = Answer.objects.filter().order_by('pk')
-    serializer_class = AnswerCreateSerializer
-
-
-
-class QuestionsAlternativeAll(generics.ListAPIView):
-    serializer_class = QuestionsAlternativeAllSerializer
-    filter_backends = [DjangoFilterBackend]
-    filterset_fields = ['id','essay','subject']
-    queryset = Question.objects.all()
-
-
-class AnswerEssayUserView(generics.ListAPIView):
-    serializer_class = AnswerEssayUserSerializer
-    queryset = AnswerEssayUser.objects.filter(is_deleted=False).order_by('pk')
-
 
 class RegistrationView(APIView):
     def post(self, request):
@@ -144,7 +72,7 @@ class ChangePasswordView(APIView):
     renderer_classes = [UserRenderer]
     permission_classes = [IsAuthenticated]
 
-    def post(self, request, format=None):
+    def patch(self, request, format=None):
         serializer = PasswordChangeSerializer(data=request.data, context={'user': request.user})
         serializer.is_valid(raise_exception=True)
         return Response({'msg': 'Contraseña cambiada exitosamente'}, status=status.HTTP_200_OK)
@@ -155,8 +83,8 @@ class UserProfileView(APIView):
     permission_classes = [IsAuthenticated]
 
     def get(self, request, format=None):
-       serializer = UserProfileSerializer(request.user)
-       return Response(serializer.data, status=status.HTTP_200_OK)
+        serializer = UserProfileSerializer(request.user)
+        return Response(serializer.data, status=status.HTTP_200_OK)
 
 
 class SendPasswordResetEmailView(APIView):
@@ -176,3 +104,77 @@ class UserPasswordResetView(APIView):
         serializer.is_valid(raise_exception=True)
         return Response({'msg':'Cambio de contraseña exitoso'}, status=status.HTTP_200_OK)
 
+
+
+
+#demas views
+
+class EssayList(generics.ListAPIView):
+    queryset = Essay.objects.filter().order_by('pk')
+    serializer_class = EssaySerializer
+
+
+class EssayCreate(generics.CreateAPIView):
+    queryset = Essay.objects.filter().order_by('pk')
+    serializer_class = EssaySerializer
+
+
+class EssayRetrieveUpdateDestroy(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Essay.objects.filter().order_by('pk')
+    serializer_class = EssaySerializer
+
+
+class QuestionCreate(generics.CreateAPIView):
+    queryset = Question.objects.filter().order_by('pk')
+    serializer_class = QuestionCreateSerializer
+
+
+class QuestionList(generics.ListAPIView):
+    queryset = Question.objects.all()
+    serializer_class = QuestionSerializer
+
+    filter_backends = [DjangoFilterBackend]
+    filterset_fields = ['id','essay', 'question','subject','link_resolution']
+
+
+class QuestionRetrieveUpdateDestroy(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Question.objects.filter().order_by('pk')
+    serializer_class = QuestionSerializer
+
+
+class AnswerRetrieveUpdateDestroy(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Answer.objects.filter().order_by('pk')
+    serializer_class = AnswerSerializer
+
+
+class AnswerList(generics.ListAPIView):
+    queryset = Answer.objects.filter().order_by('pk')
+    serializer_class = AnswerSerializer
+
+
+class AnswerCreate(generics.CreateAPIView):
+    queryset = Answer.objects.filter().order_by('pk')
+    serializer_class = AnswerCreateSerializer
+
+
+class QuestionsAlternativeAll(generics.ListAPIView):
+    serializer_class = QuestionsAlternativeAllSerializer
+    filter_backends = [DjangoFilterBackend]
+    filterset_fields = ['id','essay','subject']
+    queryset = Question.objects.all()
+
+
+class AnswerEssayUserView(generics.ListAPIView):
+    serializer_class = AnswerEssayUserSerializer
+    queryset = AnswerEssayUser.objects.filter(is_deleted=False).order_by('pk')
+
+
+class SaveAnswersView(generics.CreateAPIView):
+    permission_classes = (IsAuthenticated,)
+    serializer_class = SaveAnswersSerializer
+
+    def post(self, request, *args, **kwargs):
+        serializer = self.serializer_class(data=request.data, context={'request': request})
+        serializer.is_valid(raise_exception=True)
+        serializer.save()
+        return Response({'message': 'CREATED'}, status=status.HTTP_201_CREATED)
