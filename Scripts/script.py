@@ -1,4 +1,5 @@
 from api.models import *
+# -*- coding: utf-8 -*-
 import random
 #algebra, numeros, probabilidad, geometria
 dataNumeros = [
@@ -7,7 +8,7 @@ dataNumeros = [
             'type': 'numeros',
             'questions': [
                 {
-                    'question': '\\¿\\text{Cual es el valor de: }(1 - \\frac{1}{2})(1 - \\frac{1}{3})(1 - \\frac{1}{4})(1 - \\frac{1}{5})?',
+                    'question': 'Cual es el valor de: [\\\(1 - \\frac{1}{2})(1 - \\frac{1}{3})(1 - \\frac{1}{4})(1 - \\frac{1}{5})] ',
                     'subject': 'numeros',
                     'link_resolution':'https://youtube.com/embed/OxgnJ-IgxA0?start=124',
                     'answer': [
@@ -31,7 +32,7 @@ dataNumeros = [
                     ],
                 },
                 {
-                    'question': '\\¿\\text{Cual es el valor de: }1 - (\\frac{1}{2})^{-3}?',
+                    'question': 'Cual es el valor de: [1 - (\\frac{1}{2})^{-3}]?',
                     'subject': 'numeros',
                     'link_resolution':'https://youtube.com/embed/OxgnJ-IgxA0?start=383',
                     'answer': [
@@ -54,7 +55,7 @@ dataNumeros = [
                     ],
                 },
                 {
-                    'question': '\\text{Un numero aumentado en su 30}\\%\\text{ es igual a 910.}',
+                    'question': 'Un numero aumentado en su 30% es igual a 910.',
                     'subject': 'numeros',
                     'link_resolution':'https://www.youtube.com/embed/OxgnJ-IgxA0?start=1682',
                     'answer': [
@@ -77,7 +78,7 @@ dataNumeros = [
                     ],
                 },
                 {
-                    'question': '\\text{\\¿Cual es el resultado de: }\sqrt{2} - \sqrt{8} + \sqrt{18}?',
+                    'question': 'Cual es el resultado de: [\sqrt{2} - \sqrt{8} + \sqrt{18}]',
                     'subject': 'numeros',
                     'link_resolution':'https://www.youtube.com/embed/OxgnJ-IgxA0?start=1895',
                     'answer': [
@@ -100,7 +101,7 @@ dataNumeros = [
                     ],
                 },
                 {
-                    'question': '\\text{Si }\log_m\lparen\\frac {8} {125}\\rparen\ = -3 \\text{, \\¿cual es el valor de m?}',
+                    'question': 'Si [\log_m\lparen\\frac {8} {125}\\rparen\ = -3] , ¿cual es el valor de m?',
                     'subject': 'numeros',
                     'link_resolution':'https://www.youtube.com/embed/OxgnJ-IgxA0?start=2031',
                     'answer': [
@@ -123,7 +124,7 @@ dataNumeros = [
                     ],
                 },
                 {
-                    'question': 'text{\\¿Cual de las siguientes cantidades corresponde al 5} \\%\\newline \\text{del precio de un articulo? }',
+                    'question': '¿Cual de las siguientes cantidades corresponde al 5% del precio de un articulo? ',
                     'subject': 'numeros',
                     'link_resolution':'https://www.youtube.com/embed/OxgnJ-IgxA0?start=1540',
                     'answer': [
@@ -146,7 +147,7 @@ dataNumeros = [
                     ],
                 },
                 {
-                    'question': '\\text{\\¿Cual es el valor de 2,32 + 17,4?}',
+                    'question': '¿Cual es el valor de 2,32 + 17,4?',
                     'subject': 'numeros',
                     'link_resolution':'https://www.youtube.com/embed/nKR73i6zASg?start=38',
                     'answer': [
@@ -169,7 +170,7 @@ dataNumeros = [
                     ],
                 },
                 {
-                    'question': '\\text{\\¿Cual de las siguientes expresiones representa el 22\\% }\\newline \\text{del 15\\% de P?}',
+                    'question': '¿Cual de las siguientes expresiones representa el 22% del 15% de P?',
                     'subject': 'numeros',
                     'link_resolution':'https://www.youtube.com/embed/nKR73i6zASg?start=577',
                     'answer': [
@@ -192,7 +193,7 @@ dataNumeros = [
                     ],
                 },
                 {
-                    'question': '\\text{\\¿Cual de las siguientes opciones presenta una resolucion}\\newline \\text{correcta de } \\frac{27^\\frac{1}{3}}{8}*\\frac{16^\\frac{1}{2}}{9}?',
+                    'question': '¿Cual de las siguientes opciones presenta una resolucion correcta de [\\frac{27^\\frac{1}{3}}{8}*\\frac{16^\\frac{1}{2}}{9}]?',
                     'subject': 'numeros',
                     'link_resolution':'https://www.youtube.com/embed/nKR73i6zASg?start=755',
                     'answer': [
@@ -215,7 +216,7 @@ dataNumeros = [
                     ],
                 },
                 {
-                    'question': '\\text{\\¿Cual es el valor de } \sqrt{8}(\sqrt{18}-\sqrt{8})?',
+                    'question': '¿Cual es el valor de [\sqrt{8}(\sqrt{18}-\sqrt{8})]?',
                     'subject': 'numeros',
                     'link_resolution':'https://www.youtube.com/embed/nKR73i6zASg?start=1154',
                     'answer': [
