@@ -83,7 +83,7 @@ dataNumeros = [
                     'link_resolution':'https://www.youtube.com/embed/OxgnJ-IgxA0?start=1895',
                     'answer': [
                         {
-                            'label': '2\sqrt{2}',
+                            'label': '[2\sqrt{2}]',
                             'right': 1
                         },
                         {
@@ -247,7 +247,7 @@ dataAlgebra = [
         'type': 'algebra',
         'questions': [
             {
-                'question': '\\text{\\¿Cual es el valor de x en la ecuacion 0,3 + 10x = 0,5?}',
+                'question': '¿Cual es el valor de x en la ecuacion [0,3 + 10x = 0,5]?',
                 'subject': 'algebra',
                 'link_resolution':'https://www.youtube.com/embed/OxgnJ-IgxA0?start=4092',
                 'answer': [
@@ -271,7 +271,7 @@ dataAlgebra = [
                 ],
             },
             {
-                'question': '\\text{Un bidon tiene ocupada con gasolina la mitad de su} \\newline \\text{capacidad maxima.}\\newline \\text{Al agregar 8L de gasolina se llega a las }\\frac{5}{6} \\text{ partes de su}\\newline \\text{capacidad.}\\newline \\text{\\¿Cual es la capacidad maxima del bidon?}',
+                'question': 'Un bidon tiene ocupada con gasolina la mitad de su capacidad maxima. Al agregar 8L de gasolina se llega a las [\\frac{5}{6}] partes de su capacidad. ¿Cual es la capacidad maxima del bidon?',
                 'subject': 'algebra',
                 'link_resolution':'https://www.youtube.com/embed/OxgnJ-IgxA0?start=4290',
                 'answer': [
@@ -527,7 +527,7 @@ dataGeometria = [
                 ],
             },
             {
-                'question': '\\text{Considere los vectores} \\overrightarrow{u} = (-2,5), \\overrightarrow{v} = (3, -2) \\text{ y } \\newline \\overrightarrow{c} = (-1,-4).\\newline \\text{¿Cual es el vector } \\overrightarrow{u} + 2\\overrightarrow{v} - \\overrightarrow{c} \\text{?}',
+                'question': 'Considere los vectores [\\overrightarrow{u} = (-2,5), \\overrightarrow{v} = (3, -2)] y [\\overrightarrow{c} = (-1,-4)]. ¿Cual es el vector [\\overrightarrow{u} + 2\\overrightarrow{v} - \\overrightarrow{c}]',
                 'subject': 'geometria',
                 'link_resolution':'https://www.youtube.com/embed/OxgnJ-IgxA0?start=9560',
                 'answer': [
@@ -602,7 +602,7 @@ dataGeometria = [
                 'question': '\\text{Un estudiante constesta una prueba en que cada pregunta}\\newline \\text{tiene 5 opciones solo una de ellas es la correcta.}\\newline \\text{Si responde las 3 ultimas preguntas al azar y de manera}\\newline \\text{independiente, ¿cual es la probabilidad de tener estas 3 }\\newline \\text{respuestas correctas?}',
                 'subject': 'geometria',
                 'link_resolution':'https://www.youtube.com/embed/m4qRM2mtjHA?start=2631',
-                'answer': [
+                'answer': [ 
                     {
                         'label': '\\sqrt{96}',
                         'right': 1
