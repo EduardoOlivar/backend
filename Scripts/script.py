@@ -1,4 +1,5 @@
 from api.models import *
+# -*- coding: utf-8 -*-
 import random
 #algebra, numeros, probabilidad, geometria
 dataNumeros = [
@@ -7,7 +8,7 @@ dataNumeros = [
             'type': 'numeros',
             'questions': [
                 {
-                    'question': '¿Cual es el valor de: ([1 - [\\frac{1}{2}]])([1 - [\\frac{1}{3}]])([1 - [\\frac{1}{4}]])([1 - [\\frac{1}{5}]])?',
+                    'question': '¿Cual es el valor de: [(1 - \\frac{1}{2})(1 - \\frac{1}{3})(1 - \\frac{1}{4})(1 - \\frac{1}{5})]?',
                     'subject': 'numeros',
                     'link_resolution':'https://youtube.com/embed/OxgnJ-IgxA0?start=124',
                     'answer': [
@@ -31,7 +32,7 @@ dataNumeros = [
                     ],
                 },
                 {
-                    'question': '¿Cual es el valor de: [1 - ([\\frac{1}{2}])^{-3}]?',
+                    'question': '¿Cual es el valor de: [1 - (\\frac{1}{2})^{-3}]?',
                     'subject': 'numeros',
                     'link_resolution':'https://youtube.com/embed/OxgnJ-IgxA0?start=383',
                     'answer': [
@@ -77,7 +78,7 @@ dataNumeros = [
                     ],
                 },
                 {
-                    'question': '¿Cual es el resultado de: [\sqrt{2}] [-] [\sqrt{8}] [+] [\sqrt{18}]?',
+                    'question': '¿Cual es el resultado de: [\sqrt{2} - \sqrt{8} + \sqrt{18}] ',
                     'subject': 'numeros',
                     'link_resolution':'https://www.youtube.com/embed/OxgnJ-IgxA0?start=1895',
                     'answer': [
@@ -100,7 +101,7 @@ dataNumeros = [
                     ],
                 },
                 {
-                    'question': 'Si [\log_m\lparen[\\frac {8} {125}\\rparen\]] [= -3], ¿cual es el valor de m?',
+                    'question': 'Si [\log_m\lparen\\frac {8} {125}\\rparen\ = -3], ¿cual es el valor de m?',
                     'subject': 'numeros',
                     'link_resolution':'https://www.youtube.com/embed/OxgnJ-IgxA0?start=2031',
                     'answer': [
@@ -113,7 +114,7 @@ dataNumeros = [
                             'right': 0
                         },
                         {
-                            'label': '[\lparen[\\frac {8} {125}\\rparen}^{-3}]]',
+                            'label': '[{\lparen\\frac {8} {125}\\rparen}^{-3}]',
                             'right': 0
                         },
                         {
@@ -192,30 +193,30 @@ dataNumeros = [
                     ],
                 },
                 {
-                    'question': '¿Cual de las siguientes opciones presenta una resolucion} {correcta de } [\\frac{27^[\\frac{1}{3}}{8}*[\\frac{16^[\\frac{1}{2}}{9}?',
+                    'question': '¿Cual de las siguientes opciones presenta una resolucion correcta de [\\frac{27^\\frac{1}{3}}{8}*\\frac{16^\\frac{1}{2}}{9}]?',
                     'subject': 'numeros',
                     'link_resolution':'https://www.youtube.com/embed/nKR73i6zASg?start=755',
                     'answer': [
-                        {
-                            'label': '[\\frac{27^[\\frac{1}{3}}{8}*[\\frac{16^[\\frac{1}{2}}{9}]]]] =[\\frac{(27^3)^[\\frac{1}{3}}{8}*[\\frac{(4^2)[\\frac{1}{2}}{9}]]]] = [\\frac{3}{8}*[\\frac{4}{9}]] = [\\frac{12}{72}] = [\\frac{1}{6}]',
+                         {
+                            'label': '[\\frac{27^\\frac{1}{3}}{8}*\\frac{16^\\frac{1}{2}}{9} =\\frac{(27^3)^\\frac{1}{3}}{8}*\\frac{(4^2)\\frac{1}{2}}{9} = \\frac{3}{8}*\\frac{4}{9} = \\frac{12}{72} = \\frac{1}{6}]',
                             'right': 1
                         },
                         {
-                            'label': '[\\frac{27^[\\frac{1}{3}}{8}*[\\frac{16^[\\frac{1}{2}}{9}]]]] = ([\\frac{27}{8}])^[\\frac{1}{3}*([\\frac{16}{9}])^[\\frac{1}{2}]] = [\\frac{3}{2}*[\\frac{4}{3}]] = [2]',
+                            'label': '[\\frac{27^\\frac{1}{3}}{8}*\\frac{16^\\frac{1}{2}}{9} = (\\frac{27}{8})^\\frac{1}{3}*(\\frac{16}{9})^\\frac{1}{2} = \\frac{3}{2}*\\frac{4}{3} = 2]',
                             'right': 0
                         },
                         {
-                            'label': '[\\frac{27^[\\frac{1}{3}}{8}*[\\frac{16^[\\frac{1}{2}}{9}]]]] = ([\\frac{27*16}{8*9}])^[\\frac{1}{3}*[\\frac{1}{2}]] = 6^[\\frac{1}{6}]',
+                            'label': '[\\frac{27^\\frac{1}{3}}{8}*\\frac{16^\\frac{1}{2}}{9} = (\\frac{27*16}{8*9})^{\\frac{1}{3}*\\frac{1}{2}} = 6^\\frac{1}{6}]',
                             'right': 0
                         },
                         {
-                            'label': '[\\frac{27^[\\frac{1}{3}}{8}*[\\frac{16^[\\frac{1}{2}}{9}]]]] = [\\frac{27^[\\frac{1}{3}*16^[\\frac{1}{2}}{8*9}]]] = [\\frac{9}{8}*[\\frac{8}{9}]] = [1]',
+                            'label': '[\\frac{27^\\frac{1}{3}}{8}*\\frac{16^\\frac{1}{2}}{9} = \\frac{27^\\frac{1}{3}*16^\\frac{1}{2}}{8*9} = \\frac{9}{8}*\\frac{8}{9} = 1]',
                             'right': 0
                         },
                     ],
                 },
                 {
-                    'question': '¿Cual es el valor de [\sqrt{8}]([\sqrt{18}]-[\sqrt{8}])?',
+                    'question': '¿Cual es el valor de [\sqrt{8}]([\sqrt{18}]-[\sqrt{8})]?',
                     'subject': 'numeros',
                     'link_resolution':'https://www.youtube.com/embed/nKR73i6zASg?start=1154',
                     'answer': [
@@ -294,7 +295,7 @@ dataAlgebra = [
                 ],
             },
             {
-                'question': 'Si [\log_2{(-2x + 3p)}][ = 3] y [\log_3{x +2p} = 1] ¿Cual es el valor de x-2p?',
+                'question': 'Si [\log_2{(-2x + 3p)} = 3] y [\log_3{x +2p} = 1] ¿Cual es el valor de x-2p?',
                 'subject': 'algebra',
                 'link_resolution':'https://www.youtube.com/embed/OxgnJ-IgxA0?start=5349',
                 'answer': [
@@ -318,7 +319,7 @@ dataAlgebra = [
                 ],
             },
             {
-                'question': 'Si  [a * b = 10] y  [a^2 + b^2 = 29]',
+                'question': 'Si  [a * b = 10] y [a^2 + b^2 = 29]',
                 'subject': 'algebra',
                 'link_resolution':'https://www.youtube.com/embed/jZGMcWoN-_M?start=582',
                 'answer': [
@@ -398,7 +399,7 @@ dataProbabilidades = [
                 ],
             },
             {
-                'question': 'En la siguiente tabla se muestra la distribucion de las edades, en años, de un grupo de niños.  [\\begin{array}{c:c}] Edad & Frecuencia  [\\hline 2 & 5]  [\\hdashline 3 & 6]  [\\hdashline 4 & 9]  [\\hdashline 5 & 3]  [\\hline] [\\end{array}] ¿Cual es la mediana de edad de este grupo de niños?',
+                'question': 'En la siguiente tabla se muestra la distribucion de las edades, en años, de un grupo de niños.  [\\newline \\begin{array}{c:c} \\text{Edad} & \\text{Frecuencia} \\newline \\hline 2 & 5 \\newline \\hdashline 3 & 6 \\newline \\hdashline 4 & 9 \\newline \\hdashline 5 & 3 \\newline \\hline \\end{array} \\newline] ¿Cual es la mediana de edad de este grupo de niños?',
                 'subject': 'probabilidades',
                 'link_resolution':'https://www.youtube.com/embed/OxgnJ-IgxA0?start=13314',
                 'answer': [
@@ -601,7 +602,7 @@ dataGeometria = [
                 'question': 'Un estudiante constesta una prueba en que cada pregunta tiene 5 opciones solo una de ellas es la correcta. Si responde las 3 ultimas preguntas al azar y de manera independiente, ¿cual es la probabilidad de tener estas 3 respuestas correctas?',
                 'subject': 'geometria',
                 'link_resolution':'https://www.youtube.com/embed/m4qRM2mtjHA?start=2631',
-                'answer': [
+                'answer': [ 
                     {
                         'label': '[\\sqrt{96}]',
                         'right': 1
