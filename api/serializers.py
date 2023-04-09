@@ -187,19 +187,23 @@ class SaveAnswersSerializer(serializers.Serializer):
     essay_id = serializers.IntegerField()
 
     def validate(self, value):
+        answer_ids = value.get('answer_ids')
         essay_id = value.get('essay_id')
-        answer_ids = value.get('answers_id')
         essay = get_object_or_404(Essay, pk=essay_id)
-        answers = Answer.objects.filter(id__in=answer_ids, questions__essay__id=essay_id)
+        print(answer_ids)
+        answers = Answer.objects.filter(id__in=answer_ids, question__essay__id=essay_id)
+        print(answers)
         if len(answer_ids) != len(answers):
             raise serializers.ValidationError('respuestas no validas')
         return value
 
     def create(self, validated_data):
-        answers_ids = validated_data.get('answers_ids')
+        answers_ids = validated_data.get('answer_ids')
         essay_id = validated_data.get('essay_id')
+        essay = Essay.objects.get(pk=essay_id)
         user = self.context['request'].user
+        print(answers_ids)
         for answer_id in answers_ids:
             answer = Answer.objects.get(pk=answer_id)
-            essay_answers = AnswerEssayUser.objects.create(answer=answer, essay=essay_id, users=user, score=answer.right)
+            essay_answers = AnswerEssayUser.objects.create(answer=answer, essay=essay, users=user, score=answer.right)
         return essay_answers
