@@ -5,6 +5,8 @@ from django.utils.http import urlsafe_base64_decode, urlsafe_base64_encode
 from django.contrib.auth.tokens import PasswordResetTokenGenerator
 from django.utils.encoding import smart_str, force_bytes, DjangoUnicodeDecodeError
 from django.shortcuts import get_object_or_404
+from django.core.mail import send_mail, get_connection
+from backend.settings import EMAIL_HOST_USER
 
 generic_fields = ['created', 'updated', 'is_deleted']
 
@@ -77,9 +79,6 @@ class PasswordChangeSerializer(serializers.Serializer):
 class SendPasswordResetEmailSerializer(serializers.Serializer):
     email = serializers.EmailField(max_length=255)
 
-    class Meta:
-        fields = ['email']
-
     def validate(self, attrs):
         email = attrs.get('email')
         if Users.objects.filter(email=email).exists():
@@ -90,14 +89,15 @@ class SendPasswordResetEmailSerializer(serializers.Serializer):
             print('Password Reset Token', token)
             link = 'http://localhost:3000/api/user/reset/'+uid+'/'+token
             print('Link para reiniciar contraseña', link)
-            # # Envia email
-            body = 'Presiona el siguiente link para reiniciar tu contraseña'+link
-            data = {
-            'subject':'Reinicia tu contraseña',
-            'body':body,
-            'to_email':user.email
-            }
-            # Util.send_email(data)
+            # Envia email
+            subject = 'Reinicia tu contraseña'
+            message = f'Presiona el siguiente link para reiniciar tu contraseña: {link}/'
+            from_email = EMAIL_HOST_USER
+            recipient_list = [email]
+            connection = get_connection()
+            connection.open()
+            send_mail(subject,message,from_email,recipient_list)
+            connection.close()
             return attrs
         else:
             raise serializers.ValidationError('No eres un usuario registrado')

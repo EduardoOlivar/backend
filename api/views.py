@@ -2,16 +2,20 @@ from django.shortcuts import render
 from rest_framework import generics
 from rest_framework.views import APIView
 from api.serializers import *
-from api.pagination import SmallMediumPagination
 from rest_framework import status
 from rest_framework.response import Response
 from django.contrib.auth import authenticate
 from rest_framework_simplejwt.tokens import RefreshToken
 from api.models import *
-from rest_framework.permissions import IsAuthenticated, IsAdminUser, AllowAny
-from django.contrib.auth import authenticate, login, logout
+from rest_framework.permissions import IsAuthenticated
+from django.contrib.auth import authenticate, logout
 from api.renderers import UserRenderer
 from django_filters.rest_framework import DjangoFilterBackend
+import smtplib
+from email.mime.multipart import MIMEMultipart
+from email.mime.text import MIMEText
+from django.conf import settings
+from django.core.mail import send_mail
 
 # Create your views here.
 
@@ -93,7 +97,7 @@ class SendPasswordResetEmailView(APIView):
     def post(self, request, format=None):
         serializer = SendPasswordResetEmailSerializer(data=request.data)
         serializer.is_valid(raise_exception=True)
-        return Response({'msg':'Link para reiniciar contraseña enviado'}, status=status.HTTP_200_OK)
+        return Response({'msg': 'Link para reiniciar contraseña enviado'}, status=status.HTTP_200_OK)
 
 
 class UserPasswordResetView(APIView):
