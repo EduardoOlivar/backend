@@ -177,6 +177,12 @@ class AnswerEssayUserSerializer(serializers.ModelSerializer):
 class QuestionsAlternativeAllSerializer(QuestionSerializer):
     answer = AnswerSerializer(many=True, read_only=True)
 
+    def to_representation(self, instance: Question):
+        data = super().to_representation(instance)
+        essay = instance.essay
+        data['essay'] = essay.id
+        return data
+
 
 class EssayQuestionsAlternativeAllSerializer(EssaySerializer):
     question = QuestionsAlternativeAllSerializer(many=True, read_only=True)
