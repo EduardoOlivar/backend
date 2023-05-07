@@ -633,9 +633,9 @@ def poblarBd(data):
         essay_object = Essay.objects.create(**essay_data)
         for question_data in question:
             answers = question_data.pop('answer')
-            question_object = Question.objects.create(**question_data, essay=essay_object)
+            question_object = Question.objects.create(**question_data, essays=essay_object)
             for answer_data in answers:
-                Answer.objects.create(**answer_data, question=question_object)
+                Answer.objects.create(**answer_data, questions=question_object)
 
 
 poblarBd(dataAlgebra)

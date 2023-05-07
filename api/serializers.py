@@ -136,7 +136,7 @@ class AnswerSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Answer
-        exclude = [*generic_fields, 'question', 'users', 'essay']
+        exclude = [*generic_fields, 'questions', 'users', 'essays']
 
 
 class AnswerCreateSerializer(serializers.ModelSerializer):
@@ -150,7 +150,7 @@ class QuestionSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Question
-        exclude = [*generic_fields, 'essay']
+        exclude = [*generic_fields, 'essays']
 
 
 class QuestionCreateSerializer(serializers.ModelSerializer):
@@ -171,7 +171,7 @@ class AnswerEssayUserSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = AnswerEssayUser
-        fields = ['essay', 'score', 'answer']
+        fields = ['essays', 'score', 'answers']
 
 
 class QuestionsAlternativeAllSerializer(QuestionSerializer):
@@ -197,7 +197,7 @@ class SaveAnswersSerializer(serializers.Serializer):
         essay_id = value.get('essay_id')
         essay = get_object_or_404(Essay, pk=essay_id)
         print(answer_ids)
-        answers = Answer.objects.filter(id__in=answer_ids, question__essay__id=essay_id)
+        answers = Answer.objects.filter(id__in=answer_ids, questions__essays__id=essay_id)
         print(answers)
         if len(answer_ids) != len(answers):
             raise serializers.ValidationError('respuestas no validas')
@@ -211,5 +211,9 @@ class SaveAnswersSerializer(serializers.Serializer):
         print(answers_ids)
         for answer_id in answers_ids:
             answer = Answer.objects.get(pk=answer_id)
-            essay_answers = AnswerEssayUser.objects.create(answer=answer, essay=essay, users=user, score=answer.right)
+            essay_answers = AnswerEssayUser.objects.create(answers=answer, essays=essay, users=user, score=answer.right)
         return essay_answers
+
+
+# nombre del ensayo, el score, la fecha,
+# filtros por fecha, por puntaje, por tema

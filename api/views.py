@@ -109,10 +109,7 @@ class UserPasswordResetView(APIView):
         return Response({'msg':'Cambio de contraseña exitoso'}, status=status.HTTP_200_OK)
 
 
-
-
 #demas views
-
 class EssayList(generics.ListAPIView):
     queryset = Essay.objects.filter().order_by('pk')
     serializer_class = EssaySerializer
@@ -138,7 +135,7 @@ class QuestionList(generics.ListAPIView):
     serializer_class = QuestionSerializer
 
     filter_backends = [DjangoFilterBackend]
-    filterset_fields = ['id','essay', 'question','subject','link_resolution']
+    filterset_fields = ['id','essays', 'question','subject','link_resolution']
 
 
 class QuestionRetrieveUpdateDestroy(generics.RetrieveUpdateDestroyAPIView):
@@ -164,7 +161,7 @@ class AnswerCreate(generics.CreateAPIView):
 class QuestionsAlternativeAll(generics.ListAPIView):
     serializer_class = QuestionsAlternativeAllSerializer
     filter_backends = [DjangoFilterBackend]
-    filterset_fields = ['id','essay','subject']
+    filterset_fields = ['id','essays','subject']
     queryset = Question.objects.all()
 
 
