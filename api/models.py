@@ -83,7 +83,12 @@ class Essay(GenericAttributes):
     type = models.TextField(**common_args)
     is_custom = models.BooleanField(**common_args, default=False)
     time_essay = models.TimeField(**common_args, default=time(minute=40))
-    users = models.ManyToManyField(Users, blank=True, related_name='essay')
+    users = models.ManyToManyField(Users, blank=True, through='UserEssay', related_name='essay')
+
+
+class UserEssay(GenericAttributes):
+    user = models.ForeignKey(Users, **common_args, on_delete=models.CASCADE)
+    essay = models.ForeignKey(Essay, **common_args, on_delete=models.CASCADE)
 
 
 class Question(GenericAttributes):
@@ -98,12 +103,11 @@ class Answer(GenericAttributes):
     right = models.IntegerField(**common_args)
     questions = models.ForeignKey(Question, **common_args, on_delete=models.CASCADE, related_name='answer')
     users = models.ManyToManyField(Users, blank=True, through='AnswerEssayUser', related_name='answer')
-    essays = models.ManyToManyField(Essay, blank=True, through='AnswerEssayUser', related_name='answer')
 
 
 class AnswerEssayUser(GenericAttributes):
-    answers = models.ForeignKey(Answer,**common_args, on_delete=models.CASCADE)
-    essays = models.ForeignKey(Essay,**common_args,on_delete=models.CASCADE)
-    users = models.ForeignKey(Users,**common_args,on_delete=models.CASCADE)
+    answers = models.ForeignKey(Answer, **common_args, on_delete=models.CASCADE)
+    essays = models.ForeignKey(UserEssay, **common_args,on_delete=models.CASCADE)
+    users = models.ForeignKey(Users, **common_args,on_delete=models.CASCADE)
     score = models.IntegerField(**common_args)
     date = models.DateField(**common_args,  auto_now_add=True)
