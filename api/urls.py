@@ -28,7 +28,6 @@ urlpatterns = [
     re_path(r'^score_user/all/$', views.AnswerEssayUserView.as_view()), #endpoint para obtener el puntaje del usuario
     re_path(r'^submit_essay_user/$', views.UserEssayView.as_view()), #endpoint que guarda el ensayo que realizo el usuario
     re_path(r'^submit_answers/$', views.SaveAnswersView.as_view()),#endpoint para guardar las respuestas del usuario
-    re_path(r'^update_essays_answers/$', views.UpdateAnswersView.as_view()),#endpoint para updatear las respuestas del usuario ## aun no implementado
 ]
 
 urlpatterns += [

@@ -239,46 +239,5 @@ class SaveAnswersSerializer(serializers.Serializer):
 
 
 
-#serializador para actualizar un ensayo
-class UpdateAnswersSerializer(serializers.Serializer):
-    answer_ids = serializers.ListSerializer(child=serializers.IntegerField(), write_only=True)
-    essay_id = serializers.IntegerField(write_only=True)
-
-    def validate_essay_id(self,value):
-        essay = UserEssay.objects.filter(id=value).first()
-        if essay is None:
-            raise serializers.ValidationError('No se encontro el ensayo')
-        return value
-
-    def remove_answers(self, validated_data: dict):
-        answer_ids = validated_data.get('answer_ids', [])
-        if len(answer_ids) == 0:
-            return
-        user_essay_id = validated_data.get('essay_id')
-        user_essay = UserEssay.objects.get(pk=user_essay_id)
-        answers = Answer.objects.filter(
-            questions__essays=user_essay.essay,
-            id__in=answer_ids
-        )
-        if answers.count() == 0:
-            return
-        essay_answers = AnswerEssayUser.objects.filter(essays=user_essay)
-        essay_answers.delete()
-        return
-
-    def create(self, validated_data):
-        self.remove_answers(validated_data)
-        user_essay_id = validated_data.get('user_essay_id')
-        user_essay = get_object_or_404(UserEssay, pk=user_essay_id)
-        user = self.context['request'].user
-        answer_ids = validated_data.get('answer_ids', [])
-        answers = Answer.objects.filter(id__in=answer_ids, questions__essays=user_essay.essay)
-        essay_answers = [
-            AnswerEssayUser(answers=answer, essays=user_essay, users=user, score=answer.right)
-            for answer in answers
-        ]
-        AnswerEssayUser.objects.bulk_create(essay_answers)
-        return essay_answers
-
-# nombre del ensayo, el score, la fecha,
+# Select nombre, tema, fecha, tiempo, score, custom, número de preguntas
 # filtros por fecha, por puntaje, por tema
