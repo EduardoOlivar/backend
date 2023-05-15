@@ -27,10 +27,6 @@ class GenericAttributes(models.Model):
 # Create your models here
 class UserManager(BaseUserManager):
     def create_user(self, email, password=None):
-        """
-        Creates and saves a User with the given email, date of
-        birth and password.
-        """
         if not email:
             raise ValueError('Users must have an email address')
 
@@ -43,10 +39,6 @@ class UserManager(BaseUserManager):
         return user
 
     def create_superuser(self, email, password=None):
-        """
-        Creates and saves a superuser with the given email, date of
-        birth and password.
-        """
         user = self.create_user(
             email,
             password=password,
@@ -103,6 +95,7 @@ class Answer(GenericAttributes):
     right = models.IntegerField(**common_args)
     questions = models.ForeignKey(Question, **common_args, on_delete=models.CASCADE, related_name='answer')
     users = models.ManyToManyField(Users, blank=True, through='AnswerEssayUser', related_name='answer')
+    essay = models.ManyToManyField(UserEssay, blank=True, through='AnswerEssayUser', related_name='answer')
 
 
 class AnswerEssayUser(GenericAttributes):

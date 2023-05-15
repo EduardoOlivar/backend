@@ -174,6 +174,7 @@ class AnswerEssayUserSerializer(serializers.ModelSerializer):
         fields = ['essays', 'score', 'answers']
 
 
+#serializador para mostrar las respuestas y sus preguntas ademas de la id el ensayo
 class QuestionsAlternativeAllSerializer(QuestionSerializer):
     answer = AnswerSerializer(many=True, read_only=True)
 
@@ -188,32 +189,96 @@ class EssayQuestionsAlternativeAllSerializer(EssaySerializer):
     question = QuestionsAlternativeAllSerializer(many=True, read_only=True)
 
 
+#serializador para crear una id unica cuando se crea un ensayo para un usuario
+class EssayUserSerializer(serializers.Serializer):
+    essay_id = serializers.IntegerField()
+
+    class Meta:
+        model = UserEssay
+        exclude = [*generic_fields]
+
+    def to_representation(self, instance:UserEssay):
+        data = super().to_representation(instance)
+        del data['essay_id']
+        data['new_id'] = instance.id
+        return data
+
+    def create(self, validated_data):
+        user = self.context['request'].user
+        essay_id = validated_data.get('essay_id')
+        essay = Essay.objects.get(id=essay_id)
+        user_essay = UserEssay.objects.create(user=user, essay=essay)
+        return user_essay
+
+
+#serializador que guarda las respuestas de un ensayo creado para un usuario
 class SaveAnswersSerializer(serializers.Serializer):
     answer_ids = serializers.ListSerializer(child=serializers.IntegerField())
-    essay_id = serializers.IntegerField()
+    user_essay_id = serializers.IntegerField()
 
     def validate(self, value):
         answer_ids = value.get('answer_ids')
-        essay_id = value.get('essay_id')
-        essay = get_object_or_404(Essay, pk=essay_id)
-        print(answer_ids)
-        answers = Answer.objects.filter(id__in=answer_ids, questions__essays__id=essay_id)
-        print(answers)
+        user_essay_id = value.get('user_essay_id')
+        user_essay = get_object_or_404(UserEssay, pk=user_essay_id)
+        answers = Answer.objects.filter(id__in=answer_ids, questions__essays=user_essay.essay)
         if len(answer_ids) != len(answers):
             raise serializers.ValidationError('respuestas no validas')
         return value
 
     def create(self, validated_data):
-        answers_ids = validated_data.get('answer_ids')
-        essay_id = validated_data.get('essay_id')
-        essay = Essay.objects.get(pk=essay_id)
+        answer_ids = validated_data.get('answer_ids')
+        user_essay_id = validated_data.get('user_essay_id')
+        user_essay = UserEssay.objects.get(pk=user_essay_id)
         user = self.context['request'].user
-        print(answers_ids)
-        for answer_id in answers_ids:
+        for answer_id in answer_ids:
             answer = Answer.objects.get(pk=answer_id)
-            essay_answers = AnswerEssayUser.objects.create(answers=answer, essays=essay, users=user, score=answer.right)
+            if AnswerEssayUser.objects.filter(answers=answer, essays=user_essay).exists():
+                raise serializers.ValidationError('Ya existe una respuesta para esta combinación de UserEssay y Answer')
+            essay_answers = AnswerEssayUser.objects.create(answers=answer, essays=user_essay, users=user, score=answer.right)
         return essay_answers
 
+
+
+#serializador para actualizar un ensayo
+class UpdateAnswersSerializer(serializers.Serializer):
+    answer_ids = serializers.ListSerializer(child=serializers.IntegerField(), write_only=True)
+    essay_id = serializers.IntegerField(write_only=True)
+
+    def validate_essay_id(self,value):
+        essay = UserEssay.objects.filter(id=value).first()
+        if essay is None:
+            raise serializers.ValidationError('No se encontro el ensayo')
+        return value
+
+    def remove_answers(self, validated_data: dict):
+        answer_ids = validated_data.get('answer_ids', [])
+        if len(answer_ids) == 0:
+            return
+        user_essay_id = validated_data.get('essay_id')
+        user_essay = UserEssay.objects.get(pk=user_essay_id)
+        answers = Answer.objects.filter(
+            questions__essays=user_essay.essay,
+            id__in=answer_ids
+        )
+        if answers.count() == 0:
+            return
+        essay_answers = AnswerEssayUser.objects.filter(essays=user_essay)
+        essay_answers.delete()
+        return
+
+    def create(self, validated_data):
+        self.remove_answers(validated_data)
+        user_essay_id = validated_data.get('user_essay_id')
+        user_essay = get_object_or_404(UserEssay, pk=user_essay_id)
+        user = self.context['request'].user
+        answer_ids = validated_data.get('answer_ids', [])
+        answers = Answer.objects.filter(id__in=answer_ids, questions__essays=user_essay.essay)
+        essay_answers = [
+            AnswerEssayUser(answers=answer, essays=user_essay, users=user, score=answer.right)
+            for answer in answers
+        ]
+        AnswerEssayUser.objects.bulk_create(essay_answers)
+        return essay_answers
 
 # nombre del ensayo, el score, la fecha,
 # filtros por fecha, por puntaje, por tema

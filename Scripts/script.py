@@ -3,7 +3,7 @@ from api.models import *
 import random
 #algebra, numeros, probabilidad, geometria
 dataNumeros = [
-{
+    {
             'name': 'Ensayo numeros',
             'type': 'numeros',
             'questions': [
@@ -242,7 +242,7 @@ dataNumeros = [
     },
 ]
 dataAlgebra = [
-{
+    {
         'name': 'Ensayo algebra',
         'type': 'algebra',
         'questions': [
