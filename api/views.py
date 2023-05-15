@@ -161,7 +161,7 @@ class AnswerCreate(generics.CreateAPIView):
 class QuestionsAlternativeAll(generics.ListAPIView):
     serializer_class = QuestionsAlternativeAllSerializer
     filter_backends = [DjangoFilterBackend]
-    filterset_fields = ['id','essays','subject']
+    filterset_fields = ['id','subject']
     queryset = Question.objects.all()
 
 

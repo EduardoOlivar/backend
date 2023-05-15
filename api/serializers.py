@@ -136,7 +136,7 @@ class AnswerSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Answer
-        exclude = [*generic_fields, 'questions', 'users', 'essays']
+        exclude = [*generic_fields, 'questions', 'users']
 
 
 class AnswerCreateSerializer(serializers.ModelSerializer):
@@ -180,7 +180,7 @@ class QuestionsAlternativeAllSerializer(QuestionSerializer):
 
     def to_representation(self, instance: Question):
         data = super().to_representation(instance)
-        essay = instance.essay
+        essay = instance.essays
         data['essay'] = essay.id
         return data
 
@@ -238,6 +238,10 @@ class SaveAnswersSerializer(serializers.Serializer):
         return essay_answers
 
 
+# const calcularPuntaje = (numPreguntas, numRespuestasCorrectas) => {
+#     const puntaje = 100 + (900 / numPreguntas) * numRespuestasCorrectas;
+#     return Math.round(puntaje);
+#   };
 
 # Select nombre, tema, fecha, tiempo, score, custom, número de preguntas
 # filtros por fecha, por puntaje, por tema
