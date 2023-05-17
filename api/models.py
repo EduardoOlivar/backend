@@ -3,15 +3,10 @@ from django.db import models
 from django.contrib.auth.models import (
     BaseUserManager, AbstractBaseUser
 )
+from datetime import timedelta
 from datetime import time
 from django.utils import timezone
 # Create your models here.
-DISCOUNT_CODE_TYPES_CHOICES = [
-    ('percent', 'Percentage-based'),
-    ('value', 'Value-based'),
-]
-
-
 common_args = {'null': True, 'blank': True} #atributos generales que tienen que tener
 
 
@@ -71,16 +66,21 @@ class Users(AbstractBaseUser,GenericAttributes):
 
 
 class Essay(GenericAttributes):
+    DURATION_CHOICES = [
+        (timedelta(minutes=24), '24 minutos'),
+        (timedelta(minutes=32), '32 minutos'),
+        (timedelta(minutes=40), '40 minutos'),
+    ]
     name = models.TextField(**common_args)
     type = models.TextField(**common_args)
     is_custom = models.BooleanField(**common_args, default=False)
-    time_essay = models.TimeField(**common_args, default=time(minute=40))
+    time_essay = models.DurationField(**common_args, choices=DURATION_CHOICES,default='40 minutos')
     users = models.ManyToManyField(Users, blank=True, through='UserEssay', related_name='essay')
 
 
 class UserEssay(GenericAttributes):
-    user = models.ForeignKey(Users, **common_args, on_delete=models.CASCADE)
-    essay = models.ForeignKey(Essay, **common_args, on_delete=models.CASCADE)
+    user = models.ForeignKey(Users, **common_args, on_delete=models.CASCADE, related_name='essay_user')
+    essay = models.ForeignKey(Essay, **common_args, on_delete=models.CASCADE, related_name='user_essay')
 
 
 class Question(GenericAttributes):
@@ -99,8 +99,7 @@ class Answer(GenericAttributes):
 
 
 class AnswerEssayUser(GenericAttributes):
-    answers = models.ForeignKey(Answer, **common_args, on_delete=models.CASCADE)
-    essays = models.ForeignKey(UserEssay, **common_args,on_delete=models.CASCADE)
-    users = models.ForeignKey(Users, **common_args,on_delete=models.CASCADE)
+    answers = models.ForeignKey(Answer, **common_args, on_delete=models.CASCADE, related_name='answers_essay_user')
+    essays = models.ForeignKey(UserEssay, **common_args,on_delete=models.CASCADE, related_name='answers_essay_user')
+    users = models.ForeignKey(Users, **common_args,on_delete=models.CASCADE, related_name='answers_essay_user')
     score = models.IntegerField(**common_args)
-    date = models.DateField(**common_args,  auto_now_add=True)

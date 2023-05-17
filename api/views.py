@@ -39,7 +39,7 @@ class UsersListCreate(generics.ListCreateAPIView):
     queryset = Users.objects.all()
     serializer_class = UserSerializer
 
-class RegistrationView(APIView):
+class RegisterView(APIView):
     def post(self, request):
         serializer = RegistrationSerializer(data=request.data)
         if serializer.is_valid():
@@ -158,10 +158,10 @@ class AnswerCreate(generics.CreateAPIView):
     serializer_class = AnswerCreateSerializer
 
 
-class QuestionsAlternativeAll(generics.ListAPIView):
+class QuestionsAlternativeAllView(generics.ListAPIView):
     serializer_class = QuestionsAlternativeAllSerializer
     filter_backends = [DjangoFilterBackend]
-    filterset_fields = ['id','subject']
+    filterset_fields = ['id','essays','subject']
     queryset = Question.objects.all()
 
 
@@ -193,3 +193,10 @@ class SaveAnswersView(generics.CreateAPIView):
         return Response({'message': 'CREATED'}, status=status.HTTP_201_CREATED)
 
 
+class UserEssayHistoryView(generics.ListAPIView):
+    serializer_class = UserEssayHistorySerializer
+    permission_classes = (IsAuthenticated,)
+
+    def get_queryset(self):
+        user_pk = self.kwargs['pk']
+        return UserEssay.objects.filter(user_id=user_pk)

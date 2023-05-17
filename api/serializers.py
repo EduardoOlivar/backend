@@ -136,7 +136,7 @@ class AnswerSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Answer
-        exclude = [*generic_fields, 'questions', 'users']
+        exclude = [*generic_fields, 'questions', 'users', 'essays']
 
 
 class AnswerCreateSerializer(serializers.ModelSerializer):
@@ -238,10 +238,41 @@ class SaveAnswersSerializer(serializers.Serializer):
         return essay_answers
 
 
-# const calcularPuntaje = (numPreguntas, numRespuestasCorrectas) => {
-#     const puntaje = 100 + (900 / numPreguntas) * numRespuestasCorrectas;
-#     return Math.round(puntaje);
-#   };
+class UserEssayHistorySerializer(serializers.ModelSerializer):
+    date = serializers.SerializerMethodField()
 
-# Select nombre, tema, fecha, tiempo, score, custom, número de preguntas
+    class Meta:
+        model = UserEssay
+        exclude = [*generic_fields, 'user','essay']
+
+    def get_custom(self, instance):
+        if not instance.essay.is_custom:
+            return "No"
+        return "Si"
+
+    def get_date(self, instance):
+        return instance.created.date()
+
+    def get_questions(self, instance):
+        return instance.essay.question.count()
+
+    def get_score(self, instance):
+        questions = self.get_questions(instance)
+        answers = AnswerEssayUser.objects.filter(essays=instance)
+        right = 0
+        for answer in answers:
+            if answer.score == 1:
+                right = right + 1
+        score = 100 + (900 / questions) * right
+        return round(score)
+
+    def to_representation(self, instance:UserEssay):
+        data = super().to_representation(instance)
+        data['name'] = instance.essay.name
+        data['is_custom'] = self.get_custom(instance)
+        data['questions'] = self.get_questions(instance)
+        data['time'] = instance.essay.time_essay
+        data['puntaje'] = self.get_score(instance)
+        return data
+
 # filtros por fecha, por puntaje, por tema

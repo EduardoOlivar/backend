@@ -11,7 +11,7 @@ urlpatterns = [
     re_path(r'^user(s)?/all/$', views.UsersListCreate.as_view()), #endpoint para consultar listado de usuarios
     re_path(r'^user(s)?/(?P<pk>[0-9]+)/$', views.UsersRetrieveUpdateDestroy.as_view()),#endpoint para consultar usuario especifico, eliminarlo ,recuperarlo o updatearlo
     re_path('api/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),#endpoint para obtener un token
-    re_path('api/register/', views.RegistrationView.as_view(), name='register'),#endpoint para registrar usuario
+    re_path('api/register/', views.RegisterView.as_view(), name='register'),#endpoint para registrar usuario
     re_path('api/login/', views.LoginView.as_view(), name='login'),#endpoint para iniciar sesion
     re_path('api/logout/', views.LogoutView.as_view(), name='logout'),#endpoint desconexion
     re_path('api/token-refresh/', jwt_views.TokenRefreshView.as_view(), name='token_refresh'),#endpoint para refresh token
@@ -24,10 +24,11 @@ urlpatterns = [
     re_path(r'^answers/list/all/$', views.AnswerList.as_view()),
     re_path(r'^answers/create/$', views.AnswerCreate.as_view()),
     re_path(r'^answers/(?P<pk>[0-9]+)/$', views.AnswerRetrieveUpdateDestroy.as_view()),
-    re_path(r'^questions_alternative/$', views.QuestionsAlternativeAll.as_view()),#endpoint para consultar por un ensayo en especifico con todas sus  preguntas y alternativas
+    re_path(r'^questions_alternative/$', views.QuestionsAlternativeAllView.as_view()),#endpoint para consultar por un ensayo en especifico con todas sus  preguntas y alternativas
     re_path(r'^score_user/all/$', views.AnswerEssayUserView.as_view()), #endpoint para obtener el puntaje del usuario
     re_path(r'^submit_essay_user/$', views.UserEssayView.as_view()), #endpoint que guarda el ensayo que realizo el usuario
     re_path(r'^submit_answers/$', views.SaveAnswersView.as_view()),#endpoint para guardar las respuestas del usuario
+    re_path(r'^history/(?P<pk>[0-9]+)/$', views.UserEssayHistoryView.as_view()) # endpoint para el historial
 ]
 
 urlpatterns += [
