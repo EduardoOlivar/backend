@@ -215,6 +215,7 @@ class EssayUserSerializer(serializers.Serializer):
 class SaveAnswersSerializer(serializers.Serializer):
     answer_ids = serializers.ListSerializer(child=serializers.IntegerField())
     user_essay_id = serializers.IntegerField()
+    time_essay = serializers.CharField()
 
     def validate(self, value):
         answer_ids = value.get('answer_ids')
@@ -227,6 +228,7 @@ class SaveAnswersSerializer(serializers.Serializer):
 
     def create(self, validated_data):
         answer_ids = validated_data.get('answer_ids')
+        time_essay = validated_data.get('time_essay')
         user_essay_id = validated_data.get('user_essay_id')
         user_essay = UserEssay.objects.get(pk=user_essay_id)
         user = self.context['request'].user
@@ -234,7 +236,7 @@ class SaveAnswersSerializer(serializers.Serializer):
             answer = Answer.objects.get(pk=answer_id)
             if AnswerEssayUser.objects.filter(answers=answer, essays=user_essay).exists():
                 raise serializers.ValidationError('Ya existe una respuesta para esta combinación de UserEssay y Answer')
-            essay_answers = AnswerEssayUser.objects.create(answers=answer, essays=user_essay, users=user, score=answer.right)
+            essay_answers = AnswerEssayUser.objects.create(answers=answer, essays=user_essay, users=user, score=answer.right, time_essay=time_essay)
         return essay_answers
 
 
@@ -258,6 +260,8 @@ class UserEssayHistorySerializer(serializers.ModelSerializer):
 
     def get_score(self, instance):
         questions = self.get_questions(instance)
+        if questions == 0:
+            return 0
         answers = AnswerEssayUser.objects.filter(essays=instance)
         right = 0
         for answer in answers:
@@ -266,13 +270,23 @@ class UserEssayHistorySerializer(serializers.ModelSerializer):
         score = 100 + (900 / questions) * right
         return round(score)
 
-    def to_representation(self, instance:UserEssay):
+    def get_time_essay(self,instance):
+        answer_essay_user = instance.answers_essay_user.first()
+        if answer_essay_user:
+            return answer_essay_user.time_essay
+        else:
+            return None
+
+    def to_representation(self, instance: UserEssay):
         data = super().to_representation(instance)
         data['name'] = instance.essay.name
         data['is_custom'] = self.get_custom(instance)
         data['questions'] = self.get_questions(instance)
-        data['time'] = instance.essay.time_essay
+        data['time'] = self.get_time_essay(instance)
         data['puntaje'] = self.get_score(instance)
         return data
+
+
+
 
 # filtros por fecha, por puntaje, por tema
