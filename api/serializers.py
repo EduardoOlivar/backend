@@ -38,6 +38,7 @@ class UserProfileSerializer(serializers.ModelSerializer):
 
 class RegistrationSerializer(serializers.ModelSerializer):
     password2 = serializers.CharField(style={"input_type": "password"}, write_only=True)
+    username = serializers.CharField(max_length=255)
 
     class Meta:
         model = Users
@@ -136,7 +137,7 @@ class AnswerSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Answer
-        exclude = [*generic_fields, 'questions', 'users', 'essays']
+        exclude = [*generic_fields, 'questions', 'users', 'essay']
 
 
 class AnswerCreateSerializer(serializers.ModelSerializer):
@@ -267,6 +268,7 @@ class UserEssayHistorySerializer(serializers.ModelSerializer):
         for answer in answers:
             if answer.score == 1:
                 right = right + 1
+
         score = 100 + (900 / questions) * right
         return round(score)
 
