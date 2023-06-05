@@ -190,27 +190,6 @@ class EssayQuestionsAlternativeAllSerializer(EssaySerializer):
     question = QuestionsAlternativeAllSerializer(many=True, read_only=True)
 
 
-#serializador para crear una id unica cuando se crea un ensayo para un usuario
-class EssayUserSerializer(serializers.Serializer):
-    essay_id = serializers.IntegerField()
-
-    class Meta:
-        model = UserEssay
-        exclude = [*generic_fields]
-
-    def to_representation(self, instance:UserEssay):
-        data = super().to_representation(instance)
-        del data['essay_id']
-        data['new_id'] = instance.id
-        return data
-
-    def create(self, validated_data):
-        user = self.context['request'].user
-        essay_id = validated_data.get('essay_id')
-        essay = CustomEssay.objects.get(id=essay_id)
-        user_essay = UserEssay.objects.create(user=user, essay=essay)
-        return user_essay
-
 
 #serializador que guarda las respuestas de un ensayo creado para un usuario
 class SaveAnswersSerializer(serializers.Serializer):
@@ -218,26 +197,41 @@ class SaveAnswersSerializer(serializers.Serializer):
     user_essay_id = serializers.IntegerField()
     time_essay = serializers.CharField()
 
-    def validate(self, value):
-        answer_ids = value.get('answer_ids')
-        user_essay_id = value.get('user_essay_id')
-        user_essay = get_object_or_404(UserEssay, pk=user_essay_id)
-        answers = Answer.objects.filter(id__in=answer_ids, questions__essays=user_essay.essay)
+    def validate(self, data):
+        answer_ids = data.get('answer_ids')
+        user_essay_id = data.get('user_essay_id')
+        time_essay = data.get('time_essay')
+
+        user_essay = get_object_or_404(CustomEssay, pk=user_essay_id)
+        answers = Answer.objects.filter(id__in=answer_ids, questions__essays__custom_essay=user_essay)
+        print(user_essay)
+        print(answers)
+        print(answer_ids)
         if len(answer_ids) != len(answers):
-            raise serializers.ValidationError('respuestas no validas')
-        return value
+            raise serializers.ValidationError('Respuestas no válidas.')
+
+        return data
 
     def create(self, validated_data):
         answer_ids = validated_data.get('answer_ids')
-        time_essay = validated_data.get('time_essay')
         user_essay_id = validated_data.get('user_essay_id')
-        user_essay = UserEssay.objects.get(pk=user_essay_id)
+        time_essay = validated_data.get('time_essay')
+
+        user_essay = get_object_or_404(CustomEssay, pk=user_essay_id)
         user = self.context['request'].user
+        essay_answers = []
+
         for answer_id in answer_ids:
-            answer = Answer.objects.get(pk=answer_id)
-            if AnswerEssayUser.objects.filter(answers=answer, essays=user_essay).exists():
-                raise serializers.ValidationError('Ya existe una respuesta para esta combinación de UserEssay y Answer')
-            essay_answers = AnswerEssayUser.objects.create(answers=answer, essays=user_essay, users=user, score=answer.right, time_essay=time_essay)
+            answer = get_object_or_404(Answer, pk=answer_id)
+
+            if AnswerEssayUser.objects.filter(answers=answer, essays=user_essay, users=user).exists():
+                raise serializers.ValidationError(
+                    'Ya existe una respuesta para esta combinación de UserEssay y Answer.')
+
+            essay_answer = AnswerEssayUser.objects.create(answers=answer, essays=user_essay, users=user,
+                                                          score=answer.right, time_essay=time_essay)
+            essay_answers.append(essay_answer)
+
         return essay_answers
 
 
@@ -245,63 +239,79 @@ class UserEssayHistorySerializer(serializers.ModelSerializer):
     date = serializers.SerializerMethodField()
 
     class Meta:
-        model = UserEssay
-        exclude = [*generic_fields, 'user','essay']
-
-    def get_custom(self, instance):
-        if not instance.essay.is_custom:
-            return "No"
-        return "Si"
+        model = CustomEssay
+        fields = ['name', 'is_custom', 'date']
 
     def get_date(self, instance):
         return instance.created.date()
 
     def get_questions(self, instance):
-        return instance.essay.question.count()
+        return Question.objects.filter(essays__in=instance.essays.all()).count()
 
     def get_score(self, instance):
         questions = self.get_questions(instance)
         if questions == 0:
             return 0
         answers = AnswerEssayUser.objects.filter(essays=instance)
-        right = 0
-        for answer in answers:
-            if answer.score == 1:
-                right = right + 1
-
+        right = answers.filter(score=1).count()
         score = 100 + (900 / questions) * right
         return round(score)
 
-    def get_time_essay(self,instance):
+    def get_time(self, instance):
         answer_essay_user = instance.answers_essay_user.first()
         if answer_essay_user:
             return answer_essay_user.time_essay
         else:
             return None
 
-    def to_representation(self, instance: UserEssay):
+    def to_representation(self, instance):
         data = super().to_representation(instance)
-        data['name'] = instance.essay.name
-        data['is_custom'] = self.get_custom(instance)
         data['questions'] = self.get_questions(instance)
-        data['time'] = self.get_time_essay(instance)
+        data['time_essay'] = self.get_time(instance)
         data['puntaje'] = self.get_score(instance)
+        # Verificar si hay registros en AnswerEssayUser para el CustomEssay actual
+        has_answer_essay_user = AnswerEssayUser.objects.filter(essays=instance).exists()
+        if not has_answer_essay_user:
+            # No mostrar el CustomEssay si no hay registros en AnswerEssayUser
+            return None
+
         return data
 
 
+class EssayAnswerSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = EssayAnswer
+        fields = ['id']
+
+
 class CustomEssaySerializer(serializers.ModelSerializer):
-    essay_ids = serializers.ListSerializer(child=serializers.IntegerField())
+    essay_ids = serializers.ListField(write_only=True)
+    essay_custom = EssayAnswerSerializer(many=True, read_only=True)
 
     class Meta:
         model = CustomEssay
-        fields = ['id', 'is_custom', 'name', 'essay_ids']
+        fields = ('id', 'is_custom', 'name', 'essay_ids', 'essay_custom', 'user')
 
     def validate(self, attrs):
-        is_custom = attrs.get('is_custom')
-        essay_ids = attrs.get('essay_ids')
-        if not is_custom and len(essay_ids) != 1:
-            raise serializers.ValidationError('Cuando is_custom es False, solo se puede seleccionar un ensayo predefinido.')
+        essay_ids = attrs.get('essay_ids', [])
+        user = attrs.get('user')
+        if user is None:
+            raise serializers.ValidationError("Se debe proporcionar la id del usuario.")
+        for essay_id in essay_ids:
+            try:
+                essay = Essay.objects.get(id=essay_id)
+            except Essay.DoesNotExist:
+                raise serializers.ValidationError(f"La ID del ensayo {essay_id} no existe.")
         return attrs
+
+
+    def create(self, validated_data):
+        essay_ids = validated_data.pop('essay_ids', [])
+        custom_essay = CustomEssay.objects.create(**validated_data)
+        for essay_id in essay_ids:
+            essay = Essay.objects.get(id=essay_id)
+            EssayAnswer.objects.create(essay=essay, custom_essay=custom_essay)
+        return custom_essay
 
 
 class CustomEssayQuestionSerializer(serializers.ModelSerializer):
@@ -319,16 +329,15 @@ class CustomEssayQuestionSerializer(serializers.ModelSerializer):
             custom_essay_obj = CustomEssay.objects.get(id=custom_essay)
         except CustomEssay.DoesNotExist:
             raise serializers.ValidationError('El ensayo personalizado no existe.')
-
-        if not custom_essay_obj.is_custom:
-            raise serializers.ValidationError('El ensayo personalizado debe tener is_custom=True para agregar preguntas.')
-
         # Verificar que las preguntas existan en los ensayos seleccionados
         essay_ids = custom_essay_obj.essays.values_list('id', flat=True)
-
         for question_id in questions:
             try:
-                question_obj = Question.objects.get(id=question_id, essays__id__in=essay_ids)
+                question_obj = Question.objects.get(id=question_id)
+                if question_obj.essays.filter(id__in=essay_ids).exists():
+                    continue
+                else:
+                    raise serializers.ValidationError('Una o más preguntas no existen en los ensayos predefinidos seleccionados del ensayo personalizado.')
             except Question.DoesNotExist:
                 raise serializers.ValidationError('Una o más preguntas no existen en los ensayos predefinidos seleccionados del ensayo personalizado.')
 

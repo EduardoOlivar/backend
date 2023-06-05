@@ -73,13 +73,13 @@ class Essay(GenericAttributes):
 class CustomEssay(GenericAttributes):
     is_custom = models.BooleanField(default=False)
     name = models.TextField(**common_args)
-    essays = models.ManyToManyField(Essay, related_name='custom_essays')
-
-
-class UserEssay(GenericAttributes):
+    essays = models.ManyToManyField(Essay, blank=True, through='EssayAnswer', related_name='custom_essay')
     user = models.ForeignKey(Users, **common_args, on_delete=models.CASCADE, related_name='essay_user')
-    essay = models.ForeignKey(CustomEssay, **common_args, on_delete=models.CASCADE, related_name='user_essay')
 
+
+class EssayAnswer(GenericAttributes):
+    essay = models.ForeignKey(Essay, **common_args,on_delete=models.CASCADE, related_name='essay_answer')
+    custom_essay = models.ForeignKey(CustomEssay, **common_args,on_delete=models.CASCADE, related_name='essay_custom')
 
 class Question(GenericAttributes):
     question = models.TextField(**common_args)
@@ -98,12 +98,12 @@ class Answer(GenericAttributes):
     right = models.IntegerField(**common_args)
     questions = models.ForeignKey(Question, **common_args, on_delete=models.CASCADE, related_name='answer')
     users = models.ManyToManyField(Users, blank=True, through='AnswerEssayUser', related_name='answer')
-    essay = models.ManyToManyField(UserEssay, blank=True, through='AnswerEssayUser', related_name='answer')
+    essay = models.ManyToManyField(CustomEssay, blank=True, through='AnswerEssayUser', related_name='answer')
 
 
 class AnswerEssayUser(GenericAttributes):
     answers = models.ForeignKey(Answer, **common_args, on_delete=models.CASCADE, related_name='answers_essay_user')
-    essays = models.ForeignKey(UserEssay, **common_args, on_delete=models.CASCADE, related_name='answers_essay_user')
+    essays = models.ForeignKey(CustomEssay, **common_args, on_delete=models.CASCADE, related_name='answers_essay_user')
     users = models.ForeignKey(Users, **common_args, on_delete=models.CASCADE, related_name='answers_essay_user')
     score = models.IntegerField(**common_args)
     time_essay = models.TextField(**common_args)

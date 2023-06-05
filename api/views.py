@@ -170,18 +170,6 @@ class AnswerEssayUserView(generics.ListAPIView):
     queryset = AnswerEssayUser.objects.filter(is_deleted=False).order_by('pk')
 
 
-class UserEssayView(generics.CreateAPIView):
-    serializer_class = EssayUserSerializer
-    queryset = UserEssay.objects.all()
-    permission_classes = (IsAuthenticated,)
-
-    def post(self, request, *args, **kwargs):
-        serializer = self.serializer_class(data=request.data, context={'request': request})
-        serializer.is_valid(raise_exception=True)
-        serializer.save(user=self.request.user)
-        return Response(serializer.data, status=status.HTTP_201_CREATED)
-
-
 class SaveAnswersView(generics.CreateAPIView):
     permission_classes = (IsAuthenticated,)
     serializer_class = SaveAnswersSerializer
@@ -199,24 +187,22 @@ class UserEssayHistoryView(generics.ListAPIView):
 
     def get_queryset(self):
         user_pk = self.kwargs['pk']
-        return UserEssay.objects.filter(user_id=user_pk)
+        return CustomEssay.objects.filter(user_id=user_pk)
 
 
-class CustomEssayView(generics.ListCreateAPIView):
+class CustomEssayView(generics.CreateAPIView):
     queryset = CustomEssay.objects.filter(is_deleted=False)
     serializer_class = CustomEssaySerializer
 
-    def create(self, request, *args, **kwargs):
-        serializer = self.get_serializer(data=request.data)
-        serializer.is_valid(raise_exception=True)
-        self.perform_create(serializer)
-        custom_essay_id = serializer.instance.id
-        headers = self.get_success_headers(serializer.data)
-        response_data = {'id': custom_essay_id, 'message': 'CustomEssay creado exitosamente.'} #devuelve la respuesta con la id del nuevo ensayo
-        return Response(response_data, status=status.HTTP_201_CREATED, headers=headers)
+    def perform_create(self, serializer):
+        custom_essay = serializer.save()
+        response_data = {'id': custom_essay.id, 'message': 'CustomEssay creado exitosamente.'}
+        return Response(response_data, status=status.HTTP_201_CREATED)
 
 
 class CustomEssayQuestionView(generics.ListCreateAPIView):
     queryset = CustomEssayQuestion.objects.filter(is_deleted=False)
     serializer_class = CustomEssayQuestionSerializer
     permission_classes = (IsAuthenticated,)
+
+

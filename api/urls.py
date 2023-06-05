@@ -30,7 +30,6 @@ urlpatterns = [
 
     re_path(r'^questions_alternative/$', views.QuestionsAlternativeAllView.as_view()),  # Endpoint para consultar todas las preguntas y alternativas de un ensayo específico
     re_path(r'^score_user/all/$', views.AnswerEssayUserView.as_view()),  # Endpoint para obtener el puntaje del usuario
-    re_path(r'^submit_essay_user/$', views.UserEssayView.as_view()),  # Endpoint para guardar el ensayo realizado por el usuario
     re_path(r'^submit_answers/$', views.SaveAnswersView.as_view()),  # Endpoint para guardar las respuestas del usuario
     re_path(r'^history/(?P<pk>[0-9]+)/$', views.UserEssayHistoryView.as_view()),  # Endpoint para consultar el historial de ensayos de un usuario
     re_path(r'^custom_essays/$', views.CustomEssayView.as_view()),  # Endpoint para consultar y crear ensayos personalizados
