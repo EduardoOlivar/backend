@@ -216,7 +216,7 @@ class CustomEssayView(generics.ListCreateAPIView):
         return Response(response_data, status=status.HTTP_201_CREATED, headers=headers)
 
 
-class CustomEssayQuestionCreateView(generics.ListCreateAPIView):
+class CustomEssayQuestionView(generics.ListCreateAPIView):
     queryset = CustomEssayQuestion.objects.filter(is_deleted=False)
     serializer_class = CustomEssayQuestionSerializer
     permission_classes = (IsAuthenticated,)
