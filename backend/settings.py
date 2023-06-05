@@ -67,7 +67,7 @@ REST_FRAMEWORK = {
 }
 
 SIMPLE_JWT = {
-    'ACCESS_TOKEN_LIFETIME': timedelta(minutes=60),
+    'ACCESS_TOKEN_LIFETIME': timedelta(minutes=90),
     'REFRESH_TOKEN_LIFETIME': timedelta(days=3),
     'AUTH_HEADER_TYPES': ('Bearer',),
 
@@ -112,7 +112,7 @@ DATABASES = {
             'ENGINE': 'django.db.backends.mysql',
             'NAME': 'proyecto_web',
             'USER': 'root',
-            'PASSWORD': '1234',
+            'PASSWORD': '',
             'HOST': 'localhost',
             'PORT': '3306'
         }

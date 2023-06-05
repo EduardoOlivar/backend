@@ -68,13 +68,17 @@ class Users(AbstractBaseUser,GenericAttributes):
 class Essay(GenericAttributes):
     name = models.TextField(**common_args)
     type = models.TextField(**common_args)
-    is_custom = models.BooleanField(**common_args, default=False)
-    users = models.ManyToManyField(Users, blank=True, through='UserEssay', related_name='essay')
+
+
+class CustomEssay(GenericAttributes):
+    is_custom = models.BooleanField(default=False)
+    name = models.TextField(**common_args)
+    essays = models.ManyToManyField(Essay, related_name='custom_essays')
 
 
 class UserEssay(GenericAttributes):
     user = models.ForeignKey(Users, **common_args, on_delete=models.CASCADE, related_name='essay_user')
-    essay = models.ForeignKey(Essay, **common_args, on_delete=models.CASCADE, related_name='user_essay')
+    essay = models.ForeignKey(CustomEssay, **common_args, on_delete=models.CASCADE, related_name='user_essay')
 
 
 class Question(GenericAttributes):
@@ -82,6 +86,11 @@ class Question(GenericAttributes):
     subject = models.TextField(**common_args)
     link_resolution = models.URLField(**common_args)
     essays = models.ForeignKey(Essay, **common_args,on_delete=models.CASCADE, related_name='question')
+
+
+class CustomEssayQuestion(GenericAttributes):
+    custom_essay = models.OneToOneField(CustomEssay, on_delete=models.CASCADE)
+    question = models.OneToOneField(Question, on_delete=models.CASCADE)
 
 
 class Answer(GenericAttributes):
