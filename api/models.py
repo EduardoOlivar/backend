@@ -3,13 +3,12 @@ from django.db import models
 from django.contrib.auth.models import (
     BaseUserManager, AbstractBaseUser
 )
-from datetime import timedelta
-from datetime import time
-from django.utils import timezone
-# Create your models here.
+
+
+
 common_args = {'null': True, 'blank': True} #atributos generales que tienen que tener
 
-
+#Clase abstracta para que todas las clases que hereden de ella tengan los mismos atributos
 class GenericAttributes(models.Model):
     created = models.DateTimeField(**common_args, auto_now_add=True, editable=False)  # para saber cuando fue creado el dato
     updated = models.DateTimeField(**common_args, auto_now=True) # para saber cuando se actualizo el dato
@@ -19,7 +18,7 @@ class GenericAttributes(models.Model):
         abstract = True
 
 
-# Create your models here
+# Clase del modelo UserManager
 class UserManager(BaseUserManager):
     def create_user(self, email, password=None):
         if not email:
@@ -42,7 +41,7 @@ class UserManager(BaseUserManager):
         user.save(using=self._db)
         return user
 
-
+#Clase del modelo Users
 class Users(AbstractBaseUser,GenericAttributes):
     email = models.EmailField(
         max_length=255,
@@ -65,11 +64,13 @@ class Users(AbstractBaseUser,GenericAttributes):
         return self.is_admin
 
 
+# Clase del modelo Essay
 class Essay(GenericAttributes):
     name = models.TextField(**common_args)
     type = models.TextField(**common_args)
 
 
+# Clase del modelo CustomEssay
 class CustomEssay(GenericAttributes):
     is_custom = models.BooleanField(default=False)
     name = models.TextField(**common_args)
@@ -77,10 +78,13 @@ class CustomEssay(GenericAttributes):
     user = models.ForeignKey(Users, **common_args, on_delete=models.CASCADE, related_name='essay_user')
 
 
+# Clase del modelo EssayAnswer
 class EssayAnswer(GenericAttributes):
     essay = models.ForeignKey(Essay, **common_args,on_delete=models.CASCADE, related_name='essay_answer')
     custom_essay = models.ForeignKey(CustomEssay, **common_args,on_delete=models.CASCADE, related_name='essay_custom')
 
+
+# Clase del modelo Question
 class Question(GenericAttributes):
     question = models.TextField(**common_args)
     subject = models.TextField(**common_args)
@@ -88,11 +92,13 @@ class Question(GenericAttributes):
     essays = models.ForeignKey(Essay, **common_args,on_delete=models.CASCADE, related_name='question')
 
 
+# Clase del modelo CustomEssayQuestion
 class CustomEssayQuestion(GenericAttributes):
     custom_essay = models.OneToOneField(CustomEssay, on_delete=models.CASCADE)
     question = models.OneToOneField(Question, on_delete=models.CASCADE)
 
 
+# Clase del modelo Answer
 class Answer(GenericAttributes):
     label = models.CharField(**common_args, max_length=255)
     right = models.IntegerField(**common_args)
@@ -101,6 +107,7 @@ class Answer(GenericAttributes):
     essay = models.ManyToManyField(CustomEssay, blank=True, through='AnswerEssayUser', related_name='answer')
 
 
+# Clase del modelo AnswerEssayUser
 class AnswerEssayUser(GenericAttributes):
     answers = models.ForeignKey(Answer, **common_args, on_delete=models.CASCADE, related_name='answers_essay_user')
     essays = models.ForeignKey(CustomEssay, **common_args, on_delete=models.CASCADE, related_name='answers_essay_user')
