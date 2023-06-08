@@ -3,17 +3,12 @@ from django.db import models
 from django.contrib.auth.models import (
     BaseUserManager, AbstractBaseUser
 )
-from django.utils import timezone
-# Create your models here.
-DISCOUNT_CODE_TYPES_CHOICES = [
-    ('percent', 'Percentage-based'),
-    ('value', 'Value-based'),
-]
+
 
 
 common_args = {'null': True, 'blank': True} #atributos generales que tienen que tener
 
-
+#Clase abstracta para que todas las clases que hereden de ella tengan los mismos atributos
 class GenericAttributes(models.Model):
     created = models.DateTimeField(**common_args, auto_now_add=True, editable=False)  # para saber cuando fue creado el dato
     updated = models.DateTimeField(**common_args, auto_now=True) # para saber cuando se actualizo el dato
@@ -23,13 +18,9 @@ class GenericAttributes(models.Model):
         abstract = True
 
 
-# Create your models here
+# Clase del modelo UserManager
 class UserManager(BaseUserManager):
     def create_user(self, email, password=None):
-        """
-        Creates and saves a User with the given email, date of
-        birth and password.
-        """
         if not email:
             raise ValueError('Users must have an email address')
 
@@ -42,10 +33,6 @@ class UserManager(BaseUserManager):
         return user
 
     def create_superuser(self, email, password=None):
-        """
-        Creates and saves a superuser with the given email, date of
-        birth and password.
-        """
         user = self.create_user(
             email,
             password=password,
@@ -54,7 +41,7 @@ class UserManager(BaseUserManager):
         user.save(using=self._db)
         return user
 
-
+#Clase del modelo Users
 class Users(AbstractBaseUser,GenericAttributes):
     email = models.EmailField(
         max_length=255,
@@ -77,29 +64,53 @@ class Users(AbstractBaseUser,GenericAttributes):
         return self.is_admin
 
 
+# Clase del modelo Essay
 class Essay(GenericAttributes):
     name = models.TextField(**common_args)
     type = models.TextField(**common_args)
-    users = models.ManyToManyField(Users, blank=True, related_name='essay')
 
 
+# Clase del modelo CustomEssay
+class CustomEssay(GenericAttributes):
+    is_custom = models.BooleanField(default=False)
+    name = models.TextField(**common_args)
+    essays = models.ManyToManyField(Essay, blank=True, through='EssayAnswer', related_name='custom_essay')
+    user = models.ForeignKey(Users, **common_args, on_delete=models.CASCADE, related_name='essay_user')
+
+
+# Clase del modelo EssayAnswer
+class EssayAnswer(GenericAttributes):
+    essay = models.ForeignKey(Essay, **common_args,on_delete=models.CASCADE, related_name='essay_answer')
+    custom_essay = models.ForeignKey(CustomEssay, **common_args,on_delete=models.CASCADE, related_name='essay_custom')
+
+
+# Clase del modelo Question
 class Question(GenericAttributes):
     question = models.TextField(**common_args)
     subject = models.TextField(**common_args)
     link_resolution = models.URLField(**common_args)
-    essay = models.ForeignKey(Essay, **common_args,on_delete=models.CASCADE, related_name='question')
+    essays = models.ForeignKey(Essay, **common_args,on_delete=models.CASCADE, related_name='question')
 
 
+# Clase del modelo CustomEssayQuestion
+class CustomEssayQuestion(GenericAttributes):
+    custom_essay = models.OneToOneField(CustomEssay, on_delete=models.CASCADE)
+    question = models.OneToOneField(Question, on_delete=models.CASCADE)
+
+
+# Clase del modelo Answer
 class Answer(GenericAttributes):
     label = models.CharField(**common_args, max_length=255)
     right = models.IntegerField(**common_args)
-    question = models.ForeignKey(Question, **common_args, on_delete=models.CASCADE, related_name='answer')
+    questions = models.ForeignKey(Question, **common_args, on_delete=models.CASCADE, related_name='answer')
     users = models.ManyToManyField(Users, blank=True, through='AnswerEssayUser', related_name='answer')
-    essay = models.ManyToManyField(Essay, blank=True, through='AnswerEssayUser', related_name='answer')
+    essay = models.ManyToManyField(CustomEssay, blank=True, through='AnswerEssayUser', related_name='answer')
 
 
+# Clase del modelo AnswerEssayUser
 class AnswerEssayUser(GenericAttributes):
-    answer = models.ForeignKey(Answer,**common_args, on_delete=models.CASCADE)
-    essay = models.ForeignKey(Essay,**common_args,on_delete=models.CASCADE)
-    users = models.ForeignKey(Users,**common_args,on_delete=models.CASCADE)
+    answers = models.ForeignKey(Answer, **common_args, on_delete=models.CASCADE, related_name='answers_essay_user')
+    essays = models.ForeignKey(CustomEssay, **common_args, on_delete=models.CASCADE, related_name='answers_essay_user')
+    users = models.ForeignKey(Users, **common_args, on_delete=models.CASCADE, related_name='answers_essay_user')
     score = models.IntegerField(**common_args)
+    time_essay = models.TextField(**common_args)
