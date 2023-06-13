@@ -229,13 +229,13 @@ class SaveAnswersSerializer(serializers.Serializer):
         time_essay = data.get('time_essay')
 
         # Obtener el ensayo personalizado del usuario
-        user_essay = get_object_or_404(CustomEssay, pk=user_essay_id)
+        # user_essay = get_object_or_404(CustomEssay, pk=user_essay_id)
         # Filtrar las respuestas según los IDs proporcionados y verificar si pertenecen al ensayo del usuario
-        answers = Answer.objects.filter(id__in=answer_ids, questions__essays__custom_essay=user_essay)
+        # answers = Answer.objects.filter(id__in=answer_ids, questions__essays__custom_essay=user_essay)
 
-        # Comprobar si el número de IDs de respuesta coincide con el número de respuestas válidas
-        if len(answer_ids) != len(answers):
-            raise serializers.ValidationError('Respuestas no válidas.')
+        # # Comprobar si el número de IDs de respuesta coincide con el número de respuestas válidas
+        # if len(answer_ids) != len(answers):
+        #     raise serializers.ValidationError('Respuestas no válidas.')
 
         return data
 
@@ -276,7 +276,7 @@ class UserEssayHistorySerializer(serializers.ModelSerializer):
         return instance.created.date()  # Método para obtener la fecha de creación del ensayo
 
     def get_questions(self, instance):
-        return Question.objects.filter(essays__in=instance.essays.all()).count()  # Método para obtener el número de preguntas respondidas en el ensayo
+        return Question.objects.filter(essays__in=instance.essays.all().exclude()).count()  # Método para obtener el número de preguntas respondidas en el ensayo
 
     def get_score(self, instance):
         questions = self.get_questions(instance)

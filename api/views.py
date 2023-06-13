@@ -54,7 +54,7 @@ class LoginView(APIView):
         user = authenticate(email=email, password=password)  # Autentica al usuario utilizando el email y la contraseña
         if user is not None:
             token = get_tokens_for_user(user)  # Obtiene el token de acceso para el usuario autenticado
-            return Response({'token': token, 'msg': 'Inicio de sesión exitoso', 'status': 'ok'}, status=status.HTTP_200_OK)  # Retorna el token de acceso en la respuesta con un mensaje de éxito y un código de estado 200 (OK)
+            return Response({'token': token, 'msg': 'Inicio de sesión exitoso', 'status': 'ok','user_id':user.id}, status=status.HTTP_200_OK)  # Retorna el token de acceso en la respuesta con un mensaje de éxito y un código de estado 200 (OK)
         else:
             return Response({'errors': {'error_de_campo': ['Email o contraseña invalidos']}}, status=status.HTTP_404_NOT_FOUND)  # Retorna un mensaje de error en la respuesta con un código de estado 404 (NOT FOUND)
 
