@@ -276,6 +276,8 @@ class UserEssayHistorySerializer(serializers.ModelSerializer):
         return instance.created.date()  # Método para obtener la fecha de creación del ensayo
 
     def get_score(self, instance):
+        if instance.current_questions == 0:
+            return 0
         answers = AnswerEssayUser.objects.filter(essays=instance)
         right = answers.filter(score=1).count()
         score = 100 + (900 / instance.current_questions) * right  # Cálculo del puntaje basado en las respuestas correctas
