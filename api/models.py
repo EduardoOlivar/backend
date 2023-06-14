@@ -76,6 +76,7 @@ class CustomEssay(GenericAttributes):
     name = models.TextField(**common_args)
     essays = models.ManyToManyField(Essay, blank=True, through='EssayAnswer', related_name='custom_essay')
     user = models.ForeignKey(Users, **common_args, on_delete=models.CASCADE, related_name='essay_user')
+    current_questions = models.IntegerField(**common_args)
 
 
 # Clase del modelo EssayAnswer

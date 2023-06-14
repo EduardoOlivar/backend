@@ -270,13 +270,10 @@ class UserEssayHistorySerializer(serializers.ModelSerializer):
 
     class Meta:
         model = CustomEssay
-        fields = ['name', 'is_custom', 'date']  # Campos a incluir en la representación del ensayo
+        fields = ['name', 'is_custom', 'date','current_questions']  # Campos a incluir en la representación del ensayo
 
     def get_date(self, instance):
         return instance.created.date()  # Método para obtener la fecha de creación del ensayo
-
-    def get_questions(self, instance):
-        return Question.objects.filter(essays__in=instance.essays.all().exclude()).count()  # Método para obtener el número de preguntas respondidas en el ensayo
 
     def get_score(self, instance):
         questions = self.get_questions(instance)
@@ -296,7 +293,6 @@ class UserEssayHistorySerializer(serializers.ModelSerializer):
 
     def to_representation(self, instance):
         data = super().to_representation(instance)
-        data['questions'] = self.get_questions(instance)  # Incluir el número de preguntas en la representación
         data['time_essay'] = self.get_time(instance)  # Incluir el tiempo empleado en el ensayo en la representación
         data['puntaje'] = self.get_score(instance)  # Incluir el puntaje obtenido en la representación
         # Verificar si hay registros en AnswerEssayUser para el CustomEssay actual
