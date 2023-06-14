@@ -318,7 +318,7 @@ class CustomEssaySerializer(serializers.ModelSerializer):
 
     class Meta:
         model = CustomEssay
-        fields = ('id', 'is_custom', 'name', 'essay_ids', 'essay_custom', 'user')
+        fields = ('id', 'is_custom', 'name', 'essay_ids', 'essay_custom', 'user','current_questions')
 
     def validate(self, attrs):
         essay_ids = attrs.get('essay_ids', [])
