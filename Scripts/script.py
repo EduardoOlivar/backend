@@ -298,34 +298,6 @@ dataNumeros = [
       },
       {
         'question':
-          "La automotora “Mi auto” tiene cinco marcas de automóviles, cada marca tiene tres modelos y cada modelo está en tres colores distintos.[\\newline]La automotora “Viaje feliz” tiene cuatro marcas de automóviles, cada marca tiene tres modelos y cada modelo en cuatro colores distintos.[\\newline] Si las marcas de los automóviles de las automotoras son distintas entre sí, ¿cuál de las siguientes afirmaciones es verdadera?",
-        'subject': "numeros",
-        'link_resolution': "https://www.youtube.com/embed/2nghljBMp1k?start=71",
-        'answer': [
-          {
-            'label':
-              "La automotora “Viaje feliz” ofrece tres posibilidades distintas más para elegir un automóvil que la automotora “Mi auto”",
-            'right': 1,
-          },
-          {
-            'label':
-              "Ambas automotoras ofrecen la misma cantidad de posibilidades distintas para elegir un automóvil",
-            'right': 0,
-          },
-          {
-            'label':
-              "La automotora “Mi auto” ofrece más posibilidades distintas para elegir un automóvil que la automotora “Viaje feliz”",
-            'right': 0,
-          },
-          {
-            'label':
-              "El total de las distintas posibilidades de elegir un automóvil está determinado por la suma entre la cantidad de marcas, de modelos y de colores",
-            'right': 0,
-          },
-        ],
-      },
-      {
-        'question':
           "El modelo RVA de colores, permite crear cualquier color mediante la mezcla de los distintos tonos de tres olores: rojo, verde y azul. Los valores de la intensidad decada uno de estos colores van desde el 0 al 255 y cada color creado tiene un código de tres números donde el primero representa al rojo, el segundo al verde y el tercero al azul.[\\newline]El código de la mezcla de dos colores se obtiene haciendo el promedio de cada uno de los valores de los colores originales tal como se presenta a continuación:[\\newline \\begin{array}{c:c} \\text{Colores para mezclar} & \\text{Color resultante} \\newline \\hline (a,b,c),(m,n,t) & (\\frac{a + m}{2} \\cdot \\frac{b + n}{2} \\cdot \\frac{c + t}{2}) \\newline \\hline \\end{array} \\newline]¿Con qué color hay que mezclar el color (160, 60, 120) para obtener el color (170, 80, 60)?",
         'subject': "numeros",
         'link_resolution': "https://www.youtube.com/embed/2nghljBMp1k?start=298",
@@ -348,7 +320,7 @@ dataNumeros = [
           },
         ],
       },
-      {
+ {
         'question':
           "En la temporada de invierno, la diferencia horaria entre Nueva Zelanda y Chile es de 16 h , desde Chile. Por ejemplo, si en Chile son las 11 de la mañana de un lunes, en Nueva Zelanda son las 3 de la mañana del martes.[\\newline]En la misma temporada la diferencia horaria entre México y Chile es de -1 h , desde Chile. Es decir, cuando en Chile son las 11 de la mañana de un lunes, en México son las 10 de la mañana del mismo día.[\\newline]¿Cuál es la diferencia horaria entre Nueva Zelanda y México, desde México, en la temporada de invierno?",
         'subject': "numeros",
@@ -396,7 +368,8 @@ dataNumeros = [
           },
         ],
       },
-      {
+   
+   {
         'question': "¿Cuál es el [40%] del [15%] de 300 ?",
         'subject': "numeros",
         'link_resolution': "https://www.youtube.com/embed/2nghljBMp1k?start=611",
@@ -419,7 +392,8 @@ dataNumeros = [
           },
         ],
       },
-      {
+      
+{
         'question':
           "Si el precio de un helado es $500 , ¿cuál de las siguientes expresiones representa el valor del helado aumentado en su [120%]?",
         'subject': "numeros",
@@ -443,7 +417,7 @@ dataNumeros = [
           },
         ],
       },
-      {
+{
         'question': "¿Qué porcentaje es 4740 de 15800 ?",
         'subject': "numeros",
         'link_resolution': "https://www.youtube.com/embed/2nghljBMp1k?start=814",
@@ -466,57 +440,12 @@ dataNumeros = [
           },
         ],
       },
-      {
-        'question':
-          "Un profesor ve algunos resultados de una encuesta por internet realizada a 100 personas un determinado día, de las cuales el [25 %] omitió la última pregunta.Una semana después se realiza la misma encuesta a otras 100 personas, de las cuales un [35 %] omitió la última pregunta.[\\newline]El profesor le pide a cuatro de sus estudiantes que realicen conclusiones de estos datos.[\\newline \\bullet]Sebastián señala: del total de personas encuestadas un [60 %] omitió la última pregunta.[\\newline \\bullet]Angélica señala: en la segunda encuesta la omisión total tuvo un aumento de 10 puntos porcentuales con respecto a la omisión total de la primera encuesta.[\\newline \\bullet]Luisa señala: del total de personas encuestadas 60 personas omitieron la última pregunta.[\\newline \\bullet]Manuel señala: en la segunda encuesta la pregunta más omitida fue la última.[\\newline]¿Cuál de ellos está en lo correcto?",
-        'subject': "numeros",
-        'link_resolution': "https://www.youtube.com/embed/2nghljBMp1k?start=857",
-        'answer': [
-          {
-            'label': "Luisa",
-            'right': 1,
-          },
-          {
-            'label': "Angélica",
-            'right': 0,
-          },
-          {
-            'label': "Manuel",
-            'right': 0,
-          },
-          {
-            'label': "Sebastián",
-            'right': 0,
-          },
-        ],
-      },
-      {
-        'question':
-          "En un estudio realizado a un grupo de 25 personas, se les consultó por su bebida favorita, de entre cuatro disponibles (Almíbar, Refrescante, Quitased y Frutirico).En la tabla adjunta se presentan los resultados obtenidos.[\\newline \\newline \\begin{array}{c:c} \\text{Bebida} & \\text{Cantidad de personas} \\newline \\hline Almíbar & 12 \\newline \\hdashline Refrescante & 4 \\newline \\hdashline Quitased & 8 \\newline \\hdashline Frutirico & 1 \\newline \\hline \\end{array} \\newline][\\newline]¿Cuál de las siguientes afirmaciones es verdadera?",
-        'subject': "numeros",
-        'link_resolution': "https://www.youtube.com/embed/2nghljBMp1k?start=753",
-        'answer': [
-          {
-            'label':
-              "El [80%] de las personas prefiere la bebida Almíbar o la bebida Quitased.",
-            'right': 1,
-          },
-          {
-            'label': "Un [0,16%] de las personas prefiere la bebida Refrescante.",
-            'right': 0,
-          },
-          {
-            'label':
-              "Las personas que prefieren la bebida Frutirico representan un [1%] de las personas que prefieren la bebida Quitased.",
-            'right': 0,
-          },
-          {
-            'label':
-              "Las personas que prefieren la bebida Almíbar o la bebida Frutirico representan menos del [50%] del total de personas.",
-            'right': 0,
-          },
-        ],
-      },
+
+      
+     
+      
+    
+     
     ],
   },
 ];
@@ -891,8 +820,93 @@ dataAlgebra = [
           },
         ],
       },
+      {  # 16
+                'question':
+                "Una empresa vende crema para las manos en envases con forma de cilindros rectos de 20 cm de altura y de distintos diámetros.[\\newline] Por una promoción se decide aumentar en su [20%] la capacidad de cada envase, manteniendo la altura de los envases cilíndricos. [\\newline]¿Cuál de las siguientes funciones permite determinar el volumen de los nuevos envases, en [cm^{3}] , con r el radio del envase sin promoción, en cm?",
+                'subject': "algebra",
+                'link_resolution': "https://www.youtube.com/embed/GFcXxDORRvo?start=162",
+                'answer': [
+                    {
+                        'label':
+                        "g(r) = [24 \\cdot r^{2} \\cdot \\pi]",
+                        'right': 1,
+                    },
+                    {
+                        'label':
+                        "p(r) = [16 \\cdot r^{2} \\cdot \\pi",
+                        'right': 0,
+                    },
+                    {
+                        'label':
+                        "f(r) = [28,8 \\cdot r^{2} \\cdot \\pi",
+                        'right': 0,
+                    },
+                    {
+                        'label':
+                        "h(r) = [24 \\cdot r^{2} \\cdot \\pi",
+                        'right': 0,
+                    },
+                ],
+            },
+            {  # 17
+                'question':
+                "Para cierta actividad se aconseja beber diariamente al menos 1 L de agua por cada 35 kg de masa corporal.[\\newline] Para una persona de masa corporal P kg que tiene una botella de forma cilíndrica de diámetro 6 cm y altura 20 cm, ¿cuál de las siguientes expresiones permite determinar la cantidad de veces, en un día, que debe consumir el contenido de la botella llena de agua, para cumplir lo que se aconseja?",
+                'subject': "algebra",
+                'link_resolution': "https://www.youtube.com/embed/GFcXxDORRvo?start=285",
+                'answer': [
+                    {
+                        'label':
+                        "[\\frac{\\frac{P}{35} \\cdot 1000}{\\pi \\cdot 9 \\cdot 20}]",
+                        'right': 1,
+                    },
+                    {
+                        'label':
+                        "[\\frac{P}{\\pi \\cdot 36 \\cdot 20}]",
+                        'right': 0,
+                    },
+                    {
+                        'label':
+                        "[\\frac{P}{\\pi \\cdot 9 \\cdot 20}]",
+                        'right': 0,
+                    },
+                    {
+                        'label':
+                        "[\\frac{P}{35 \\pi \\cdot 9 \\cdot 20}]",
+                        'right': 0,
+                    },
+                ],
+            },
+            {  # 18
+                'question':
+                "Dos ciclistas viajan en sentidos opuestos en una misma carretera y en línea recta, uno al encuentro del otro. Se encuentran separados inicialmente por una distancia d , y la rapidez a la que se desplazan son v y w . ¿Cuál de las siguientes funciones permite calcular la distancia a la que están los dos ciclistas, antes de encontrarse, en función del tiempo t ?",
+                'subject': "algebra",
+                'link_resolution': "https://www.youtube.com/embed/3-qEJz0wATs?start=1168",
+                'answer': [
+                    {
+                        'label':
+                        "m(t) = d - (v + w)t",
+                        'right': 1,
+                    },
+                    {
+                        'label':
+                        "f(t) = (v -w)t - d",
+                        'right': 0,
+                    },
+                    {
+                        'label':
+                        "p(t) = d - (v - w)t",
+                        'right': 0,
+                    },
+                    {
+                        'label':
+                        "n(t) = (v -w)t - d",
+                        'right': 0,
+                    },
+                ],
+            },
     ],
   },
+  
 ];
 dataProbabilidades = [
   {
@@ -1241,6 +1255,102 @@ dataProbabilidades = [
           },
         ],
       },
+      {  # 15
+                'question':
+                "Sean A y B  dos sucesos tales que P(A) = [\\frac{1}{2}, P(A \\cap B) = \\frac{1}{6} y 1 - P(B) = \\frac{2}{3}]. Entonces, P(A [\\cup] B) =",
+                'subject': "probabilidades",
+                'link_resolution': "https://www.youtube.com/embed/jeAxuYbpmZ4?start=137",
+                'answer': [
+                    {
+                        'label': "[\\frac{2}{3}]",
+                        'right': 1,
+                    },
+                    {
+                        'label': "[\\frac{4}{9}]",
+                        'right': 0,
+                    },
+                    {
+                        'label': "[\\frac{2}{9}]",
+                        'right': 0,
+                    },
+                    {
+                        'label': "[\\frac{5}{12}]",
+                        'right': 0,
+                    },
+                ],
+            },
+            {  # 16
+                'question':
+                "En un curso, todos los alumnos participan de por lo menos una actividad deportiva, que puede ser futbol, atletismo o ambas. En el grupo de fútbol hay 32 alumnos del curso y en el grupo de atletismo hay 24 alumnos del curso, de los cuales la mitad pertenece además al grupo de fútbol. Al escoger un alumno al azar, ¿cuál es la probabilidad de que petenezca solamente al grupo de fútbol?  ",
+                'subject': "probabilidades",
+                'link_resolution': "https://www.youtube.com/embed/jeAxuYbpmZ4?start=732",
+                'answer': [
+                    {
+                        'label': "[\\frac{5}{11}]",
+                        'right': 1,
+                    },
+                    {
+                        'label': "[\\frac{5}{10}]",
+                        'right': 0,
+                    },
+                    {
+                        'label': "[\\frac{4}{7}]",
+                        'right': 0,
+                    },
+                    {
+                        'label': "[\\frac{3}{5}]",
+                        'right': 0,
+                    },
+                ],
+            },
+            {  # 17
+                'question':
+                "En un cajon hay 12 pañuelos azules y una cierta cantidad de pañuelos blancos, todos de idéntica forma y sin la presencia de pañuelos de otros colores. Si la probabilidad de sacar al azar un pañuelo blanco es de [\\frac{3}{5}], ¿cuántos pañuelos hay en total en el cajón?",
+                'subject': "probabilidades",
+                'link_resolution': "https://www.youtube.com/embed/jeAxuYbpmZ4?start=1412",
+                'answer': [
+                    {
+                        'label': "[30]",
+                        'right': 1,
+                    },
+                    {
+                        'label': "[18]",
+                        'right': 0,
+                    },
+                    {
+                        'label': "[20]",
+                        'right': 0,
+                    },
+                    {
+                        'label': "[24]",
+                        'right': 0,
+                    },
+                ],
+            },
+            {  # 18
+                'question':
+                "Si se lanza dos veces un dado común y se suman los resultados, la probabilidad de que dicha suma sea multiplo de 5 es",
+                'subject': "probabilidades",
+                'link_resolution': "https://www.youtube.com/embed/jeAxuYbpmZ4?start=2437",
+                'answer': [
+                    {
+                        'label': "[\\frac{7}{35}]",
+                        'right': 1,
+                    },
+                    {
+                        'label': "[\\frac{2}{9}]",
+                        'right': 0,
+                    },
+                    {
+                        'label': "[\\frac{1}{108}]",
+                        'right': 0,
+                    },
+                    {
+                        'label': "[\\frac{7}{12}]",
+                        'right': 0,
+                    },
+                ],
+            },
     ],
   },
 ];
@@ -1425,7 +1535,7 @@ dataGeometria = [
         'link_resolution': "https://www.youtube.com/embed/3-qEJz0wATs?start=2382",
         'answer': [
           {
-            'label': "[x < -p e y > -q]",
+            'label': "[x < -p] e [y > -q]",
             'right': 1,
           },
           {
@@ -1444,7 +1554,7 @@ dataGeometria = [
       },
       {
         'question':
-          "Se necesita determinar el perímetro del rectángulo ABCD, cuyo largo y ancho miden (4x  1) cm y (x  2) cm, respectivamente. Se sabe que ABCD es semejante a un rectángulo cuyo largo y ancho miden 10 cm y 8cm, respectivamente.[\\newline]Para determinar el perímetro del rectángulo ABCD se realiza el siguiente procedimiento, cometiéndose un error: [\\newline] Paso 1: como los rectángulos son semejantes se plantea la expresión: [\\frac{4x + 1}{8} = \\frac{x + 2}{10}\\newline] Paso 2: se resuelve la expresión anterior, obteniéndose [x = \\fraac{3}{16} \\newline]Paso 3: se reemplaza este valor de x en (4x  1) cm y (x  2) cm, obteniéndose que el largo y el ancho del rectángulo son [\\frac{7}{4}]cm y [\\frac{35}{16}]cm, respectivamente.[\\newline]Paso 4: se calcula el perímetro del rectángulo obteniéndose [\\frac{63}{8}]cm.[\\newline]¿En cuál de los pasos se cometió el error?",
+          "Se necesita determinar el perímetro del rectángulo ABCD, cuyo largo y ancho miden (4x por 1) cm y (x por 2) cm, respectivamente. Se sabe que ABCD es semejante a un rectángulo cuyo largo y ancho miden 10 cm y 8cm, respectivamente.[\\newline]Para determinar el perímetro del rectángulo ABCD se realiza el siguiente procedimiento, cometiéndose un error: [\\newline] Paso 1: como los rectángulos son semejantes se plantea la expresión: [\\frac{4x + 1}{8} = \\frac{x + 2}{10}\\newline] Paso 2: se resuelve la expresión anterior, obteniéndose [x = \\fraac{3}{16} \\newline]Paso 3: se reemplaza este valor de x en (4x  1) cm y (x  2) cm, obteniéndose que el largo y el ancho del rectángulo son [\\frac{7}{4}]cm y [\\frac{35}{16}]cm, respectivamente.[\\newline]Paso 4: se calcula el perímetro del rectángulo obteniéndose [\\frac{63}{8}]cm.[\\newline]¿En cuál de los pasos se cometió el error?",
         'subject': "geometria",
         'link_resolution': "https://www.youtube.com/embed/3-qEJz0wATs?start=1758",
         'answer': [
@@ -1514,6 +1624,167 @@ dataGeometria = [
           },
         ],
       },
+       {
+                'question': 'Dentro de un sistema de coordenadas cartesianas se tienen los puntos A(2,3), B(5,8) y C(7,2). ¿Cuál es el área del triángulo ABC?',
+                'subject': 'geometria',
+                'link_resolution':'https://www.youtube.com/embed/GFcXxDORRvo?start=560',
+                'answer': [
+                {
+                'label': '10 unidades cuadradas',
+                'right': 0
+                },
+                {
+                'label': '12 unidades cuadradas',
+                'right': 1
+                },
+                {
+                'label': '15 unidades cuadradas',
+                'right': 0
+                },
+                {
+                'label': '18 unidades cuadradas',
+                'right': 0
+                }
+                ]
+                },
+                {
+                'question': '¿Cuáles son las coordenadas del punto medio del segmento de línea que une los puntos (2,5) y (-4,1)?',
+                'subject': 'geometria',
+                'link_resolution':'https://www.youtube.com/embed/GFcXxDORRvo?start=560',
+                'answer': [
+                {
+                'label': '(-1, 3)',
+                'right': 1
+                },
+                {
+                'label': '(3, -1)',
+                'right': 0
+                },
+                {
+                'label': '(1, -3)',
+                'right': 0
+                },
+                {
+                'label': '(-3, 1)',
+                'right': 0
+                }
+                ]
+                },
+                {
+                'question': '¿Cuál es la pendiente de la línea que pasa por los puntos (2,3) y (6,9)?',
+                'subject': 'geometria',
+                'link_resolution':'https://www.youtube.com/embed/GFcXxDORRvo?start=560',
+                'answer': [
+                {
+                'label': '2',
+                'right': 1
+                },
+                {
+                'label': '3',
+                'right': 0
+                },
+                {
+                'label': '4',
+                'right': 0
+                },
+                {
+                'label': '5',
+                'right': 0
+                }
+                ]
+                },
+                {
+                'question': 'Si un triángulo tiene una base de 8 unidades y una altura de 6 unidades, ¿cuál es su área?',
+                'subject': 'geometria',
+                'link_resolution':'https://www.youtube.com/embed/GFcXxDORRvo?start=560',
+                'answer': [
+                {
+                'label': '24 unidades cuadradas',
+                'right': 1
+                },
+                {
+                'label': '12 unidades cuadradas',
+                'right': 0
+                },
+                {
+                'label': '18 unidades cuadradas',
+                'right': 0
+                },
+                {
+                'label': '30 unidades cuadradas',
+                'right': 0
+                }
+                ]
+                },
+                {
+                'question': '¿Cuáles son las coordenadas del punto medio del segmento de línea que une los puntos (2,5) y (-4,1)?',
+                'subject': 'geometria',
+                'link_resolution':'https://www.youtube.com/embed/GFcXxDORRvo?start=560',
+                'answer': [
+                {
+                'label': '(-1, 3)',
+                'right': 1
+                },
+                {
+                'label': '(3, -1)',
+                'right': 0
+                },
+                {
+                'label': '(1, -3)',
+                'right': 0
+                },
+                {
+                'label': '(-3, 1)',
+                'right': 0
+                }
+                ]
+                },
+                {
+                'question': '¿Cuál es la pendiente de la línea que pasa por los puntos (2,3) y (6,9)?',
+                'subject': 'geometria',
+                'link_resolution':'https://www.youtube.com/embed/GFcXxDORRvo?start=560',
+                'answer': [
+                {
+                'label': '2',
+                'right': 1
+                },
+                {
+                'label': '3',
+                'right': 0
+                },
+                {
+                'label': '4',
+                'right': 0
+                },
+                {
+                'label': '5',
+                'right': 0
+                }
+                ]
+                },
+                {
+                'question': 'Si un triángulo tiene una base de 8 unidades y una altura de 6 unidades, ¿cuál es su área?',
+                'subject': 'geometria',
+                'link_resolution':'https://www.youtube.com/embed/GFcXxDORRvo?start=560',
+                'answer': [
+                {
+                'label': '24 unidades cuadradas',
+                'right': 1
+                },
+                {
+                'label': '12 unidades cuadradas',
+                'right': 0
+                },
+                {
+                'label': '18 unidades cuadradas',
+                'right': 0
+                },
+                {
+                'label': '30 unidades cuadradas',
+                'right': 0
+                }
+                ]
+                },
     ],
   },
 ];
@@ -1541,6 +1812,8 @@ def poblarBd(data):
                 print('------------------------------------------------------------------')
                 print('------------------------------------------------------------------')
                 print('------------------------------------------------------------------')
+
+
 
 poblarBd(dataAlgebra)
 poblarBd(dataNumeros)
