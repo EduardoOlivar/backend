@@ -6,7 +6,7 @@ dataNumeros = [
     'questions': [
       {
         'question':
-          "¿Cual es el valor de: [(1 - \\frac{1}{2})(1 - \\frac{1}{3})(1 - \\frac{1}{4})(1 - \\frac{1}{5})]?",
+          "¿Cuál es el valor de: [(1 - \\frac{1}{2})(1 - \\frac{1}{3})(1 - \\frac{1}{4})(1 - \\frac{1}{5})]?",
         'subject': "numeros",
         'link_resolution': "https://youtube.com/embed/OxgnJ-IgxA0?start=124",
         'answer': [
@@ -52,7 +52,7 @@ dataNumeros = [
         ],
       },
       {
-        'question': "Un numero aumentado en su [30%] es igual a [910].",
+        'question': "Un numero aumentado en su [30]% es igual a [910].",
         'subject': "numeros",
         'link_resolution': "https://www.youtube.com/embed/OxgnJ-IgxA0?start=1682",
         'answer': [
@@ -123,7 +123,7 @@ dataNumeros = [
       },
       {
         'question':
-          "¿Cual de las siguientes cantidades corresponde al [5%] del precio de un articulo? ",
+          "¿Cual de las siguientes cantidades corresponde al [5]% del precio de un articulo? ",
         'subject': "numeros",
         'link_resolution': "https://www.youtube.com/embed/OxgnJ-IgxA0?start=1540",
         'answer': [
@@ -172,7 +172,7 @@ dataNumeros = [
       },
       {
         'question':
-          "¿Cual de las siguientes expresiones representa el [22%]  del [15%] de P?",
+          "¿Cual de las siguientes expresiones representa el [22]%  del [15]% de P?",
         'subject': "numeros",
         'link_resolution': "https://www.youtube.com/embed/nKR73i6zASg?start=577",
         'answer': [
@@ -271,7 +271,7 @@ dataNumeros = [
       },
       {
         'question':
-          "Considera el númerop distinto de cero que es multiplicado dos veces por 1,25 y luego, dos veces por 0,75, tal como se representa a continuación:[\\newline p\\cdot1,25\\cdot1,25\\cdot0,75\\cdot0,75 \\newline] ¿Qué pueden representar dichas multiplicaciones, respecto del número original [p] ?",
+          "Considera el númerop distinto de cero que es multiplicado dos veces por 1,25 y luego, dos veces por 0,75, tal como se representa a continuación:[\\newline p \\cdot 1,25 \\cdot 1,25 \\cdot 0,75 \\cdot 0,75 \\newline] ¿Qué pueden representar dichas multiplicaciones, respecto del número original [p] ?",
         'subject': "numeros",
         'link_resolution': "https://www.youtube.com/embed/2nghljBMp1k?start=71",
         'answer': [
@@ -370,7 +370,7 @@ dataNumeros = [
       },
    
    {
-        'question': "¿Cuál es el [40%] del [15%] de 300 ?",
+        'question': "¿Cuál es el [40]% del [15]% de 300 ?",
         'subject': "numeros",
         'link_resolution': "https://www.youtube.com/embed/2nghljBMp1k?start=611",
         'answer': [
@@ -395,7 +395,7 @@ dataNumeros = [
       
 {
         'question':
-          "Si el precio de un helado es $500 , ¿cuál de las siguientes expresiones representa el valor del helado aumentado en su [120%]?",
+          "Si el precio de un helado es $500 , ¿cuál de las siguientes expresiones representa el valor del helado aumentado en su [120]%?",
         'subject': "numeros",
         'link_resolution': "https://www.youtube.com/embed/2nghljBMp1k?start=653",
         'answer': [
@@ -423,19 +423,19 @@ dataNumeros = [
         'link_resolution': "https://www.youtube.com/embed/2nghljBMp1k?start=814",
         'answer': [
           {
-            'label': "[30%]",
+            'label': "[30]%",
             'right': 1,
           },
           {
-            'label': "[3,\\bar{3}%]",
+            'label': "[3,\\bar{3}]%",
             'right': 0,
           },
           {
-            'label': "[3%]",
+            'label': "[3]%",
             'right': 0,
           },
           {
-            'label': "[0,3%]",
+            'label': "[0,3]%",
             'right': 0,
           },
         ],
@@ -700,7 +700,7 @@ dataAlgebra = [
         'answer': [
           {
             'label':
-              "Ignacio realiza un recargo de un [50%] del precio del producto importado sin considerar ese recargo en el cargo fijo.",
+              "Ignacio realiza un recargo de un [50]% del precio del producto importado sin considerar ese recargo en el cargo fijo.",
             'right': 1,
           },
           {
@@ -715,7 +715,7 @@ dataAlgebra = [
           },
           {
             'label':
-              "Ignacio realiza un recargo de [1,5%] del precio del producto importado sin considerar el cargo fijo.",
+              "Ignacio realiza un recargo de [1,5]% del precio del producto importado sin considerar el cargo fijo.",
             'right': 0,
           },
         ],
@@ -822,7 +822,7 @@ dataAlgebra = [
       },
       {  # 16
                 'question':
-                "Una empresa vende crema para las manos en envases con forma de cilindros rectos de 20 cm de altura y de distintos diámetros.[\\newline] Por una promoción se decide aumentar en su [20%] la capacidad de cada envase, manteniendo la altura de los envases cilíndricos. [\\newline]¿Cuál de las siguientes funciones permite determinar el volumen de los nuevos envases, en [cm^{3}] , con r el radio del envase sin promoción, en cm?",
+                "Una empresa vende crema para las manos en envases con forma de cilindros rectos de 20 cm de altura y de distintos diámetros.[\\newline] Por una promoción se decide aumentar en su [20]% la capacidad de cada envase, manteniendo la altura de los envases cilíndricos. [\\newline]¿Cuál de las siguientes funciones permite determinar el volumen de los nuevos envases, en [cm^{3}] , con r el radio del envase sin promoción, en cm?",
                 'subject': "algebra",
                 'link_resolution': "https://www.youtube.com/embed/GFcXxDORRvo?start=162",
                 'answer': [
@@ -1015,7 +1015,7 @@ dataProbabilidades = [
       },
       {
         'question':
-          "A un grupo de personas se le consultó acerca de la cantidad de películas vistas el último mes. En la tabla adjunta se presenta la distribución de los resultados de dicha consulta.[\\newline \\begin{array}{c:c} \\text{Cantidad de películas vistas el último mes} & \\text{Frecuencia} \\newline \\hline 1 & h \\newline \\hdashline 2 & 200 \\newline \\hdashline 3 & t \\newline \\hdashline 4 & 50 \\newline \\hline \\end{array} \\newline]Si se agregan personas al grupo de tal manera que la frecuencia de todos los datos aumenta en un [20%], ¿cuál de las siguientes expresiones representa la cantidad total de personas que hay finalmente en el grupo?",
+          "A un grupo de personas se le consultó acerca de la cantidad de películas vistas el último mes. En la tabla adjunta se presenta la distribución de los resultados de dicha consulta.[\\newline \\begin{array}{c:c} \\text{Cantidad de películas vistas el último mes} & \\text{Frecuencia} \\newline \\hline 1 & h \\newline \\hdashline 2 & 200 \\newline \\hdashline 3 & t \\newline \\hdashline 4 & 50 \\newline \\hline \\end{array} \\newline]Si se agregan personas al grupo de tal manera que la frecuencia de todos los datos aumenta en un [20]%, ¿cuál de las siguientes expresiones representa la cantidad total de personas que hay finalmente en el grupo?",
         'subject': "probabilidades",
         'link_resolution': "https://www.youtube.com/embed/Kdr9QVeILdI?start=358",
         'answer': [
@@ -1185,7 +1185,7 @@ dataProbabilidades = [
       },
       {
         'question':
-          "Cada uno de los estudiantes de los terceros medios de un colegio lleva una botella individual para hidratarse, ya sea de agua o jugo.[\\newline]Al seleccionar un estudiante de tercero medio de este colegio al azar, se puede determinar la probabilidad de que sea una mujer que lleva agua, si se sabe que:[\\newline](1) el [60%] de los estudiantes son hombres y de estos [\\frac{5}{6}] llevan agua.[\\newline](2) los [\\frac{2}{3}] de las mujeres llevan jugo.",
+          "Cada uno de los estudiantes de los terceros medios de un colegio lleva una botella individual para hidratarse, ya sea de agua o jugo.[\\newline]Al seleccionar un estudiante de tercero medio de este colegio al azar, se puede determinar la probabilidad de que sea una mujer que lleva agua, si se sabe que:[\\newline](1) el [60]% de los estudiantes son hombres y de estos [\\frac{5}{6}] llevan agua.[\\newline](2) los [\\frac{2}{3}] de las mujeres llevan jugo.",
         'subject': "probabilidades",
         'link_resolution': "https://www.youtube.com/embed/3-qEJz0wATs?start=3221",
         'answer': [
@@ -1209,7 +1209,7 @@ dataProbabilidades = [
       },
       {
         'question':
-          "De un grupo de 100 personas, 40 de ellas son fumadores. Un [20%]  de los fumadores no presenta una enfermedad respiratoria. Al seleccionar una persona al azar del grupo total, la probabilidad de que presente una enfermedad respiratoria es 0,35.[\\newline]Al seleccionar una persona al azar del grupo total, ¿cuál es la probabilidad de que no fume dado que no tiene una enfermedad respiratoria?",
+          "De un grupo de 100 personas, 40 de ellas son fumadores. Un [20]%  de los fumadores no presenta una enfermedad respiratoria. Al seleccionar una persona al azar del grupo total, la probabilidad de que presente una enfermedad respiratoria es 0,35.[\\newline]Al seleccionar una persona al azar del grupo total, ¿cuál es la probabilidad de que no fume dado que no tiene una enfermedad respiratoria?",
         'subject': "probabilidades",
         'link_resolution': "https://www.youtube.com/embed/3-qEJz0wATs?start=3006",
         'answer': [
@@ -1233,7 +1233,7 @@ dataProbabilidades = [
       },
       {
         'question':
-          "De un grupo de 100 personas, 40 de ellas son fumadores. Un [20%]  de los fumadores no presenta una enfermedad respiratoria. Al seleccionar una persona al azar del grupo total, la probabilidad de que presente una enfermedad respiratoria es 0,35.[\\newline]Al seleccionar una persona al azar del grupo total, ¿cuál es la probabilidad de que no fume dado que no tiene una enfermedad respiratoria?",
+          "De un grupo de 100 personas, 40 de ellas son fumadores. Un [20]%  de los fumadores no presenta una enfermedad respiratoria. Al seleccionar una persona al azar del grupo total, la probabilidad de que presente una enfermedad respiratoria es 0,35.[\\newline]Al seleccionar una persona al azar del grupo total, ¿cuál es la probabilidad de que no fume dado que no tiene una enfermedad respiratoria?",
         'subject': "probabilidades",
         'link_resolution': "https://www.youtube.com/embed/3-qEJz0wATs?start=3006",
         'answer': [
