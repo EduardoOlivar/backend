@@ -270,7 +270,7 @@ class UserEssayHistorySerializer(serializers.ModelSerializer):
 
     class Meta:
         model = CustomEssay
-        fields = ['name', 'is_custom', 'date','current_questions']  # Campos a incluir en la representación del ensayo
+        fields = ['id','name', 'is_custom', 'date','current_questions']  # Campos a incluir en la representación del ensayo
 
     def get_date(self, instance):
         return instance.created.date()  # Método para obtener la fecha de creación del ensayo
@@ -379,3 +379,58 @@ class CustomEssayQuestionSerializer(serializers.ModelSerializer):
                 raise serializers.ValidationError('Una o más preguntas no existen en los ensayos predefinidos seleccionados del ensayo personalizado.')  # Validar que las preguntas existan en los ensayos predefinidos seleccionados
 
         return attrs
+
+
+
+class CustomEssayResponseSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = CustomEssay
+        exclude = ('updated', 'is_deleted')
+
+#metodo para obtener los parametros de las respuestas
+    def get_answers(self,question):
+        answers = []
+        for answer in Answer.objects.filter(questions=question):
+            answer_dict = {
+                'label':answer.label,
+                'right':answer.right,
+                'answer_id':answer.id
+            }
+            answers.append(answer_dict)
+        return answers
+
+#metodo para obtener las preguntas y linkear las alternativas
+    def get_question(self,answer):
+        questions = []
+        for question in Question.objects.filter(answer__in=answer):
+            question_dict = {
+                'question': question.question,
+                'link': question.link_resolution,
+                'answer': self.get_answers(question.id)
+            }
+            questions.append(question_dict)
+        return questions
+
+
+    def get_score(self, instance):
+        if instance.current_questions == 0:
+            return 0
+        if instance.current_questions is None:
+            return 0
+        answers = AnswerEssayUser.objects.filter(essays=instance)
+        right = answers.filter(score=1).count()
+        score = 100 + (900 / instance.current_questions) * right  # Cálculo del puntaje basado en las respuestas correctas
+        return round(score)
+
+
+    def to_representation(self, instance: CustomEssay):
+        data = super().to_representation(instance)
+        answers_list=[]
+        answers = instance.answers_essay_user.filter(essays=instance)
+        for answer in answers:
+            answers_list.append(answer.answers.id)
+        print(answers_list)
+        data['question'] = self.get_question(answers_list) #trae todos los datos a partir de las respuestas que se respondieron para un ensayo en especifico
+        data['answered'] = answers_list #entrega el listado con las id de las respuestas para el ensayo
+        data['score'] = self.get_score(instance)
+        return data

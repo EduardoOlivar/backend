@@ -201,3 +201,8 @@ class CustomEssayQuestionView(generics.ListCreateAPIView):
     serializer_class = CustomEssayQuestionSerializer  # Clase serializadora utilizada
     permission_classes = (IsAuthenticated,)  # Permiso requerido para acceder a la vista
 
+
+
+class CustomEssayResponseView(generics.RetrieveUpdateDestroyAPIView):
+    queryset = CustomEssay.objects.filter(is_deleted=False)
+    serializer_class = CustomEssayResponseSerializer
